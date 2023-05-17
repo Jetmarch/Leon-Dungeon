@@ -1,0 +1,83 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BattleMaster : MonoBehaviour
+{
+    [SerializeField] private Actor player;
+    [SerializeField] private Battle currentBattle;
+
+    [SerializeField] private bool isWaitingActorTurn;
+    [SerializeField] private bool isBattleInProcess;
+
+    public void OnPlayerObjectSet(SOEventArgs e)
+    {
+        var eventArg = (SOEventArgOne<Actor>)e;
+        player = eventArg.arg;
+    }
+
+    
+    public void OnStartBattle(SOEventArgs e)
+    {
+        var eventArg = (SOEventArgOne<Battle>)e;
+        this.currentBattle = eventArg.arg;
+
+        //Оповещаем UI и только после начинаем считать инициативу
+        SOEventKeeper.Instance.GetEvent("onBattleUIInit").Raise(e);
+    }
+
+    //После этого метода начинается считаться инициатива. Вызывается по событию
+    public void OnBattleUIReady()
+    {
+        isBattleInProcess = true;
+    }
+
+    public void EndBattle()
+    {
+        isBattleInProcess = false;
+    }
+
+    void Update()
+    {
+        DoBattle();
+    }
+
+    public void DoBattle()
+    {
+        if(!isBattleInProcess) return;
+
+        DoBattleOnActor(player);
+
+        for(int i = 0; i < currentBattle.enemies.Count; i++)
+        {
+            //Перебираем каждого противника, пополняем его инициативу, проверяем не заполнилась ли шкала его инициативы
+            //Если заполнилась, то управление передаётся ему
+            DoBattleOnActor(currentBattle.enemies[i]);
+        }
+    }
+
+    private void DoBattleOnActor(Actor actor)
+    {
+         if(isWaitingActorTurn) return;
+
+        actor.InitiativeStep(Time.deltaTime);
+
+        if (actor.IsReady())
+        {
+            Debug.Log($"{actor.name.GetValue()} ready!");
+            //Оповещаем об Actor, который ходит
+            //Передаём ему управление
+            isWaitingActorTurn = true;
+            SOEventKeeper.Instance.GetEvent("onActorTurn").Raise(new SOEventArgOne<Actor>(actor));
+        }
+    }
+
+    public void OnActorTurnEnd(SOEventArgs e)
+    {
+        //if player
+
+        //if enemy
+
+        isWaitingActorTurn = false;
+    }
+}

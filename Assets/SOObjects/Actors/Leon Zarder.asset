@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d76f9805a4de454c862419d5bdbb35f, type: 3}
+  m_Name: Leon Zarder
+  m_EditorClassIdentifier: 
+  name:
+    rusValue: "\u041B\u0435\u0432 \u0417\u0430\u0440\u0434\u0435\u0440"
+    engValue: Leon Zarder
+  sprite: {fileID: 0}
+  stats:
+    strength: 5
+    agility: 5
+    intelligence: 5
+    speed: 5
+  brain: {fileID: 0}
+  baseAttack:
+    name:
+      rusValue: "\u0410\u0442\u0430\u043A\u0430"
+      engValue: Attack
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 21300000, guid: dd25796a1371bac498c2f7b83d1f4bef, type: 3}
+    type: 0
+    costInInitiativePercent: 30
+    effects:
+    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
+  baseDefend:
+    name:
+      rusValue: "\u0417\u0430\u0449\u0438\u0442\u0430"
+      engValue: Defend
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 21300000, guid: dd25796a1371bac498c2f7b83d1f4bef, type: 3}
+    type: 0
+    costInInitiativePercent: 100
+    effects: []
+  basePassTurn:
+    name:
+      rusValue: 
+      engValue: 
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 0}
+    type: 2
+    costInInitiativePercent: 0
+    effects:
+    - {fileID: 11400000, guid: faf9dd1a16513bb46b091bc79919c000, type: 2}
+  additionalSkills:
+  - name:
+      rusValue: "\u0410\u0442\u0430\u043A\u0430 \u0441 \u0437\u0430\u043C\u0430\u0445\u043E\u043C"
+      engValue: Attack with a swing
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 21300000, guid: dd25796a1371bac498c2f7b83d1f4bef, type: 3}
+    type: 0
+    costInInitiativePercent: 45
+    effects:
+    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
+    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
+  - name:
+      rusValue: "\u0420\u0430\u0437\u043C\u0430\u0448\u0438\u0441\u0442\u044B\u0439
+        \u0443\u0434\u0430\u0440"
+      engValue: Sweeping blow
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    type: 1
+    costInInitiativePercent: 70
+    effects:
+    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
