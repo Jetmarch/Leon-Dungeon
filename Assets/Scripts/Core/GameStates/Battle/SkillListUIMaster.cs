@@ -38,7 +38,7 @@ public class SkillListUIMaster : MonoBehaviour
         skillListParent.SetActive(false);
     }
 
-    public void AddSkillsInList()
+    private void AddSkillsInList()
     {
         foreach(var skill in player.additionalSkills) 
         {
@@ -53,7 +53,7 @@ public class SkillListUIMaster : MonoBehaviour
         }
     }
 
-    public void RemoveSkillsFromList()
+    private void RemoveSkillsFromList()
     {
         foreach(Transform item in skillList.transform)
         {

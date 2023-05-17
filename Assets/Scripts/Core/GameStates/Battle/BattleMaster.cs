@@ -26,6 +26,28 @@ public class BattleMaster : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onBattleUIInit").Raise(e);
     }
 
+    public void OnActorDead(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Actor>)e;
+
+        int countOfDeadEnemies = 0;
+
+        foreach(var enemy in currentBattle.enemies)
+        {
+            if(enemy.healthStatus.IsDead())
+            {
+                countOfDeadEnemies++;
+            }
+        }
+
+        if(countOfDeadEnemies == currentBattle.enemies.Count)
+        {
+            Debug.Log("Victory!");
+            SOEventKeeper.Instance.GetEvent("onVictoryInBattle").Raise();
+        }
+    }
+
+
     //После этого метода начинается считаться инициатива. Вызывается по событию
     public void OnBattleUIReady()
     {
@@ -42,7 +64,7 @@ public class BattleMaster : MonoBehaviour
         DoBattle();
     }
 
-    public void DoBattle()
+    private void DoBattle()
     {
         if(!isBattleInProcess) return;
 
@@ -58,7 +80,9 @@ public class BattleMaster : MonoBehaviour
 
     private void DoBattleOnActor(Actor actor)
     {
-         if(isWaitingActorTurn) return;
+        if(isWaitingActorTurn) return;
+        if(actor.healthStatus.IsDead()) return;
+        if(!actor.healthStatus.CanTakeActions()) return;
 
         actor.InitiativeStep(Time.deltaTime);
 

@@ -70,13 +70,23 @@ public class BattleUIMaster : MonoBehaviour
             //Send event for ui animation
             battleControlsParent.SetActive(false);
         }
-        //TODO: Battle message 
+        //TODO: Battle messages 
     }
 
     public void OnActorDead(SOEventArgs e)
     {
         var obj = (SOEventArgOne<Actor>)e;
 
+        var enemy = FindEnemyByActor(obj.arg);
+        //TODO: Анимация затемнения спрайта и только после удаление объекта
+        enemy.gameObject.SetActive(false);
+    }
+
+    public void OnActorDeadAnimationEnd(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<EnemyUIWrapper>)e;
+
+        Destroy(obj.arg.gameObject);
     }
 
     public void OnBattleControlsAnimationEnd()
@@ -107,6 +117,12 @@ public class BattleUIMaster : MonoBehaviour
 
     private void InitEnemyList(Battle battle)
     {
+        //Очищаем лист от предыдущих противников, если они были
+        foreach(Transform prevEnemy in enemyListParent.transform)
+        {
+            Destroy(prevEnemy.gameObject);
+        }
+
         foreach(var enemy in battle.enemies)
         {
             AddEnemyInEnemyList(enemy);
