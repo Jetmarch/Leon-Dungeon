@@ -53,8 +53,7 @@ public class BattleUIMaster : MonoBehaviour
 
         if(obj.arg.brain == null)
         {
-            //Send event for ui animation
-            battleControlsParent.SetActive(true);
+            ShowBattleControls();
             return;
         }
 
@@ -89,6 +88,19 @@ public class BattleUIMaster : MonoBehaviour
         Destroy(obj.arg.gameObject);
     }
 
+    //TODO: onSkillUseEnd - проверяем наличие инициативы у игрока, чтобы понять какие кнопки боя теперь ему доступны
+    public void OnSkillUseEnd(SOEventArgs e)
+    {
+        if(!player.HasEnoughInitiative(player.baseAttack))
+        {
+            baseAttackBtn.GetComponent<Button>().interactable = false;
+        }
+        if(!player.HasEnoughInitiative(player.baseDefend))
+        {
+            baseDefendBtn.GetComponent<Button>().interactable = false;
+        }
+    }
+
     public void OnBattleControlsAnimationEnd()
     {
 
@@ -105,6 +117,20 @@ public class BattleUIMaster : MonoBehaviour
         }
 
         return null;
+    }
+
+    private void ShowBattleControls()
+    {
+        //Send event for ui animation
+        battleControlsParent.SetActive(true);
+        if(player.HasEnoughInitiative(player.baseAttack))
+        {
+            baseAttackBtn.GetComponent<Button>().interactable = true;
+        }
+        if(player.HasEnoughInitiative(player.baseDefend))
+        {
+            baseDefendBtn.GetComponent<Button>().interactable = true;
+        }
     }
 
     //Just for testing. Delete it later
@@ -156,5 +182,5 @@ public class BattleUIMaster : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(player.basePassTurn));
     }
 
-    //TODO: onSkillUseEnd - проверяем наличие инициативы у игрока, чтобы понять какие кнопки боя теперь ему доступны
+    
 }

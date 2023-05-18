@@ -5,8 +5,6 @@ using UnityEngine;
 public class SkillMaster : MonoBehaviour
 {
     [SerializeField] private Actor player;
-    [SerializeField] private Skill selectedSkill;
-
     public void OnPlayerObjectSet(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Actor>)e;
@@ -28,6 +26,8 @@ public class SkillMaster : MonoBehaviour
         Debug.Log($"Player use skill {obj.arg.name.GetValue()} on self");
         player.ReduceInitiativeOnSkillCost(obj.arg);
         obj.arg.Use(player, player);
+
+        SOEventKeeper.Instance.GetEvent("onSkillUseEnd").Raise(new SOEventArgOne<Skill>(obj.arg));
     }
 
     public void PlayerHasChoseTarget(SOEventArgs e)
@@ -48,5 +48,6 @@ public class SkillMaster : MonoBehaviour
             obj.arg2.Use(enemy.GetActor(), player);
         }
         
+        SOEventKeeper.Instance.GetEvent("onSkillUseEnd").Raise(new SOEventArgOne<Skill>(obj.arg2));
     }
 }

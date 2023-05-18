@@ -920,6 +920,8 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 6eb1d3994c4a58b4d8192bed1beb15e5, type: 2}
   - key: onVictoryInBattle
     sOEvent: {fileID: 11400000, guid: a9aa69b8e7056ae42bbe62fb0afdbe00, type: 2}
+  - key: onSkillUseEnd
+    sOEvent: {fileID: 11400000, guid: d40917c5fff572443a166b5736f14312, type: 2}
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2958,17 +2960,6 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
-  selectedSkill:
-    name:
-      rusValue: 
-      engValue: 
-    description:
-      rusValue: 
-      engValue: 
-    icon: {fileID: 0}
-    type: 0
-    costInInitiativePercent: 0
-    effects: []
 --- !u!1 &1218200482
 GameObject:
   m_ObjectHideFlags: 0
