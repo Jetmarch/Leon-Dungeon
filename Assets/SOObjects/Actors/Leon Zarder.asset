@@ -42,7 +42,7 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     icon: {fileID: 21300000, guid: dd25796a1371bac498c2f7b83d1f4bef, type: 3}
-    type: 0
+    type: 2
     costInInitiativePercent: 100
     effects: []
   basePassTurn:

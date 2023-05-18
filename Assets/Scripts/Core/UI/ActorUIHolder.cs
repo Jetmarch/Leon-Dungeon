@@ -10,9 +10,4 @@ public class ActorUIHolder : MonoBehaviour
     private void Start() {
         actor = new Actor(soActor);
     }
-
-    public void OnAttackAnimationEnd()
-    {
-        actor.brain.OnAttackAnimationEnd();
-    }
 }

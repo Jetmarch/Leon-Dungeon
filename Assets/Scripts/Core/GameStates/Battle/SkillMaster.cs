@@ -50,4 +50,24 @@ public class SkillMaster : MonoBehaviour
         
         SOEventKeeper.Instance.GetEvent("onSkillUseEnd").Raise(new SOEventArgOne<Skill>(obj.arg2));
     }
+
+    public void OnEnemyUseSkill(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
+
+        if(!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2))
+        {
+            Debug.Log("Enemy has not enough initiative!");
+            SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
+            return;
+        }
+
+        //Запуск анимации где-то здесь, либо перехватывать это же событие и анимировать
+        obj.arg1.GetActor().ReduceInitiativeOnSkillCost(obj.arg2);
+
+        Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");
+        obj.arg2.Use(player, obj.arg1.GetActor());
+
+        SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
+    }
 }

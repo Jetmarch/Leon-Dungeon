@@ -20,17 +20,20 @@ MonoBehaviour:
     strength: 1
     agility: 1
     intelligence: 1
-    speed: 0
+    speed: 10
   brain: {fileID: 11400000, guid: 23390f508ef422a44bb794adffcd2b04, type: 2}
   baseAttack:
     name:
-      rusValue: 
-      engValue: 
+      rusValue: "\u0410\u0442\u0430\u043A\u0430!"
+      engValue: Attack!
     description:
       rusValue: 
       engValue: 
-    costInInitiativePercent: 0
-    effects: []
+    icon: {fileID: 0}
+    type: 0
+    costInInitiativePercent: 100
+    effects:
+    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
   baseDefend:
     name:
       rusValue: 
@@ -38,6 +41,19 @@ MonoBehaviour:
     description:
       rusValue: 
       engValue: 
+    icon: {fileID: 0}
+    type: 0
+    costInInitiativePercent: 0
+    effects: []
+  basePassTurn:
+    name:
+      rusValue: 
+      engValue: 
+    description:
+      rusValue: 
+      engValue: 
+    icon: {fileID: 0}
+    type: 0
     costInInitiativePercent: 0
     effects: []
   additionalSkills: []

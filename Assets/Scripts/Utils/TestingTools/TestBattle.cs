@@ -28,7 +28,7 @@ public class TestBattle : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             currentActorOnTurn.InitiativeReset();
-            SOEventKeeper.Instance.GetEvent("actorTurnEnd").Raise(new SOEventArgOne<Actor>(currentActorOnTurn));
+            SOEventKeeper.Instance.GetEvent("onActorTurnEnd").Raise(new SOEventArgOne<Actor>(currentActorOnTurn));
         }
 
         if(Input.GetKeyDown(KeyCode.W))

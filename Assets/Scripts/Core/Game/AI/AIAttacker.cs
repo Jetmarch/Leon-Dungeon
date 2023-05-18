@@ -6,20 +6,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName ="AIBrain/AIAttacker", fileName = "AIAttacker")]
 public class AIAttacker : AIBrain
 {
-    public override void MakeMove(Actor player, Actor brainOwner)
+    public override List<Skill> MakeMoveOnFullInitiativeAndGetListOfSkills()
     {
-        Debug.Log("Enemy attacks!");
-        SOEventKeeper.Instance.GetEvent("startAttackAnimation").Raise();
-    }
+        //Для теста обычный атакующий будет использовать каждый ход базовую атаку
+        var listOfSkills = new List<Skill>();
+        listOfSkills.Add(brainOwner.baseAttack);
 
-    public override void OnAttackAnimationEnd()
-    {
-        EndOfTurn();
-    }
-
-    private void EndOfTurn()
-    {
-        Debug.Log("Enemy turn end!");
-        SOEventKeeper.Instance.GetEvent("actorTurnEnd").Raise();
+        return listOfSkills;
     }
 }

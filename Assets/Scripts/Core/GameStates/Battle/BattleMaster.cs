@@ -30,6 +30,14 @@ public class BattleMaster : MonoBehaviour
     {
         var obj = (SOEventArgOne<Actor>)e;
 
+        if(obj.arg == player)
+        {
+            Debug.Log("Defeat!");
+            SOEventKeeper.Instance.GetEvent("onDefeatInBattle").Raise();
+            return;
+        }
+
+
         int countOfDeadEnemies = 0;
 
         foreach(var enemy in currentBattle.enemies)

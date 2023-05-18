@@ -29,6 +29,8 @@ public class Actor
         this.basePassTurn = _actor.basePassTurn;
         this.additionalSkills = _actor.additionalSkills;
 
+        if(brain != null) this.brain.SetOwner(this);
+
         this.healthStatus = new HealthStatus(this);
     }
 

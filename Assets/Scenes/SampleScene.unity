@@ -884,7 +884,7 @@ MonoBehaviour:
   eventList:
   - key: startBattle
     sOEvent: {fileID: 11400000, guid: 14926f341dcda91418d55596e6c2a26c, type: 2}
-  - key: actorTurnEnd
+  - key: onActorTurnEnd
     sOEvent: {fileID: 11400000, guid: ef6e07784ea94a648b3edf389c2e6ef9, type: 2}
   - key: startAttackAnimation
     sOEvent: {fileID: 11400000, guid: 59e22e2b1eb3fac43af24b1374646a61, type: 2}
@@ -920,8 +920,16 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 6eb1d3994c4a58b4d8192bed1beb15e5, type: 2}
   - key: onVictoryInBattle
     sOEvent: {fileID: 11400000, guid: a9aa69b8e7056ae42bbe62fb0afdbe00, type: 2}
+  - key: onDefeatInBattle
+    sOEvent: {fileID: 11400000, guid: 42d3961f64b3a3d469bc97b3a962d429, type: 2}
   - key: onSkillUseEnd
     sOEvent: {fileID: 11400000, guid: d40917c5fff572443a166b5736f14312, type: 2}
+  - key: onEnemyActorTurnAnimationEnd
+    sOEvent: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
+  - key: onEnemyUseSkill
+    sOEvent: {fileID: 11400000, guid: 8d2c8f7168c855547b20c6e0beb45afd, type: 2}
+  - key: onEnemyUseSkillEnd
+    sOEvent: {fileID: 11400000, guid: d222f825aa67aeb46a38ea2ecfd1fb9b, type: 2}
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1280,6 +1288,7 @@ Transform:
   - {fileID: 1865205025}
   - {fileID: 347796383}
   - {fileID: 1322851862}
+  - {fileID: 647953337}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1471,6 +1480,22 @@ MonoBehaviour:
         - m_Target: {fileID: 596320376}
           m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
           m_MethodName: OnActorDead
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: d40917c5fff572443a166b5736f14312, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 596320376}
+          m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
+          m_MethodName: OnSkillUseEnd
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -1724,6 +1749,147 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 647663542}
   m_CullTransparentMesh: 1
+--- !u!1 &647953336
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 647953337}
+  - component: {fileID: 647953339}
+  - component: {fileID: 647953338}
+  m_Layer: 0
+  m_Name: AIBrainMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &647953337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647953336}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 534936406}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &647953338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647953336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 947b7e1e9bb1ca647839084f60a0b7bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  listOfEvents:
+  - _event: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 647953339}
+          m_TargetAssemblyTypeName: AIBrainMaster, Assembly-CSharp
+          m_MethodName: OnEnemyActorTurnAnimationEnd
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: d222f825aa67aeb46a38ea2ecfd1fb9b, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 647953339}
+          m_TargetAssemblyTypeName: AIBrainMaster, Assembly-CSharp
+          m_MethodName: OnEnemyUseSkillEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+--- !u!114 &647953339
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 647953336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bc7ae1b0b9cd9a46b0878b2e52af9b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEnemyActor:
+    name:
+      rusValue: 
+      engValue: 
+    sprite: {fileID: 0}
+    healthStatus:
+      maxHealth: 0
+      currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      intelligence: 0
+      speed: 0
+    brain: {fileID: 0}
+    Initiative: 0
+    baseAttack:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    baseDefend:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    basePassTurn:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    additionalSkills: []
+  currentEnemyUIWrapper: {fileID: 0}
+  currentActorSkillSet: []
 --- !u!1 &668413736
 GameObject:
   m_ObjectHideFlags: 0
@@ -2890,6 +3056,22 @@ MonoBehaviour:
         - m_Target: {fileID: 1124019688}
           m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
           m_MethodName: PlayerHasChoseTarget
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 8d2c8f7168c855547b20c6e0beb45afd, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124019688}
+          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
+          m_MethodName: OnEnemyUseSkill
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4137,6 +4319,38 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
           m_MethodName: OnActorDead
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: a9aa69b8e7056ae42bbe62fb0afdbe00, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: EndBattle
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 42d3961f64b3a3d469bc97b3a962d429, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: EndBattle
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

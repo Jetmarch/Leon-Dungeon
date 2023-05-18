@@ -7,6 +7,10 @@ public abstract class AIBrain : ScriptableObject
 {
     protected Actor playerTarget;
     protected Actor brainOwner;
-    public abstract void MakeMove(Actor player, Actor brainOwner);
-    public abstract void OnAttackAnimationEnd();
+    public abstract List<Skill> MakeMoveOnFullInitiativeAndGetListOfSkills();
+
+    public void SetOwner(Actor actor)
+    {
+        brainOwner = actor;
+    }
 }

@@ -59,6 +59,7 @@ public class BattleUIMaster : MonoBehaviour
 
         var enemy = FindEnemyByActor(obj.arg);
         StartCoroutine(ChangeColorTest(enemy.GetComponent<Image>()));
+        SOEventKeeper.Instance.GetEvent("onEnemyActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(obj.arg));
     }
 
     public void OnActorTurnEnd(SOEventArgs e)
@@ -76,6 +77,12 @@ public class BattleUIMaster : MonoBehaviour
     {
         var obj = (SOEventArgOne<Actor>)e;
 
+        if(obj.arg == player)
+        {
+            Debug.Log("Player is dead!");
+            return;
+        }
+        
         var enemy = FindEnemyByActor(obj.arg);
         //TODO: Анимация затемнения спрайта и только после удаление объекта
         enemy.gameObject.SetActive(false);

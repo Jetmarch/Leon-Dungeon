@@ -9,6 +9,6 @@ public class PassTurnSkillEffect : SkillEffect
     {
         Debug.Log($"Actor {user.name.GetValue()} pass turn");
         user.InitiativeReset();
-        SOEventKeeper.Instance.GetEvent("actorTurnEnd").Raise(new SOEventArgOne<Actor>(user));
+        SOEventKeeper.Instance.GetEvent("onActorTurnEnd").Raise(new SOEventArgOne<Actor>(user));
     }
 }
