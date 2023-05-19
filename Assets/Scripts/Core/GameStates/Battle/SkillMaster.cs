@@ -26,8 +26,6 @@ public class SkillMaster : MonoBehaviour
         Debug.Log($"Player use skill {obj.arg.name.GetValue()} on self");
         player.ReduceInitiativeOnSkillCost(obj.arg);
         obj.arg.Use(player, player);
-
-        SOEventKeeper.Instance.GetEvent("onSkillUseEnd").Raise(new SOEventArgOne<Skill>(obj.arg));
     }
 
     public void PlayerHasChoseTarget(SOEventArgs e)
@@ -48,7 +46,6 @@ public class SkillMaster : MonoBehaviour
             obj.arg2.Use(enemy.GetActor(), player);
         }
         
-        SOEventKeeper.Instance.GetEvent("onSkillUseEnd").Raise(new SOEventArgOne<Skill>(obj.arg2));
     }
 
     public void OnEnemyUseSkill(SOEventArgs e)
@@ -67,7 +64,5 @@ public class SkillMaster : MonoBehaviour
 
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");
         obj.arg2.Use(player, obj.arg1.GetActor());
-
-        SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
     }
 }
