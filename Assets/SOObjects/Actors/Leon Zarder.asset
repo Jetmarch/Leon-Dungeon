@@ -20,7 +20,7 @@ MonoBehaviour:
     strength: 5
     agility: 5
     intelligence: 5
-    speed: 5
+    speed: 0.01
   brain: {fileID: 0}
   baseAttack:
     name:

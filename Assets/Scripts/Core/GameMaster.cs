@@ -16,6 +16,12 @@ public class GameMaster : MonoBehaviour
     [Header("Events")]
     [SerializeField] private SOEvent setPlayerObject;
 
+    private void Awake()
+    {
+        //Just for test
+        Application.targetFrameRate = 60;    
+    }
+
     private void Start()
     {
         SetPlayerObjectForAll();    

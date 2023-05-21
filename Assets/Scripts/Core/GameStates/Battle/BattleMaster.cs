@@ -107,6 +107,7 @@ public class BattleMaster : MonoBehaviour
     public void OnActorTurnEnd(SOEventArgs e)
     {
         //if player
+        var obj = (SOEventArgOne<Actor>)e;
 
         //if enemy
 

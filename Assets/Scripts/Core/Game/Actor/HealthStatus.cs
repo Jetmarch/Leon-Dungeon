@@ -12,6 +12,7 @@ public class HealthStatus
     
     public HealthStatus(Actor owner)
     {
+        this.owner = owner;
         maxHealth = owner.stats.strength * 10;
         currentHealth = maxHealth;
     }
@@ -29,6 +30,8 @@ public class HealthStatus
     public void ChangeHealth(float amount)
     {
         currentHealth = Mathf.Clamp(amount + currentHealth, 0f, maxHealth);
+
+        SOEventKeeper.Instance.GetEvent("onHealthChanged").Raise(new SOEventArgOne<Actor>(owner));
     }
 
     public bool IsDead()
