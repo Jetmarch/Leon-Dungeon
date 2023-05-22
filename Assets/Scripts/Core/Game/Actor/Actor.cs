@@ -18,7 +18,6 @@ public class Actor
     public Skill basePassTurn;
     public List<Skill> additionalSkills;
 
-    private float initativeStepCallCount = 0;
 
     public Actor(SOActor _actor)
     {
@@ -42,14 +41,11 @@ public class Actor
         Initiative = Mathf.Clamp(initiativeInSec + Initiative, 0f, 1f);
 
         SOEventKeeper.Instance.GetEvent("onInitiativeChanged").Raise(new SOEventArgOne<Actor>(this));
-        initativeStepCallCount++;
     }
 
     public void InitiativeReset()
     {
         Initiative = 0;
-        Debug.Log($"{name.GetValue()} initiative step count = {initativeStepCallCount}");
-        initativeStepCallCount = 0;
     }
 
     public void ChangeInitiative(float amount)

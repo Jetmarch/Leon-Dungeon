@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName ="SOObjects/Actor", fileName ="Actor")]
+[CreateAssetMenu(menuName ="SOObjects/SOActor", fileName ="SOActor")]
 public class SOActor : ScriptableObject
 {
     [Header("Base info")]

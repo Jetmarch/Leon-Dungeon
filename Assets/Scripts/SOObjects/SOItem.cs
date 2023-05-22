@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName ="SOObjects/SOItem", fileName ="SOItem")]
 public class SOItem : ScriptableObject
 {
     public new LocaleString name;
