@@ -1123,6 +1123,8 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 2e61c41885ba22d4597996826f9d778e, type: 2}
   - key: onHealthChanged
     sOEvent: {fileID: 11400000, guid: 2fd22c39cd120ce43b20ee816e8aa554, type: 2}
+  - key: onActorDeadAnimationEnd
+    sOEvent: {fileID: 11400000, guid: 995db46aa9135d441b01c53885d63d4f, type: 2}
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1690,6 +1692,22 @@ MonoBehaviour:
         - m_Target: {fileID: 596320376}
           m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
           m_MethodName: OnSkillUseEnd
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 995db46aa9135d441b01c53885d63d4f, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 596320376}
+          m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
+          m_MethodName: OnActorDeadAnimationEnd
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -4475,8 +4493,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
   items:
-  - chanceOfDrop: 0
-    item: {fileID: 0}
+  - chanceOfDrop: 50.7
+    item: {fileID: 11400000, guid: 2df78f3160c1abe4ea32850a1e2ecbeb, type: 2}
+  - chanceOfDrop: 100
+    item: {fileID: 11400000, guid: 2df78f3160c1abe4ea32850a1e2ecbeb, type: 2}
 --- !u!114 &1802200098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5131,6 +5151,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - _event: {fileID: 11400000, guid: 6eb1d3994c4a58b4d8192bed1beb15e5, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2082868640}
+          m_TargetAssemblyTypeName: AnimationMaster, Assembly-CSharp
+          m_MethodName: OnActorDead
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &2082868640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5143,6 +5179,55 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e23b4f4670f2164db9a4aa28d4eaecb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player:
+    name:
+      rusValue: 
+      engValue: 
+    sprite: {fileID: 0}
+    healthStatus:
+      maxHealth: 0
+      currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      intelligence: 0
+      speed: 0
+    brain: {fileID: 0}
+    Initiative: 0
+    baseAttack:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    baseDefend:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    basePassTurn:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    additionalSkills: []
 --- !u!1 &2105151042
 GameObject:
   m_ObjectHideFlags: 0

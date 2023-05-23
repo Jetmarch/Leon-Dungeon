@@ -83,16 +83,16 @@ public class BattleUIMaster : MonoBehaviour
             return;
         }
         
-        var enemy = FindEnemyByActor(obj.arg);
+        //var enemy = FindEnemyByActor(obj.arg);
         //TODO: Анимация затемнения спрайта и только после удаление объекта
-        enemy.gameObject.SetActive(false);
+        //enemy.gameObject.SetActive(false);
     }
 
     public void OnActorDeadAnimationEnd(SOEventArgs e)
     {
         var obj = (SOEventArgOne<EnemyUIWrapper>)e;
 
-        Destroy(obj.arg.gameObject);
+        obj.arg.gameObject.SetActive(false);
     }
 
     //TODO: onSkillUseEnd - проверяем наличие инициативы у игрока, чтобы понять какие кнопки боя теперь ему доступны
