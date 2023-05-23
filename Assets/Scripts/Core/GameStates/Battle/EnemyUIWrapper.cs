@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using MoreMountains.Feedbacks;
 
 public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -10,6 +11,15 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private bool isTargetChoosingState;
     [SerializeField] private Image enemySprite;
     [SerializeField] private GameObject targetMark;
+
+    [Header("Animation feedbacks")]
+    [SerializeField] private MMF_Player arriveAnimation;
+    [SerializeField] private MMF_Player startTurnAnimation;
+    [SerializeField] private MMF_Player hitAnimation;
+    [SerializeField] private MMF_Player attackAnimation;
+    [SerializeField] private MMF_Player deathAnimation;
+    [SerializeField] private MMF_Player targetShowAnimation;
+    [SerializeField] private MMF_Player targetHideAnimation;
 
     private void Awake()
     {
@@ -50,10 +60,12 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         var obj = (SOEventArgOne<EnemyUIWrapper>)e;
         if(obj.arg == null || obj.arg == this)
         {
-            targetMark.SetActive(true);
+            targetShowAnimation?.PlayFeedbacks();
+            //targetMark.SetActive(true);
         }
         else
         {
+            //targetHideAnimation?.PlayFeedbacks();
             targetMark.SetActive(false);
         }
 
@@ -61,6 +73,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnTargetHide(SOEventArgs e)
     {
+        //targetHideAnimation?.PlayFeedbacks();
         targetMark.SetActive(false);
     }
 
@@ -83,5 +96,60 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if(!isTargetChoosingState) return;
 
         SOEventKeeper.Instance.GetEvent("onPointerExitEnemySprite").Raise(new SOEventArgOne<EnemyUIWrapper>(this));
+    }
+
+    public void PlayerHasChoseTarget(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
+
+        if(obj.arg1.Contains(this))
+        {
+            hitAnimation?.PlayFeedbacks();
+        }
+    }
+
+    public void OnActorTurn(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Actor>)e;
+
+        if(obj.arg == enemy)
+        {
+            startTurnAnimation?.PlayFeedbacks();
+        }
+    }
+
+    public void OnActorDead(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Actor>)e;
+
+        if(obj.arg == enemy)
+        {
+            deathAnimation?.PlayFeedbacks();
+        }
+    }
+
+    public void OnEnemyUseSkill(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
+
+        if(obj.arg1 == this)
+        {
+            attackAnimation?.PlayFeedbacks();
+        }
+    }
+
+    public void ActorDeadAnimationEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onActorDeadAnimationEnd").Raise(new SOEventArgOne<EnemyUIWrapper>(this));
+    }
+
+    public void EnemyUseSkillEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
+    }
+
+    public void EnemyActorTurnAnimationEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onEnemyActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(enemy));
     }
 }

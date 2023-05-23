@@ -20,7 +20,7 @@ public class AnimationMaster : MonoBehaviour
         var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
 
 
-        StartCoroutine(TestWaitAndRaiseEvent(0.5f, "onEnemyUseSkillEnd"));
+        //StartCoroutine(TestWaitAndRaiseEvent(0.5f, "onEnemyUseSkillEnd"));
     }
 
     public void PlayerHasChoseSkill(SOEventArgs e)
@@ -49,8 +49,8 @@ public class AnimationMaster : MonoBehaviour
             return;
         }
         
-        var enemy = FindEnemyByActor(obj.arg);
-        StartCoroutine(TestActorDeadAnimation(enemy));
+        //var enemy = FindEnemyByActor(obj.arg);
+        //StartCoroutine(TestActorDeadAnimation(enemy));
     }
 
     private EnemyUIWrapper FindEnemyByActor(Actor actor)
@@ -66,22 +66,6 @@ public class AnimationMaster : MonoBehaviour
         }
 
         return null;
-    }
-
-    private IEnumerator TestActorDeadAnimation(EnemyUIWrapper enemy)
-    {
-        if(enemy == null)
-        {
-            yield return new WaitForSeconds(0.5f);
-        }
-
-        enemy.GetComponent<Image>().color = Color.red;
-
-        yield return new WaitForSeconds(0.5f);
-
-        enemy.GetComponent<Image>().color = Color.white;
-
-        SOEventKeeper.Instance.GetEvent("onActorDeadAnimationEnd").Raise(new SOEventArgOne<EnemyUIWrapper>(enemy));
     }
 
     private IEnumerator TestWaitAndRaiseEvent(float sec, string eventName)

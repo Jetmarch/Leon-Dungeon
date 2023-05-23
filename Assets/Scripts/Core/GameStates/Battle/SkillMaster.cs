@@ -45,7 +45,6 @@ public class SkillMaster : MonoBehaviour
             Debug.Log($"Player use skill {obj.arg2.name.GetValue()} on {enemy.GetActor().name.GetValue()}");
             obj.arg2.Use(enemy.GetActor(), player);
         }
-        
     }
 
     public void OnEnemyUseSkill(SOEventArgs e)
@@ -58,8 +57,6 @@ public class SkillMaster : MonoBehaviour
             SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
             return;
         }
-
-        //Запуск анимации где-то здесь, либо перехватывать это же событие и анимировать
         obj.arg1.GetActor().ReduceInitiativeOnSkillCost(obj.arg2);
 
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");

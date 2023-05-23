@@ -57,9 +57,9 @@ public class BattleUIMaster : MonoBehaviour
             return;
         }
 
-        var enemy = FindEnemyByActor(obj.arg);
-        StartCoroutine(ChangeColorTest(enemy.GetComponent<Image>()));
-        SOEventKeeper.Instance.GetEvent("onEnemyActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(obj.arg));
+        // var enemy = FindEnemyByActor(obj.arg);
+        // StartCoroutine(ChangeColorTest(enemy.GetComponent<Image>()));
+        // SOEventKeeper.Instance.GetEvent("onEnemyActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(obj.arg));
     }
 
     public void OnActorTurnEnd(SOEventArgs e)

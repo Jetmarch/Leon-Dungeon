@@ -20,7 +20,7 @@ MonoBehaviour:
     strength: 1
     agility: 1
     intelligence: 1
-    speed: 0.0002
+    speed: 1
   brain: {fileID: 11400000, guid: 23390f508ef422a44bb794adffcd2b04, type: 2}
   baseAttack:
     name:
