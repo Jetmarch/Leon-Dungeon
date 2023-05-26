@@ -15,8 +15,6 @@ public class BattleMaster : MonoBehaviour
         var eventArg = (SOEventArgOne<Actor>)e;
         player = eventArg.arg;
     }
-
-    
     public void OnStartBattle(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Battle>)e;

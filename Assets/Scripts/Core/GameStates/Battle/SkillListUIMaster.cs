@@ -27,6 +27,7 @@ public class SkillListUIMaster : MonoBehaviour
         if(skillListParent.activeSelf) return;
 
         skillListParent.SetActive(true);
+        RemoveSkillsFromList();
         AddSkillsInList();
     }
 

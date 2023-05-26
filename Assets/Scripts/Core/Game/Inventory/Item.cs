@@ -7,6 +7,7 @@ using UnityEngine;
 public class Item
 {
     public LocaleString name;
+    public Sprite icon;
     public LocaleString description;
     public ItemType type;
     public int countOfMaxUse;
@@ -16,6 +17,7 @@ public class Item
     public Item(SOItem _item)
     {
         this.name = _item.name;
+        this.icon = _item.icon;
         this.description = _item.description;
         this.type = _item.type;
         this.countOfMaxUse = _item.countOfMaxUse;

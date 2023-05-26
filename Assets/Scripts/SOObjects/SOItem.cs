@@ -6,6 +6,7 @@ using UnityEngine;
 public class SOItem : ScriptableObject
 {
     public new LocaleString name;
+    public Sprite icon;
     public LocaleString description;
     public ItemType type;
     public int countOfMaxUse;
