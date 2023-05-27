@@ -15,6 +15,7 @@ MonoBehaviour:
   name:
     rusValue: "\u0422\u0435\u0441\u0442\u043E\u0432\u044B\u0439 \u043F\u0440\u0435\u0434\u043C\u0435\u0442"
     engValue: Test Item
+  icon: {fileID: 21300008, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
   description:
     rusValue: 
     engValue: 

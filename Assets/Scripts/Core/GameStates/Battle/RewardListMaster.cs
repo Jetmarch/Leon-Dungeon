@@ -31,7 +31,7 @@ public class RewardListMaster : MonoBehaviour
         rewardScreen.SetActive(false);
     }
 
-    public void OnVictoryInBattle()
+    public void OnVictoryAnimationEnd()
     {
         rewardScreen.SetActive(true);
         EmptyRewardList();

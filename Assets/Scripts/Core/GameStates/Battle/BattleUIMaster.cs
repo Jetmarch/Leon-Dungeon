@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BattleUIMaster : MonoBehaviour
 {
     [SerializeField] private Actor player;
+    [SerializeField] private Battle currentBattle;
     [SerializeField] private GameObject battleScreen;
 
     [Header("Enemies")]
@@ -38,12 +39,20 @@ public class BattleUIMaster : MonoBehaviour
     public void OnBattleUIInit(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Battle>)e;
-        //Animation goes here
-        battleScreen.SetActive(true);
-
-
-        InitEnemyList(eventArg.arg);
         SOEventKeeper.Instance.GetEvent("skillListClose").Raise();
+        //Animation goes here
+        currentBattle = eventArg.arg;
+
+
+        battleScreen.SetActive(true);
+        SOEventKeeper.Instance.GetEvent("onBattleStartAnimation").Raise();
+    }
+
+    public void OnBattleStartAnimationEnd()
+    {
+        //battleScreen.SetActive(false);
+        InitEnemyList(currentBattle);
+        
         SOEventKeeper.Instance.GetEvent("onBattleUIReady").Raise();
     }
 
@@ -111,6 +120,16 @@ public class BattleUIMaster : MonoBehaviour
     public void OnBattleControlsAnimationEnd()
     {
 
+    }
+
+    public void OnVictoryAnimationEnd()
+    {
+        battleScreen.SetActive(false);
+    }
+
+    public void OnDefeatAnimationEnd()
+    {
+        battleScreen.SetActive(false);
     }
 
     private EnemyUIWrapper FindEnemyByActor(Actor actor)
