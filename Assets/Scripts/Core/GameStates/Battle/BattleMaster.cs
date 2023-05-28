@@ -7,6 +7,8 @@ public class BattleMaster : MonoBehaviour
     [SerializeField] private Actor player;
     [SerializeField] private Battle currentBattle;
 
+    [SerializeField] private Actor currentActorInAction;
+
     [SerializeField] private bool isWaitingActorTurn;
     [SerializeField] private bool isBattleInProcess;
 
@@ -33,6 +35,11 @@ public class BattleMaster : MonoBehaviour
             Debug.Log("Defeat!");
             SOEventKeeper.Instance.GetEvent("onDefeatInBattle").Raise();
             return;
+        }
+
+        if(obj.arg == currentActorInAction)
+        {
+            SOEventKeeper.Instance.GetEvent("onActorTurnEnd").Raise(new SOEventArgOne<Actor>(obj.arg));
         }
 
 
@@ -95,11 +102,20 @@ public class BattleMaster : MonoBehaviour
         if (actor.IsReady())
         {
             Debug.Log($"{actor.name.GetValue()} ready!");
+            currentActorInAction = actor;
+            isWaitingActorTurn = true;
             //Оповещаем об Actor, который ходит
             //Передаём ему управление
-            isWaitingActorTurn = true;
             SOEventKeeper.Instance.GetEvent("onActorTurn").Raise(new SOEventArgOne<Actor>(actor));
         }
+    }
+
+    public void OnActorTurnAnimationEnd(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Actor>)e;
+        obj.arg.UpdateBuffs();
+
+        SOEventKeeper.Instance.GetEvent("onActorBuffsUpdated").Raise(new SOEventArgOne<Actor>(obj.arg));
     }
 
     public void OnActorTurnEnd(SOEventArgs e)

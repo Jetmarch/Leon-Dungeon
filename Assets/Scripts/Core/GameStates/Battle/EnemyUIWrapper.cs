@@ -102,10 +102,10 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
 
-        if(obj.arg1.Contains(this))
-        {
-            hitAnimation?.PlayFeedbacks();
-        }
+        // if(obj.arg1.Contains(this))
+        // {
+        //     hitAnimation?.PlayFeedbacks();
+        // }
     }
 
     public void OnActorTurn(SOEventArgs e)
@@ -132,10 +132,21 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     {
         var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
 
-        if(obj.arg1 == this)
-        {
-            attackAnimation?.PlayFeedbacks();
-        }
+        if (obj.arg1 != this) return;
+        if (obj.arg1.GetActor().healthStatus.IsDead() || !obj.arg1.GetActor().healthStatus.CanTakeActions()) return;
+
+        if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2)) return;
+
+        attackAnimation?.PlayFeedbacks();
+    }
+
+    public void OnEnemyHealthChanged(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<Actor, float>)e;
+        if(obj.arg1 != enemy) return;
+
+        //TODO: Animation with floating value here
+        hitAnimation?.PlayFeedbacks();
     }
 
     public void ActorDeadAnimationEnd()
@@ -150,6 +161,6 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void EnemyActorTurnAnimationEnd()
     {
-        SOEventKeeper.Instance.GetEvent("onEnemyActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(enemy));
+        SOEventKeeper.Instance.GetEvent("onActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(enemy));
     }
 }

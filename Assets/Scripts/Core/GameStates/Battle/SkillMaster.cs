@@ -51,12 +51,22 @@ public class SkillMaster : MonoBehaviour
     {
         var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
 
+        if(obj.arg1.GetActor().healthStatus.IsDead() || !obj.arg1.GetActor().healthStatus.CanTakeActions())
+        {
+            Debug.Log("Enemy is dead or stunned!");
+            SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
+            return;
+        }
+
         if(!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2))
         {
             Debug.Log("Enemy has not enough initiative!");
             SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
             return;
         }
+
+        
+
         obj.arg1.GetActor().ReduceInitiativeOnSkillCost(obj.arg2);
 
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");

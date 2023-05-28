@@ -31,7 +31,13 @@ public class HealthStatus
     {
         currentHealth = Mathf.Clamp(amount + currentHealth, 0f, maxHealth);
 
-        SOEventKeeper.Instance.GetEvent("onHealthChanged").Raise(new SOEventArgOne<Actor>(owner));
+        SOEventKeeper.Instance.GetEvent("onHealthChanged").Raise(new SOEventArgTwo<Actor, float>(owner, amount));
+
+        if(IsDead())
+        {
+            SOEventKeeper.Instance.GetEvent("onActorDead").Raise(new SOEventArgOne<Actor>(owner));
+            Debug.Log($"{owner.name.GetValue()} is dead!");
+        }
     }
 
     public bool IsDead()

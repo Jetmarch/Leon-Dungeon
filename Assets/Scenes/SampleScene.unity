@@ -1669,6 +1669,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   battleEncounter: {fileID: 1802200097}
   currentActorOnTurn:
     name:
@@ -1719,6 +1720,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
 --- !u!4 &286190978
 Transform:
   m_ObjectHideFlags: 0
@@ -2170,7 +2172,7 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 42d3961f64b3a3d469bc97b3a962d429, type: 2}
   - key: onSkillUseEnd
     sOEvent: {fileID: 11400000, guid: d40917c5fff572443a166b5736f14312, type: 2}
-  - key: onEnemyActorTurnAnimationEnd
+  - key: onActorTurnAnimationEnd
     sOEvent: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
   - key: onEnemyUseSkill
     sOEvent: {fileID: 11400000, guid: 8d2c8f7168c855547b20c6e0beb45afd, type: 2}
@@ -2190,6 +2192,8 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 47d6fe957211e6f469f12afc570ae791, type: 2}
   - key: onDefeatAnimationEnd
     sOEvent: {fileID: 11400000, guid: 352ac4c5e3898a6458baebefc7dc65c0, type: 2}
+  - key: onActorBuffsUpdated
+    sOEvent: {fileID: 11400000, guid: 0e77206819094f5459683e970197ade0, type: 2}
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0
@@ -2649,6 +2653,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   currentBattle:
     enemies: []
     loot: []
@@ -2810,6 +2815,22 @@ MonoBehaviour:
         - m_Target: {fileID: 596320376}
           m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
           m_MethodName: OnVictoryAnimationEnd
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 352ac4c5e3898a6458baebefc7dc65c0, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 596320376}
+          m_TargetAssemblyTypeName: BattleUIMaster, Assembly-CSharp
+          m_MethodName: OnDefeatAnimationEnd
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3109,13 +3130,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   listOfEvents:
-  - _event: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
+  - _event: {fileID: 11400000, guid: 0e77206819094f5459683e970197ade0, type: 2}
     response:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 647953339}
           m_TargetAssemblyTypeName: AIBrainMaster, Assembly-CSharp
-          m_MethodName: OnEnemyActorTurnAnimationEnd
+          m_MethodName: OnActorBuffsUpdated
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3202,6 +3223,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   currentEnemyUIWrapper: {fileID: 0}
   currentActorSkillSet: []
 --- !u!1 &668413736
@@ -5336,6 +5358,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
 --- !u!1 &1218200482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5575,6 +5598,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   skillListParent: {fileID: 882669521}
   skillList: {fileID: 675251131}
   skillListItemPrefab: {fileID: 8481252168534605229, guid: 0f57d2fbfe744d142afdd47415eada74,
@@ -7146,6 +7170,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   currentBattle:
     enemies: []
     loot: []
@@ -7214,18 +7239,6 @@ MonoBehaviour:
         - m_Target: {fileID: 1752673706}
           m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
           m_MethodName: OnPlayerObjectSet
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-        - m_Target: {fileID: 1752673706}
-          m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
-          m_MethodName: OnPlayerHealthChange
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -7340,6 +7353,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   healthBar: {fileID: 1579569513}
   initiativeBar: {fileID: 1351199348}
 --- !u!1 &1802200095
@@ -7461,6 +7475,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
 --- !u!114 &1802200099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7810,9 +7825,60 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
   currentBattle:
     enemies: []
     loot: []
+  currentActorInAction:
+    name:
+      rusValue: 
+      engValue: 
+    sprite: {fileID: 0}
+    healthStatus:
+      maxHealth: 0
+      currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      intelligence: 0
+      speed: 0
+    brain: {fileID: 0}
+    Initiative: 0
+    baseAttack:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    baseDefend:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    basePassTurn:
+      name:
+        rusValue: 
+        engValue: 
+      description:
+        rusValue: 
+        engValue: 
+      icon: {fileID: 0}
+      type: 0
+      costInInitiativePercent: 0
+      effects: []
+    additionalSkills: []
+    buffs: []
   isWaitingActorTurn: 0
   isBattleInProcess: 0
 --- !u!114 &1974420825
@@ -7916,6 +7982,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
           m_MethodName: EndBattle
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: OnActorTurnAnimationEnd
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -8132,6 +8214,7 @@ MonoBehaviour:
       costInInitiativePercent: 0
       effects: []
     additionalSkills: []
+    buffs: []
 --- !u!1 &2105151042
 GameObject:
   m_ObjectHideFlags: 0

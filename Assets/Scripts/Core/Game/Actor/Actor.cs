@@ -17,7 +17,7 @@ public class Actor
     public Skill baseDefend;
     public Skill basePassTurn;
     public List<Skill> additionalSkills;
-
+    public List<Buff> buffs;
 
     public Actor(SOActor _actor)
     {
@@ -33,6 +33,7 @@ public class Actor
         if(brain != null) this.brain.SetOwner(this);
 
         this.healthStatus = new HealthStatus(this);
+        this.buffs = new List<Buff>();
     }
 
     public void InitiativeStep(float timeDelta)
@@ -87,10 +88,31 @@ public class Actor
         //TODO damaging, buffing, debuffing
         healthStatus.ChangeHealth(effect.GetDamage());
 
-        if(healthStatus.IsDead())
+        foreach(var buff in effect.GetBuffs())
         {
-            SOEventKeeper.Instance.GetEvent("onActorDead").Raise(new SOEventArgOne<Actor>(this));
-            Debug.Log($"{name.GetValue()} is dead!");
+            buffs.Add(buff);
+            buff.StartAffect(this);
+        }
+    }
+
+    public bool HasBuff(Buff buff)
+    {
+        foreach(var b in buffs)
+        {
+            if(b.name == buff.name)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public void UpdateBuffs()
+    {
+        foreach(var buff in buffs)
+        {
+            buff.UpdateAffect(this);
         }
     }
 }

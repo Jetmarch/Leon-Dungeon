@@ -31,7 +31,7 @@ MonoBehaviour:
       engValue: 
     icon: {fileID: 0}
     type: 0
-    costInInitiativePercent: 100
+    costInInitiativePercent: 30
     effects:
     - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
   baseDefend:

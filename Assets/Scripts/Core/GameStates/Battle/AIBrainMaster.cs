@@ -7,10 +7,15 @@ public class AIBrainMaster : MonoBehaviour
     [SerializeField] private Actor currentEnemyActor;
     [SerializeField] private EnemyUIWrapper currentEnemyUIWrapper;
     [SerializeField] private List<Skill> currentActorSkillSet;
-    public void OnEnemyActorTurnAnimationEnd(SOEventArgs e)
+    public void OnActorBuffsUpdated(SOEventArgs e)
     {
         var obj = (SOEventArgOne<Actor>)e;
+
+        if(obj.arg.brain == null) return;
+
         currentEnemyActor = obj.arg;
+        //Из-за того, что переменная Initiative не обновляется в brain
+        currentEnemyActor.brain.SetOwner(currentEnemyActor);
         
         currentActorSkillSet = obj.arg.brain.MakeMoveOnFullInitiativeAndGetListOfSkills();
 

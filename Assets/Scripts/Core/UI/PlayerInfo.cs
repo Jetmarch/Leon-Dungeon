@@ -20,13 +20,14 @@ public class PlayerInfo : MonoBehaviour
 
     public void OnPlayerHealthChange(SOEventArgs e)
     {
-        var obj = (SOEventArgOne<Actor>)e;
-        if(obj.arg != player) return;
+        var obj = (SOEventArgTwo<Actor, float>)e;
+        if(obj.arg1 != player) return;
 
         float newValue = ((100 / player.healthStatus.GetMaxHealth()) * player.healthStatus.GetCurrentHealth()) / 100;
         Debug.Log(newValue);
 
         healthBar.GetComponent<Slider>().value = newValue;
+        //TODO: Animation with floating value here
     }
 
     public void OnPlayerInitiativeChange(SOEventArgs e)
