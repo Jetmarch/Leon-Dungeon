@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using MoreMountains.Feedbacks;
+using DG.Tweening;
 
 public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
@@ -20,6 +21,12 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private MMF_Player deathAnimation;
     [SerializeField] private MMF_Player targetShowAnimation;
     [SerializeField] private MMF_Player targetHideAnimation;
+
+
+    [SerializeField] private float attackPower;
+    [SerializeField] private float attackAnimationDurationInSec;
+    [SerializeField] private float attackEllactisity;
+    [SerializeField] private int attackVibrato;
 
     private void Awake()
     {
@@ -137,7 +144,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2)) return;
 
-        attackAnimation?.PlayFeedbacks();
+        transform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
     }
 
     public void OnEnemyHealthChanged(SOEventArgs e)

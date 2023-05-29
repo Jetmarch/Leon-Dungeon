@@ -11,6 +11,8 @@ public class AIAttacker : AIBrain
         //Для теста обычный атакующий будет использовать каждый ход базовую атаку
         var listOfSkills = new List<Skill>();
         listOfSkills.Add(brainOwner.baseAttack);
+        listOfSkills.Add(brainOwner.baseAttack);
+        listOfSkills.Add(brainOwner.baseAttack);
 
         return listOfSkills;
     }
