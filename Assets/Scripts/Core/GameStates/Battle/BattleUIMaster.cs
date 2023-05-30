@@ -43,7 +43,7 @@ public class BattleUIMaster : MonoBehaviour
         //Animation goes here
         currentBattle = eventArg.arg;
 
-
+        battleControlsParent.SetActive(false);
         battleScreen.SetActive(true);
         SOEventKeeper.Instance.GetEvent("onBattleStartAnimation").Raise();
     }
@@ -124,7 +124,8 @@ public class BattleUIMaster : MonoBehaviour
 
     public void OnVictoryAnimationEnd()
     {
-        battleScreen.SetActive(false);
+        //battleScreen.SetActive(false);
+        battleControlsParent.SetActive(false);
     }
 
     public void OnDefeatAnimationEnd()

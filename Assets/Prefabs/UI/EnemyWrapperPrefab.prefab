@@ -2122,7 +2122,7 @@ MonoBehaviour:
     - rid: 6588746999510597637
       type: {class: MMF_Events, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
-        Active: 0
+        Active: 1
         UniqueID: -28315546
         Label: Unity Events
         ChannelMode: 0
