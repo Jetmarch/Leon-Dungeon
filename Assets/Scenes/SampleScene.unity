@@ -1136,7 +1136,7 @@ MonoBehaviour:
     m_Right: 0
     m_Top: 0
     m_Bottom: 0
-  m_ChildAlignment: 0
+  m_ChildAlignment: 1
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
   m_ChildForceExpandHeight: 0
@@ -2199,6 +2199,8 @@ MonoBehaviour:
     sOEvent: {fileID: 11400000, guid: 352ac4c5e3898a6458baebefc7dc65c0, type: 2}
   - key: onActorBuffsUpdated
     sOEvent: {fileID: 11400000, guid: 0e77206819094f5459683e970197ade0, type: 2}
+  - key: onPlayerUsedSkillOnEnemy
+    sOEvent: {fileID: 11400000, guid: b8d02de4546be6342933460fa2cf218e, type: 2}
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0

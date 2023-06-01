@@ -22,6 +22,9 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private MMF_Player targetShowAnimation;
     [SerializeField] private MMF_Player targetHideAnimation;
 
+    [Header("Buffs")]
+    [SerializeField] private GameObject buffList;
+    [SerializeField] private GameObject buffItemPrefab;
 
     [SerializeField] private float attackPower;
     [SerializeField] private float attackAnimationDurationInSec;
@@ -105,14 +108,16 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         SOEventKeeper.Instance.GetEvent("onPointerExitEnemySprite").Raise(new SOEventArgOne<EnemyUIWrapper>(this));
     }
 
-    public void PlayerHasChoseTarget(SOEventArgs e)
+    public void PlayerUsedSkillOnEnemy(SOEventArgs e)
     {
         var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
 
-        // if(obj.arg1.Contains(this))
-        // {
-        //     hitAnimation?.PlayFeedbacks();
-        // }
+         if(obj.arg1.Contains(this))
+         {
+             hitAnimation?.PlayFeedbacks();
+         }
+
+         UpdateBuffList();
     }
 
     public void OnActorTurn(SOEventArgs e)
@@ -123,6 +128,8 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         {
             startTurnAnimation?.PlayFeedbacks();
         }
+
+        UpdateBuffList();
     }
 
     public void OnActorDead(SOEventArgs e)
@@ -154,6 +161,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         //TODO: Animation with floating value here
         hitAnimation?.PlayFeedbacks();
+        UpdateBuffList();
     }
 
     public void ActorDeadAnimationEnd()
@@ -169,5 +177,28 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void EnemyActorTurnAnimationEnd()
     {
         SOEventKeeper.Instance.GetEvent("onActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(enemy));
+    }
+
+    private void UpdateBuffList()
+    {
+        EmptyBuffList();
+        FillBuffList();
+    }
+
+    private void EmptyBuffList()
+    {
+        foreach(Transform obj in buffList.transform)
+        {
+            Destroy(obj.gameObject);
+        }
+    }
+
+    private void FillBuffList()
+    {
+        foreach(var buff in enemy.buffs)
+        {
+            var obj = Instantiate(buffItemPrefab, buffList.transform);
+            obj.GetComponent<Image>().sprite = buff.icon;
+        }
     }
 }

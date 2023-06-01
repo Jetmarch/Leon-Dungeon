@@ -110,9 +110,9 @@ public class Actor
 
     public void UpdateBuffs()
     {
-        foreach(var buff in buffs)
+        for(int i = 0; i < buffs.Count; i++)
         {
-            buff.UpdateAffect(this);
+            buffs[i].UpdateAffect(this);
         }
     }
 }

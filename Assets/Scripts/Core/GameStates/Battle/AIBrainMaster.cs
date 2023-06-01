@@ -14,7 +14,7 @@ public class AIBrainMaster : MonoBehaviour
         if(obj.arg.brain == null) return;
 
         currentEnemyActor = obj.arg;
-        //Из-за того, что переменная Initiative не обновляется в brain
+        
         currentEnemyActor.brain.SetOwner(currentEnemyActor);
         
         currentActorSkillSet = obj.arg.brain.MakeMoveOnFullInitiativeAndGetListOfSkills();

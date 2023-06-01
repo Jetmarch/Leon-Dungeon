@@ -45,6 +45,8 @@ public class SkillMaster : MonoBehaviour
             Debug.Log($"Player use skill {obj.arg2.name.GetValue()} on {enemy.GetActor().name.GetValue()}");
             obj.arg2.Use(enemy.GetActor(), player);
         }
+
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnEnemy").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Skill>(obj.arg1, obj.arg2));
     }
 
     public void OnEnemyUseSkill(SOEventArgs e)
