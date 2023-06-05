@@ -8,6 +8,7 @@ public class BattleAnnounce : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI announceText;
     [SerializeField] private MMF_Player battleStartAnimation;
+    [SerializeField] private MMF_Player battleEndAnimation;
     [SerializeField] private MMF_Player victoryAnimation;
     [SerializeField] private MMF_Player defeatAnimation;
 
@@ -52,6 +53,16 @@ public class BattleAnnounce : MonoBehaviour
     public void OnDefeatAnimationEnd()
     {
         DisableAnnounceTextAndRaiseEvent("onDefeatAnimationEnd");
+    }
+
+    public void OnBattleEndAnimation()
+    {
+        battleEndAnimation?.PlayFeedbacks();
+    }
+
+    public void OnBattleEndAnimationEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onBattleEndAnimationEnd").Raise();
     }
 
     private void EnableAnnounceTextWithTextAndPlayAnimation(string text, MMF_Player animation)

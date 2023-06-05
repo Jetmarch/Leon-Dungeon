@@ -85,7 +85,6 @@ public class Actor
 
     public void Affect(Effect effect)
     {
-        //TODO damaging, buffing, debuffing
         healthStatus.ChangeHealth(effect.GetDamage());
 
         foreach(var buff in effect.GetBuffs())

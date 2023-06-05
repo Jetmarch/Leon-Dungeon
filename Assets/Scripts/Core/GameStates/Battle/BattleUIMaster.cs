@@ -91,10 +91,6 @@ public class BattleUIMaster : MonoBehaviour
             Debug.Log("Player is dead!");
             return;
         }
-        
-        //var enemy = FindEnemyByActor(obj.arg);
-        //TODO: Анимация затемнения спрайта и только после удаление объекта
-        //enemy.gameObject.SetActive(false);
     }
 
     public void OnActorDeadAnimationEnd(SOEventArgs e)
@@ -129,6 +125,16 @@ public class BattleUIMaster : MonoBehaviour
     }
 
     public void OnDefeatAnimationEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onBattleEndAnimation").Raise();
+    }
+
+    public void OnRewardReceived()
+    {
+        SOEventKeeper.Instance.GetEvent("onBattleEndAnimation").Raise();
+    }
+
+    public void OnBattleEndAnimationEnd()
     {
         battleScreen.SetActive(false);
     }
