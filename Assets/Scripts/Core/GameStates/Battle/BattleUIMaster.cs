@@ -39,7 +39,7 @@ public class BattleUIMaster : MonoBehaviour
     public void OnBattleUIInit(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Battle>)e;
-        SOEventKeeper.Instance.GetEvent("skillListClose").Raise();
+        SOEventKeeper.Instance.GetEvent("onSkillListClose").Raise();
         //Animation goes here
         currentBattle = eventArg.arg;
 
@@ -207,7 +207,7 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onSkillListBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("skillListOpen").Raise();
+        SOEventKeeper.Instance.GetEvent("onSkillListOpen").Raise();
     }
 
     private void onRetreatBtnClick()

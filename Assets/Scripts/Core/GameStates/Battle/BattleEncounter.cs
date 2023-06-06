@@ -18,7 +18,7 @@ public class BattleEncounter : MonoBehaviour
             }
         }
 
-        SOEventKeeper.Instance.GetEvent("startBattle").Raise(new SOEventArgOne<Battle>(new Battle(enemies, listOfItemsFromLoot)));
+        SOEventKeeper.Instance.GetEvent("onStartBattle").Raise(new SOEventArgOne<Battle>(new Battle(enemies, listOfItemsFromLoot)));
     }
 
     private void Start() {
