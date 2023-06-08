@@ -38,7 +38,7 @@ public class Item
     {
         foreach(var behaviour in eqiupBehaviours)
         {
-            behaviour.StartAffect(user, target);
+            behaviour.StartAffect(user);
         }
     }
 
@@ -46,7 +46,7 @@ public class Item
     {
         foreach(var behaviour in eqiupBehaviours)
         {
-            behaviour.EndAffect(user, target);
+            behaviour.EndAffect(user);
         }
     }
 }
