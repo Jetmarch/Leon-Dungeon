@@ -14,6 +14,7 @@ public class Item
     
     public List<ItemBehaviour> useBehaviours;
     public List<ItemBehaviour> eqiupBehaviours;
+
     public Item(SOItem _item)
     {
         this.name = _item.name;
@@ -23,5 +24,29 @@ public class Item
         this.countOfMaxUse = _item.countOfMaxUse;
         this.useBehaviours = _item.useBehaviours;
         this.eqiupBehaviours = _item.eqiupBehaviours;
+    }
+
+    public void OnUse(Actor user, Actor target)
+    {
+        foreach(var behaviour in useBehaviours)
+        {
+            behaviour.Use(user, target);
+        }
+    }
+
+    public void OnEquip(Actor user)
+    {
+        foreach(var behaviour in eqiupBehaviours)
+        {
+            behaviour.StartAffect(user, target);
+        }
+    }
+
+    public void OnUnequip(Actor user)
+    {
+        foreach(var behaviour in eqiupBehaviours)
+        {
+            behaviour.EndAffect(user, target);
+        }
     }
 }

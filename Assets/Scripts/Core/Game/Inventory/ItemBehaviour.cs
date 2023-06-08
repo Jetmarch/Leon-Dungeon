@@ -5,7 +5,7 @@ using UnityEngine;
 public abstract class ItemBehaviour : ScriptableObject
 {
     //On single use
-    public abstract void Use(Actor target);
+    public abstract void Use(Actor user, Actor target);
 
     //On equip item
     public abstract void StartAffect(Actor target);
