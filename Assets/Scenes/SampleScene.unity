@@ -2055,7 +2055,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 1
+  m_RenderPostProcessing: 0
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -2205,79 +2205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ff955eb65f710478c4054e0c93725b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventList:
-  - key: startBattle
-    sOEvent: {fileID: 11400000, guid: 14926f341dcda91418d55596e6c2a26c, type: 2}
-  - key: onActorTurnEnd
-    sOEvent: {fileID: 11400000, guid: ef6e07784ea94a648b3edf389c2e6ef9, type: 2}
-  - key: startAttackAnimation
-    sOEvent: {fileID: 11400000, guid: 59e22e2b1eb3fac43af24b1374646a61, type: 2}
-  - key: attackAnimationEnd
-    sOEvent: {fileID: 11400000, guid: df75cf2c934982e43b2a189c04a088ae, type: 2}
-  - key: onActorTurn
-    sOEvent: {fileID: 11400000, guid: fb48154139669034a9217a1a107d232b, type: 2}
-  - key: onBattleUIReady
-    sOEvent: {fileID: 11400000, guid: 4f2ac27e45320154abf272eef2f09999, type: 2}
-  - key: onBattleUIInit
-    sOEvent: {fileID: 11400000, guid: ae1e78fb5eab48b4e9d29af8bef427ac, type: 2}
-  - key: skillListOpen
-    sOEvent: {fileID: 11400000, guid: 5e9fab8f438f0a0408229c88a14e9d56, type: 2}
-  - key: skillListClose
-    sOEvent: {fileID: 11400000, guid: 6c55b50fce1ba0c458a76cca05d9a419, type: 2}
-  - key: onPlayerHasChoseSkill
-    sOEvent: {fileID: 11400000, guid: c4edc8b8b37d32a4da9a771eb55d0ee7, type: 2}
-  - key: onPlayerAbandoneChoosedSkill
-    sOEvent: {fileID: 11400000, guid: 354f4b765a316734fb4645d32962c2b9, type: 2}
-  - key: onPointerClickEnemySprite
-    sOEvent: {fileID: 11400000, guid: 501f5f5af4c11914fa157a437386005c, type: 2}
-  - key: onPointerEnterEnemySprite
-    sOEvent: {fileID: 11400000, guid: 5def35c9378be3e45b9310c28dd1952f, type: 2}
-  - key: onPointerExitEnemySprite
-    sOEvent: {fileID: 11400000, guid: 45a71d2fc8886214c9ad0b82dfd1b5d1, type: 2}
-  - key: onTargetMarkShow
-    sOEvent: {fileID: 11400000, guid: f780f5dd1a4b55d46a0e5e7810e07e6d, type: 2}
-  - key: onTargetMarkHide
-    sOEvent: {fileID: 11400000, guid: 8901b92830db71f42b5e922ebf326dfa, type: 2}
-  - key: onPlayerHasChoseTarget
-    sOEvent: {fileID: 11400000, guid: d98d470c9f52b0849a8a3f18d1a3f9a5, type: 2}
-  - key: onActorDead
-    sOEvent: {fileID: 11400000, guid: 6eb1d3994c4a58b4d8192bed1beb15e5, type: 2}
-  - key: onVictoryInBattle
-    sOEvent: {fileID: 11400000, guid: a9aa69b8e7056ae42bbe62fb0afdbe00, type: 2}
-  - key: onDefeatInBattle
-    sOEvent: {fileID: 11400000, guid: 42d3961f64b3a3d469bc97b3a962d429, type: 2}
-  - key: onSkillUseEnd
-    sOEvent: {fileID: 11400000, guid: d40917c5fff572443a166b5736f14312, type: 2}
-  - key: onActorTurnAnimationEnd
-    sOEvent: {fileID: 11400000, guid: c43bf92369db52f46804223c7c9e22e6, type: 2}
-  - key: onEnemyUseSkill
-    sOEvent: {fileID: 11400000, guid: 8d2c8f7168c855547b20c6e0beb45afd, type: 2}
-  - key: onEnemyUseSkillEnd
-    sOEvent: {fileID: 11400000, guid: d222f825aa67aeb46a38ea2ecfd1fb9b, type: 2}
-  - key: onInitiativeChanged
-    sOEvent: {fileID: 11400000, guid: 2e61c41885ba22d4597996826f9d778e, type: 2}
-  - key: onHealthChanged
-    sOEvent: {fileID: 11400000, guid: 2fd22c39cd120ce43b20ee816e8aa554, type: 2}
-  - key: onActorDeadAnimationEnd
-    sOEvent: {fileID: 11400000, guid: 995db46aa9135d441b01c53885d63d4f, type: 2}
-  - key: onBattleStartAnimation
-    sOEvent: {fileID: 11400000, guid: 0f819e445869bf741b568796eb00b6a9, type: 2}
-  - key: onBattleStartAnimationEnd
-    sOEvent: {fileID: 11400000, guid: 86db17ad5dcad0645ba4911fe38e1ffd, type: 2}
-  - key: onVictoryAnimationEnd
-    sOEvent: {fileID: 11400000, guid: 47d6fe957211e6f469f12afc570ae791, type: 2}
-  - key: onDefeatAnimationEnd
-    sOEvent: {fileID: 11400000, guid: 352ac4c5e3898a6458baebefc7dc65c0, type: 2}
-  - key: onActorBuffsUpdated
-    sOEvent: {fileID: 11400000, guid: 0e77206819094f5459683e970197ade0, type: 2}
-  - key: onPlayerUsedSkillOnEnemy
-    sOEvent: {fileID: 11400000, guid: b8d02de4546be6342933460fa2cf218e, type: 2}
-  - key: onRewardReceived
-    sOEvent: {fileID: 11400000, guid: dcda763a4e064e045b5bf737e077c6a0, type: 2}
-  - key: onBattleEndAnimation
-    sOEvent: {fileID: 11400000, guid: 26862f94c66ed16488c79c9f6e065e21, type: 2}
-  - key: onBattleEndAnimationEnd
-    sOEvent: {fileID: 11400000, guid: 865af0467cbb62047abcf1f3a331eb5c, type: 2}
+  eventList: []
 --- !u!1 &400399079
 GameObject:
   m_ObjectHideFlags: 0
@@ -4487,7 +4415,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: a6560a915ef98420e9faacc1c7438823, type: 2}
+  sharedProfile: {fileID: 0}
 --- !u!4 &832575519
 Transform:
   m_ObjectHideFlags: 0
