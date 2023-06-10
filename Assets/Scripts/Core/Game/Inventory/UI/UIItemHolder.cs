@@ -5,12 +5,17 @@ using UnityEngine.UI;
 
 public class UIItemHolder : MonoBehaviour
 {
-    public Item item;
+    [SerializeField] private Item item;
+
+    private void Awake()
+    {
+        GetComponent<Button>().onClick.AddListener(OnUseItem);
+    }
 
     public void OnUseItem()
     {
-        Debug.Log($"Item {item.name} was used");
-        SOEventKeeper.Instance.GetEvent("onItemUse").Raise(new SOEventArgOne<Item>(item));
+        Debug.Log($"Item {item.name} was choosed");
+        SOEventKeeper.Instance.GetEvent("onItemChoose").Raise(new SOEventArgOne<Item>(item));
     }
 
     public void OnEquipItem()
