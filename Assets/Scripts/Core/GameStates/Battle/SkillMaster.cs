@@ -17,28 +17,29 @@ public class SkillMaster : MonoBehaviour
 
         if(obj.arg.type != SkillType.SelfTarget) return;
 
-        if(!player.HasEnoughInitiative(obj.arg))
+        if(!player.HasEnoughInitiative(obj.arg.costInInitiativePercent))
         {
             Debug.Log("Not enough initiative!");
             return;
         }
 
         Debug.Log($"Player use skill {obj.arg.name.GetValue()} on self");
-        player.ReduceInitiativeOnSkillCost(obj.arg);
+        player.ReduceInitiativeOnCost(obj.arg.costInInitiativePercent);
         obj.arg.Use(player, player);
+        //TODO: Raise event onPlayerUsedSkillOnSelf
     }
 
     public void PlayerHasChoseTarget(SOEventArgs e)
     {
         var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
         
-        if(!player.HasEnoughInitiative(obj.arg2))
+        if(!player.HasEnoughInitiative(obj.arg2.costInInitiativePercent))
         {
             Debug.Log("Not enough initiative!");
             return;
         }
 
-        player.ReduceInitiativeOnSkillCost(obj.arg2);
+        player.ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
 
         foreach(var enemy in obj.arg1)
         {
@@ -60,16 +61,14 @@ public class SkillMaster : MonoBehaviour
             return;
         }
 
-        if(!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2))
+        if(!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2.costInInitiativePercent))
         {
             Debug.Log("Enemy has not enough initiative!");
             SOEventKeeper.Instance.GetEvent("onEnemyUseSkillEnd").Raise();
             return;
         }
 
-        
-
-        obj.arg1.GetActor().ReduceInitiativeOnSkillCost(obj.arg2);
+        obj.arg1.GetActor().ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
 
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");
         obj.arg2.Use(player, obj.arg1.GetActor());

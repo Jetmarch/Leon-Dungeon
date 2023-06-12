@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIItemHolder : MonoBehaviour
+public class ItemUIWrapper : MonoBehaviour
 {
     [SerializeField] private Item item;
 
@@ -28,5 +28,10 @@ public class UIItemHolder : MonoBehaviour
     {
         Debug.Log($"Item {item.name} was unequiped");
         SOEventKeeper.Instance.GetEvent("onItemUnequip").Raise(new SOEventArgOne<Item>(item));
+    }
+    
+    public Item GetItem()
+    {
+        return item;
     }
 }

@@ -56,9 +56,9 @@ public class Actor
         SOEventKeeper.Instance.GetEvent("onInitiativeChanged").Raise(new SOEventArgOne<Actor>(this));
     }
 
-    public bool HasEnoughInitiative(Skill skill)
+    public bool HasEnoughInitiative(float costInInitiativePercent)
     {
-        float amount = skill.costInInitiativePercent / 100;
+        float amount = costInInitiativePercent / 100;
         if(Initiative >= amount)
         {
             return true;
@@ -67,11 +67,12 @@ public class Actor
         return false;
     }
 
-    public void ReduceInitiativeOnSkillCost(Skill skill)
+    public void ReduceInitiativeOnCost(float costInInitiativePercent)
     {
-        float amount = -(skill.costInInitiativePercent / 100);
+        float amount = -(costInInitiativePercent / 100);
         ChangeInitiative(amount);
     }
+
 
     public bool IsReady()
     {
