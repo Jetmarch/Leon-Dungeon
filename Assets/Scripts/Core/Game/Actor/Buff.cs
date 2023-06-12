@@ -39,21 +39,22 @@ public class Buff
 
     public void UpdateAffect(Actor target)
     {
-        Debug.Log($"CurrentDurationLeft {currentDurationLeft}");
+        Debug.Log($"Buff {name.GetValue()} CurrentDurationLeft {currentDurationLeft}");
         currentDurationLeft--;
 
+        Debug.Log($"Buff {name.GetValue()} continue affecting {target.name.GetValue()}");
+        buffEffect.UpdateAffect(target, owner);
         if(currentDurationLeft <= 0)
         {
             EndAffect(target);
             return;
         }
-        Debug.Log($"Buff {name.GetValue()} continue affecting {target.name.GetValue()}");
-        buffEffect.UpdateAffect(target, owner);
     }
 
     public void EndAffect(Actor target)
     {
         Debug.Log($"Buff {name.GetValue()} end affecting {target.name.GetValue()}");
         buffEffect.EndAffect(target, owner);
+        target.buffs.Remove(this);
     }
 }

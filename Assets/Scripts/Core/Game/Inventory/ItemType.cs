@@ -4,6 +4,7 @@ using UnityEngine;
 
 public enum ItemType
 {
-    Usable,
+    UsableOnSelf,
+    UsableOnTarget,
     Equpable
 }

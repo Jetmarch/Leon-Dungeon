@@ -32,13 +32,6 @@ public class PlayerMovement : MonoBehaviour
 
     public iTween.EaseType easeType;
 
-    public KeyCode keyMoveForward = KeyCode.UpArrow;
-    public KeyCode keyMoveBackward = KeyCode.DownArrow;
-    public KeyCode keyStrafeLeft = KeyCode.Delete;
-    public KeyCode keyStrafeRight = KeyCode.PageDown;
-    public KeyCode keyTurnLeft = KeyCode.LeftArrow;
-    public KeyCode keyTurnRight = KeyCode.RightArrow;
-
     private bool _isMoving = false;
     private bool _isTurning = false;
 

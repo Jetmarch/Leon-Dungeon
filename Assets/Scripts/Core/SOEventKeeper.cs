@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class SOEventKeeper : MonoBehaviour
 {
@@ -13,6 +14,7 @@ public class SOEventKeeper : MonoBehaviour
     private void Awake() {
         Instance = this;
 
+        GetAndLoadAllSOEvents();
         eventDictionary = new Dictionary<string, SOEvent>();
 
         foreach(var e in eventList)
@@ -29,6 +31,22 @@ public class SOEventKeeper : MonoBehaviour
         }
         Debug.LogError($"Event with key {key} not found");
         return null;
+    }
+
+    private void GetAndLoadAllSOEvents()
+    {
+        Debug.Log("=============");
+        Debug.Log("Auto event finding");
+        Debug.Log("=============");
+        string[] guids = AssetDatabase.FindAssets("t:"+typeof(SOEvent).Name);
+        for(int i = 0; i < guids.Length; i++)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guids[i]);
+            var obj = (SOEvent)AssetDatabase.LoadAssetAtPath(path, typeof(SOEvent));
+            eventList.Add(new SOEventWithKeyForUI() {key = "on" + obj.name, sOEvent = obj});
+            Debug.Log($"{path} : File name {obj.name}");
+        }
+        Debug.Log("=============");
     }
 }
 

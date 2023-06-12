@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c98cbe275d1cd0b4fb06066f0454e84f, type: 3}
   m_Name: PoisonBuffEffect
   m_EditorClassIdentifier: 
-  poisonMinDamage: 100
-  poisonMaxDamage: 100
+  poisonMinDamage: 1
+  poisonMaxDamage: 5

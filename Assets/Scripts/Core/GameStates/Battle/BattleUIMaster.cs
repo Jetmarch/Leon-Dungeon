@@ -39,11 +39,11 @@ public class BattleUIMaster : MonoBehaviour
     public void OnBattleUIInit(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Battle>)e;
-        SOEventKeeper.Instance.GetEvent("skillListClose").Raise();
+        SOEventKeeper.Instance.GetEvent("onSkillListClose").Raise();
         //Animation goes here
         currentBattle = eventArg.arg;
 
-
+        battleControlsParent.SetActive(false);
         battleScreen.SetActive(true);
         SOEventKeeper.Instance.GetEvent("onBattleStartAnimation").Raise();
     }
@@ -91,10 +91,6 @@ public class BattleUIMaster : MonoBehaviour
             Debug.Log("Player is dead!");
             return;
         }
-        
-        //var enemy = FindEnemyByActor(obj.arg);
-        //TODO: Анимация затемнения спрайта и только после удаление объекта
-        //enemy.gameObject.SetActive(false);
     }
 
     public void OnActorDeadAnimationEnd(SOEventArgs e)
@@ -124,10 +120,21 @@ public class BattleUIMaster : MonoBehaviour
 
     public void OnVictoryAnimationEnd()
     {
-        battleScreen.SetActive(false);
+        //battleScreen.SetActive(false);
+        battleControlsParent.SetActive(false);
     }
 
     public void OnDefeatAnimationEnd()
+    {
+        SOEventKeeper.Instance.GetEvent("onBattleEndAnimation").Raise();
+    }
+
+    public void OnRewardReceived()
+    {
+        SOEventKeeper.Instance.GetEvent("onBattleEndAnimation").Raise();
+    }
+
+    public void OnBattleEndAnimationEnd()
     {
         battleScreen.SetActive(false);
     }
@@ -200,7 +207,7 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onSkillListBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("skillListOpen").Raise();
+        SOEventKeeper.Instance.GetEvent("onSkillListOpen").Raise();
     }
 
     private void onRetreatBtnClick()

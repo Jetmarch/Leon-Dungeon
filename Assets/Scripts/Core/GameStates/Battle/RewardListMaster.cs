@@ -42,6 +42,7 @@ public class RewardListMaster : MonoBehaviour
     public void OnCloseBtnClick()
     {
         rewardScreen.SetActive(false);
+        SOEventKeeper.Instance.GetEvent("onRewardReceived").Raise();
     }
 
      private void EmptyRewardList()
@@ -64,6 +65,6 @@ public class RewardListMaster : MonoBehaviour
     
     private void AddItemsToPlayerInventory()
     {
-        //In process
+        //TODO: In process
     }
 }

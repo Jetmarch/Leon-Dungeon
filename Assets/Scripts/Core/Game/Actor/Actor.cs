@@ -56,9 +56,9 @@ public class Actor
         SOEventKeeper.Instance.GetEvent("onInitiativeChanged").Raise(new SOEventArgOne<Actor>(this));
     }
 
-    public bool HasEnoughInitiative(Skill skill)
+    public bool HasEnoughInitiative(float costInInitiativePercent)
     {
-        float amount = skill.costInInitiativePercent / 100;
+        float amount = costInInitiativePercent / 100;
         if(Initiative >= amount)
         {
             return true;
@@ -67,11 +67,12 @@ public class Actor
         return false;
     }
 
-    public void ReduceInitiativeOnSkillCost(Skill skill)
+    public void ReduceInitiativeOnCost(float costInInitiativePercent)
     {
-        float amount = -(skill.costInInitiativePercent / 100);
+        float amount = -(costInInitiativePercent / 100);
         ChangeInitiative(amount);
     }
+
 
     public bool IsReady()
     {
@@ -85,7 +86,6 @@ public class Actor
 
     public void Affect(Effect effect)
     {
-        //TODO damaging, buffing, debuffing
         healthStatus.ChangeHealth(effect.GetDamage());
 
         foreach(var buff in effect.GetBuffs())
@@ -110,9 +110,9 @@ public class Actor
 
     public void UpdateBuffs()
     {
-        foreach(var buff in buffs)
+        for(int i = 0; i < buffs.Count; i++)
         {
-            buff.UpdateAffect(this);
+            buffs[i].UpdateAffect(this);
         }
     }
 }
