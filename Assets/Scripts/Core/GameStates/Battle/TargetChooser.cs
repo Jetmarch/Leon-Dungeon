@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class TargetChooser : MonoBehaviour
 {
-    [SerializeField] private Skill selectedSkill;
+    [SerializeField] private bool isMassTarget;
     public void PlayerHasChoseSkill(SOEventArgs e)
     {
-        var obj = (SOEventArgOne<Skill>)e; 
+        var obj = (SOEventArgOne<Skill>)e;
+        isMassTarget = false;
 
-        if(obj.arg.type == SkillType.SelfTarget) return;
+        if (obj.arg.type == SkillType.SelfTarget || obj.arg.type == SkillType.SingleTarget) return;
 
-        selectedSkill = obj.arg;
+        isMassTarget = true;
     }
 
     public void PlayerAbandoneChoosedSkill()
     {
-        selectedSkill = null;
+        isMassTarget = false;
+    }
+
+    public void OnItemChoose(SOEventArgs e)
+    {
+        isMassTarget = false;
     }
 
     public void PointerEnterEnemySprite(SOEventArgs e)
     {
         var obj = (SOEventArgOne<EnemyUIWrapper>)e;
-        if(selectedSkill.type == SkillType.MassTarget)
+        if (isMassTarget == true)
         {
             //Метку должны отобразить все спрайты
             SOEventKeeper.Instance.GetEvent("onTargetMarkShow").Raise(new SOEventArgOne<EnemyUIWrapper>(null));
@@ -44,15 +50,15 @@ public class TargetChooser : MonoBehaviour
         var obj = (SOEventArgOne<EnemyUIWrapper>)e;
         var list = new List<EnemyUIWrapper>();
 
-         if(selectedSkill.type == SkillType.MassTarget)
+        if (isMassTarget)
         {
             list.AddRange(FindObjectsOfType<EnemyUIWrapper>());
-            SOEventKeeper.Instance.GetEvent("onPlayerHasChoseTarget").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Skill>(list, selectedSkill));
+            SOEventKeeper.Instance.GetEvent("onPlayerHasChoseTarget").Raise(new SOEventArgOne<List<EnemyUIWrapper>>(list));
         }
         else
         {
             list.Add(obj.arg);
-            SOEventKeeper.Instance.GetEvent("onPlayerHasChoseTarget").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Skill>(list, selectedSkill));
+            SOEventKeeper.Instance.GetEvent("onPlayerHasChoseTarget").Raise(new SOEventArgOne<List<EnemyUIWrapper>>(list));
         }
 
         SOEventKeeper.Instance.GetEvent("onTargetMarkHide").Raise();

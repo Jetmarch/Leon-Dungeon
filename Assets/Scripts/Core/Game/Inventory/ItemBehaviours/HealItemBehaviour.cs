@@ -10,6 +10,9 @@ public class HealItemBehaviour : ItemBehaviour
     public override void Use(Actor user, Actor target)
     {
         Debug.Log("Heal item was used!");
+        var effect = new Effect();
+        effect.SetDamage(healAmount);
+        target.Affect(effect);
     }
 
     public override void StartAffect(Actor target)

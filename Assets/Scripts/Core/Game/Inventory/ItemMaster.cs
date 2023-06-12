@@ -5,7 +5,7 @@ using UnityEngine;
 public class ItemMaster : MonoBehaviour
 {
     [SerializeField] private Actor player;
-    [SerializeField] private Item choosedItem;
+    private Item choosedItem;
 
     public void OnSetPlayerObject(SOEventArgs e)
     {
@@ -28,15 +28,41 @@ public class ItemMaster : MonoBehaviour
             return;
         }
 
+        if (!choosedItem.CanUse())
+        {
+            Debug.Log("Cannot use this item anymore");
+            return;
+        }
+
         Debug.Log($"Player use item {choosedItem.name.GetValue()} on self");
         player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
         choosedItem.Use(player, player);
         SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnSelf").Raise(new SOEventArgOne<Item>(choosedItem));
     }
 
-    public void OnItemTargetChoosed(SOEventArgs e)
+    public void PlayerHasChoseTarget(SOEventArgs e)
     {
-        
+        if (choosedItem == null) return;
+
+        var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
+
+        if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
+        {
+            Debug.Log("Not enough initiative!");
+            return;
+        }
+
+        player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
+
+        foreach (var enemy in obj.arg)
+        {
+            Debug.Log($"Player use item {choosedItem.name.GetValue()} on {enemy.GetActor().name.GetValue()}");
+            choosedItem.Use(player, enemy.GetActor());
+        }
+
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnEnemy").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Item>(obj.arg, choosedItem));
+
+        choosedItem = null;
     }
 
     public void OnAttunementToAnItem(SOEventArgs e)

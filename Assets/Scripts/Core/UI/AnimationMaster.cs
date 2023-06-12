@@ -34,7 +34,7 @@ public class AnimationMaster : MonoBehaviour
 
     public void PlayerHasChoseTarget(SOEventArgs e)
     {
-        var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
+        var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
         
         StartCoroutine(TestWaitAndRaiseEvent(0.5f, "onSkillUseEnd"));
     }

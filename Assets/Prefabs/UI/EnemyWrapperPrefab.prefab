@@ -682,6 +682,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - _event: {fileID: 11400000, guid: b2d78939d8ed7b445b65abd59c1d2459, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 551780126994787071}
+          m_TargetAssemblyTypeName: EnemyUIWrapper, Assembly-CSharp
+          m_MethodName: OnItemChoose
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &4809450075824327293
 MonoBehaviour:
   m_ObjectHideFlags: 0

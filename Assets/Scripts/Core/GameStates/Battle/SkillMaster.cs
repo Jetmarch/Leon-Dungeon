@@ -5,6 +5,7 @@ using UnityEngine;
 public class SkillMaster : MonoBehaviour
 {
     [SerializeField] private Actor player;
+    private Skill choosedSkill;
     public void OnPlayerObjectSet(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Actor>)e;
@@ -15,7 +16,11 @@ public class SkillMaster : MonoBehaviour
     {
         var obj = (SOEventArgOne<Skill>)e;
 
-        if(obj.arg.type != SkillType.SelfTarget) return;
+        if(obj.arg.type != SkillType.SelfTarget)
+        {
+            choosedSkill = obj.arg;
+            return;
+        }
 
         if(!player.HasEnoughInitiative(obj.arg.costInInitiativePercent))
         {
@@ -31,23 +36,27 @@ public class SkillMaster : MonoBehaviour
 
     public void PlayerHasChoseTarget(SOEventArgs e)
     {
-        var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
+        if (choosedSkill == null) return;
+
+        var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
         
-        if(!player.HasEnoughInitiative(obj.arg2.costInInitiativePercent))
+        if(!player.HasEnoughInitiative(choosedSkill.costInInitiativePercent))
         {
             Debug.Log("Not enough initiative!");
             return;
         }
 
-        player.ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
+        player.ReduceInitiativeOnCost(choosedSkill.costInInitiativePercent);
 
-        foreach(var enemy in obj.arg1)
+        foreach(var enemy in obj.arg)
         {
-            Debug.Log($"Player use skill {obj.arg2.name.GetValue()} on {enemy.GetActor().name.GetValue()}");
-            obj.arg2.Use(enemy.GetActor(), player);
+            Debug.Log($"Player use skill {choosedSkill.name.GetValue()} on {enemy.GetActor().name.GetValue()}");
+            choosedSkill.Use(enemy.GetActor(), player);
         }
 
-        SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnEnemy").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Skill>(obj.arg1, obj.arg2));
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnEnemy").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Skill>(obj.arg, choosedSkill));
+
+        choosedSkill = null;
     }
 
     public void OnEnemyUseSkill(SOEventArgs e)

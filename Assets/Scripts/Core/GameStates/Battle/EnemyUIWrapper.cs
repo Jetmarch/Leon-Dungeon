@@ -63,6 +63,19 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         isTargetChoosingState = false;
     }
 
+    public void OnItemChoose(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<ItemUIWrapper>)e;
+        if (obj.arg.GetItem().type == ItemType.UsableOnSelf) return;
+
+        isTargetChoosingState = true;
+    }
+
+    public void OnItemAbandone()
+    {
+        isTargetChoosingState = false;
+    }
+
     public void OnTargetShow(SOEventArgs e)
     {
         if(!isTargetChoosingState) return;

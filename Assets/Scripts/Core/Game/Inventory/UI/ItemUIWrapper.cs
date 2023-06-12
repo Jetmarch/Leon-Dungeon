@@ -17,19 +17,19 @@ public class ItemUIWrapper : MonoBehaviour
 
     public void OnUseItem()
     {
-        Debug.Log($"Item {item.name} was choosed");
-        SOEventKeeper.Instance.GetEvent("onItemChoose").Raise(new SOEventArgOne<Item>(item));
+        Debug.Log($"Item {item.name.GetValue()} was choosed");
+        SOEventKeeper.Instance.GetEvent("onItemChoose").Raise(new SOEventArgOne<ItemUIWrapper>(this));
     }
 
     public void OnEquipItem()
     {
-        Debug.Log($"Item {item.name} was equiped");
+        Debug.Log($"Item {item.name.GetValue()} was equiped");
         SOEventKeeper.Instance.GetEvent("onItemEquip").Raise(new SOEventArgOne<Item>(item));
     }
 
     public void OnUnequipItem()
     {
-        Debug.Log($"Item {item.name} was unequiped");
+        Debug.Log($"Item {item.name.GetValue()} was unequiped");
         SOEventKeeper.Instance.GetEvent("onItemUnequip").Raise(new SOEventArgOne<Item>(item));
     }
     

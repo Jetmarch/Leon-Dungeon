@@ -11,6 +11,7 @@ public class Item
     public LocaleString description;
     public ItemType type;
     public int countOfMaxUse;
+    public int countOfCurrentUse;
 
     [Range(0, 100)]
     public int costInInitiativePercent;
@@ -26,6 +27,7 @@ public class Item
         this.description = _item.description;
         this.type = _item.type;
         this.countOfMaxUse = _item.countOfMaxUse;
+        this.countOfCurrentUse = _item.countOfMaxUse;
         this.costInInitiativePercent = _item.costInInitiativePercent;
         this.useBehaviours = _item.useBehaviours;
         this.eqiupBehaviours = _item.eqiupBehaviours;
@@ -33,7 +35,8 @@ public class Item
 
     public void Use(Actor user, Actor target)
     {
-        foreach(var behaviour in useBehaviours)
+        countOfCurrentUse++;
+        foreach (var behaviour in useBehaviours)
         {
             behaviour.Use(user, target);
         }
@@ -58,5 +61,15 @@ public class Item
     public void Attunement(Actor user)
     {
         //TODO: attunement logic here
+    }
+
+    public bool CanUse()
+    {
+        if(countOfCurrentUse < countOfMaxUse)
+        {
+            return true;
+        }
+
+        return false;
     }
 }

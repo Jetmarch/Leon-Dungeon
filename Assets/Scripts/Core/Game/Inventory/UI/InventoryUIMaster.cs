@@ -47,6 +47,11 @@ public class InventoryUIMaster : MonoBehaviour
         inventoryScreen.SetActive(false);
     }
 
+    public void OnItemChoose()
+    {
+        OnInventoryClose();
+    }
+
     private void FillInventory()
     {
         var listOfItems = inventoryMaster.GetAllItems();
