@@ -20,6 +20,7 @@ public class BattleUIMaster : MonoBehaviour
     [SerializeField] private GameObject baseDefendBtn;
     [SerializeField] private GameObject skillListBtn;
     [SerializeField] private GameObject retreatBtn;
+    [SerializeField] private GameObject inventoryBtn;
 
     private void Awake()
     {
@@ -27,6 +28,7 @@ public class BattleUIMaster : MonoBehaviour
         baseDefendBtn.GetComponent<Button>().onClick.AddListener(onBaseDefendBtnClick);
         skillListBtn.GetComponent<Button>().onClick.AddListener(onSkillListBtnClick);
         retreatBtn.GetComponent<Button>().onClick.AddListener(onRetreatBtnClick);
+        inventoryBtn.GetComponent<Button>().onClick.AddListener(onInventoryBtnClick);
         battleControlsParent.SetActive(false);
     }
 
@@ -103,11 +105,11 @@ public class BattleUIMaster : MonoBehaviour
     //TODO: onSkillUseEnd - проверяем наличие инициативы у игрока, чтобы понять какие кнопки боя теперь ему доступны
     public void OnSkillUseEnd(SOEventArgs e)
     {
-        if(!player.HasEnoughInitiative(player.baseAttack))
+        if(!player.HasEnoughInitiative(player.baseAttack.costInInitiativePercent))
         {
             baseAttackBtn.GetComponent<Button>().interactable = false;
         }
-        if(!player.HasEnoughInitiative(player.baseDefend))
+        if(!player.HasEnoughInitiative(player.baseDefend.costInInitiativePercent))
         {
             baseDefendBtn.GetComponent<Button>().interactable = false;
         }
@@ -156,11 +158,11 @@ public class BattleUIMaster : MonoBehaviour
     {
         //Send event for ui animation
         battleControlsParent.SetActive(true);
-        if(player.HasEnoughInitiative(player.baseAttack))
+        if(player.HasEnoughInitiative(player.baseAttack.costInInitiativePercent))
         {
             baseAttackBtn.GetComponent<Button>().interactable = true;
         }
-        if(player.HasEnoughInitiative(player.baseDefend))
+        if(player.HasEnoughInitiative(player.baseDefend.costInInitiativePercent))
         {
             baseDefendBtn.GetComponent<Button>().interactable = true;
         }
@@ -215,5 +217,8 @@ public class BattleUIMaster : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(player.basePassTurn));
     }
 
-    
+    private void onInventoryBtnClick()
+    {
+        SOEventKeeper.Instance.GetEvent("onInventoryOpen").Raise();
+    }
 }

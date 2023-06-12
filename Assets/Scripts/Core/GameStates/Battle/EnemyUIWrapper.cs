@@ -149,7 +149,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         if (obj.arg1 != this) return;
         if (obj.arg1.GetActor().healthStatus.IsDead() || !obj.arg1.GetActor().healthStatus.CanTakeActions()) return;
 
-        if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2)) return;
+        if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2.costInInitiativePercent)) return;
 
         transform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
     }

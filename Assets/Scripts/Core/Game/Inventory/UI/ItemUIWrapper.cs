@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ItemUIWrapper : MonoBehaviour
 {
     [SerializeField] private Item item;
+    [SerializeField] private Image itemIcon;
+    [SerializeField] private TextMeshProUGUI itemName;
 
     private void Awake()
     {
@@ -33,5 +36,12 @@ public class ItemUIWrapper : MonoBehaviour
     public Item GetItem()
     {
         return item;
+    }
+
+    public void SetItem(Item item)
+    {
+        this.item = item;
+        itemIcon.sprite = item.icon;
+        itemName.text = item.name.GetValue();
     }
 }

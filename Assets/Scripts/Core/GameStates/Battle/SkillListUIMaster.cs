@@ -47,7 +47,7 @@ public class SkillListUIMaster : MonoBehaviour
             var wrapper = obj.GetComponent<SkillListItemUIWrapper>();
             wrapper.SetSkill(skill);
 
-            if(!player.HasEnoughInitiative(wrapper.GetSkill()))
+            if(!player.HasEnoughInitiative(wrapper.GetSkill().costInInitiativePercent))
             {
                 wrapper.GetComponent<Button>().interactable = false;
             }

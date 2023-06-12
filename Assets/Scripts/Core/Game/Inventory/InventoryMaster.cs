@@ -35,4 +35,9 @@ public class InventoryMaster : MonoBehaviour
     {
 
     }
+
+    public List<Item> GetAllItems()
+    {
+        return inventory;
+    }
 }

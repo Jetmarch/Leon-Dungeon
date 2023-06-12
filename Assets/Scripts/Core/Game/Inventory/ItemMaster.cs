@@ -7,6 +7,12 @@ public class ItemMaster : MonoBehaviour
     [SerializeField] private Actor player;
     [SerializeField] private Item choosedItem;
 
+    public void OnSetPlayerObject(SOEventArgs e)
+    {
+        var arg = (SOEventArgOne<Actor>)e;
+        player = arg.arg;
+    }
+
     public void OnItemChoosed(SOEventArgs e)
     {
         //If ItemType.UsableOnSelf - use
