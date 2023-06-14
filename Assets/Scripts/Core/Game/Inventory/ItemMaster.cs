@@ -15,8 +15,6 @@ public class ItemMaster : MonoBehaviour
 
     public void OnItemChoosed(SOEventArgs e)
     {
-        //If ItemType.UsableOnSelf - use
-        //else choosedItem = item
         var obj = (SOEventArgOne<ItemUIWrapper>)e;
         choosedItem = obj.arg.GetItem();
 
@@ -78,5 +76,10 @@ public class ItemMaster : MonoBehaviour
     public void OnAttunementToAnItem(SOEventArgs e)
     {
 
+    }
+
+    public void onPlayerHasChoseSkill(SOEventArgs e)
+    {
+        choosedItem = null;
     }
 }

@@ -84,4 +84,9 @@ public class SkillMaster : MonoBehaviour
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");
         obj.arg2.Use(player, obj.arg1.GetActor());
     }
+
+    public void OnItemChoosed(SOEventArgs e)
+    {
+        choosedSkill = null;
+    }
 }
