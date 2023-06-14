@@ -24,6 +24,7 @@ public class SkillMaster : MonoBehaviour
 
         if(!player.HasEnoughInitiative(obj.arg.costInInitiativePercent))
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
             Debug.Log("Not enough initiative!");
             return;
         }
@@ -42,6 +43,7 @@ public class SkillMaster : MonoBehaviour
         
         if(!player.HasEnoughInitiative(choosedSkill.costInInitiativePercent))
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
             Debug.Log("Not enough initiative!");
             return;
         }

@@ -24,12 +24,14 @@ public class ItemMaster : MonoBehaviour
 
         if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
             Debug.Log("Not enough initiative!");
             return;
         }
 
         if (!choosedItem.CanUse())
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Этот предмет больше нельзя использовать"));
             Debug.Log("Cannot use this item anymore");
             return;
         }
@@ -48,12 +50,14 @@ public class ItemMaster : MonoBehaviour
 
         if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
             Debug.Log("Not enough initiative!");
             return;
         }
 
         if (!choosedItem.CanUse())
         {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Этот предмет больше нельзя использовать"));
             Debug.Log("Cannot use this item anymore");
             return;
         }

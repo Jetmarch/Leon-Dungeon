@@ -12,6 +12,9 @@ public class BattleAnnounce : MonoBehaviour
     [SerializeField] private MMF_Player victoryAnimation;
     [SerializeField] private MMF_Player defeatAnimation;
 
+    [SerializeField] private TextMeshProUGUI battleMessageText;
+    [SerializeField] private MMF_Player battleMessageAnimation;
+
     public void OnBattleStartAnimation()
     {
         // announceText.gameObject.SetActive(true);
@@ -63,6 +66,19 @@ public class BattleAnnounce : MonoBehaviour
     public void OnBattleEndAnimationEnd()
     {
         SOEventKeeper.Instance.GetEvent("onBattleEndAnimationEnd").Raise();
+    }
+
+    public void OnBattleMessage(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<string>)e;
+        battleMessageText.gameObject.SetActive(true);
+        battleMessageText.text = obj.arg;
+        battleMessageAnimation?.PlayFeedbacks();
+    }
+
+    public void OnBattleMessageAnimationEnd()
+    {
+        battleMessageText.gameObject.SetActive(false);
     }
 
     private void EnableAnnounceTextWithTextAndPlayAnimation(string text, MMF_Player animation)
