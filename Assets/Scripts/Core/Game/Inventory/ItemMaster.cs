@@ -52,6 +52,12 @@ public class ItemMaster : MonoBehaviour
             return;
         }
 
+        if (!choosedItem.CanUse())
+        {
+            Debug.Log("Cannot use this item anymore");
+            return;
+        }
+
         player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
 
         foreach (var enemy in obj.arg)

@@ -9,6 +9,7 @@ public class ItemUIWrapper : MonoBehaviour
     [SerializeField] private Item item;
     [SerializeField] private Image itemIcon;
     [SerializeField] private TextMeshProUGUI itemName;
+    [SerializeField] private TextMeshProUGUI useCounter;
 
     private void Awake()
     {
@@ -19,18 +20,21 @@ public class ItemUIWrapper : MonoBehaviour
     {
         Debug.Log($"Item {item.name.GetValue()} was choosed");
         SOEventKeeper.Instance.GetEvent("onItemChoose").Raise(new SOEventArgOne<ItemUIWrapper>(this));
+        UpdateItemView();
     }
 
     public void OnEquipItem()
     {
         Debug.Log($"Item {item.name.GetValue()} was equiped");
         SOEventKeeper.Instance.GetEvent("onItemEquip").Raise(new SOEventArgOne<Item>(item));
+        UpdateItemView();
     }
 
     public void OnUnequipItem()
     {
         Debug.Log($"Item {item.name.GetValue()} was unequiped");
         SOEventKeeper.Instance.GetEvent("onItemUnequip").Raise(new SOEventArgOne<Item>(item));
+        UpdateItemView();
     }
     
     public Item GetItem()
@@ -41,7 +45,20 @@ public class ItemUIWrapper : MonoBehaviour
     public void SetItem(Item item)
     {
         this.item = item;
+        UpdateItemView();
+    }
+
+    private void UpdateItemView()
+    {
         itemIcon.sprite = item.icon;
         itemName.text = item.name.GetValue();
+        if (item.countOfMaxUse != -1)
+        {
+            useCounter.text = (item.countOfMaxUse - item.countOfCurrentUse).ToString();
+        }
+        else
+        {
+            useCounter.text = "";
+        }
     }
 }
