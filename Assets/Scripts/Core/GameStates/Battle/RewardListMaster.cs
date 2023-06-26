@@ -65,6 +65,6 @@ public class RewardListMaster : MonoBehaviour
     
     private void AddItemsToPlayerInventory()
     {
-        //TODO: In process
+        SOEventKeeper.Instance.GetEvent("onAddItems").Raise(new SOEventArgOne<List<Item>>(currentBattle.loot));
     }
 }

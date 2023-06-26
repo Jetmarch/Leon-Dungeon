@@ -22,14 +22,14 @@ public class ItemMaster : MonoBehaviour
 
         if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
         {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"));
             Debug.Log("Not enough initiative!");
             return;
         }
 
         if (!choosedItem.CanUse())
         {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Этот предмет больше нельзя использовать"));
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"));
             Debug.Log("Cannot use this item anymore");
             return;
         }
@@ -38,6 +38,9 @@ public class ItemMaster : MonoBehaviour
         player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
         choosedItem.Use(player, player);
         SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnSelf").Raise(new SOEventArgOne<Item>(choosedItem));
+        SOEventKeeper.Instance.GetEvent("onItemUsed").Raise(new SOEventArgOne<Item>(choosedItem));
+
+        choosedItem = null;
     }
 
     public void PlayerHasChoseTarget(SOEventArgs e)
@@ -48,14 +51,14 @@ public class ItemMaster : MonoBehaviour
 
         if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
         {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ!"));
             Debug.Log("Not enough initiative!");
             return;
         }
 
         if (!choosedItem.CanUse())
         {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Этот предмет больше нельзя использовать"));
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ"));
             Debug.Log("Cannot use this item anymore");
             return;
         }
@@ -69,6 +72,7 @@ public class ItemMaster : MonoBehaviour
         }
 
         SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnEnemy").Raise(new SOEventArgTwo<List<EnemyUIWrapper>, Item>(obj.arg, choosedItem));
+        SOEventKeeper.Instance.GetEvent("onItemUsed").Raise(new SOEventArgOne<Item>(choosedItem));
 
         choosedItem = null;
     }

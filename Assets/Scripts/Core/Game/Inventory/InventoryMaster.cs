@@ -8,7 +8,18 @@ public class InventoryMaster : MonoBehaviour
 
     public void OnAddItem(SOEventArgs e)
     {
+        var obj = (SOEventArgOne<Item>)e;
+        inventory.Add(obj.arg);
 
+        SOEventKeeper.Instance.GetEvent("OnAddItemEnd").Raise();
+    }
+
+    public void OnAddItems(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<List<Item>>)e;
+        inventory.AddRange(obj.arg);
+
+        SOEventKeeper.Instance.GetEvent("OnAddItemEnd").Raise();
     }
 
     public void OnRemoveItem(SOEventArgs e)
@@ -16,8 +27,9 @@ public class InventoryMaster : MonoBehaviour
 
     }
 
-    public void OnUseItem(SOEventArgs e)
+    public void OnItemUsed(SOEventArgs e)
     {
+        var obj = (SOEventArgOne<Item>)e;
 
     }
 
