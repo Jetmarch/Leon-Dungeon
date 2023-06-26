@@ -11,7 +11,7 @@ public class InventoryMaster : MonoBehaviour
         var obj = (SOEventArgOne<Item>)e;
         inventory.Add(obj.arg);
 
-        SOEventKeeper.Instance.GetEvent("OnAddItemEnd").Raise();
+        SOEventKeeper.Instance.GetEvent("onAddItemEnd").Raise();
     }
 
     public void OnAddItems(SOEventArgs e)
@@ -19,7 +19,7 @@ public class InventoryMaster : MonoBehaviour
         var obj = (SOEventArgOne<List<Item>>)e;
         inventory.AddRange(obj.arg);
 
-        SOEventKeeper.Instance.GetEvent("OnAddItemEnd").Raise();
+        SOEventKeeper.Instance.GetEvent("onAddItemEnd").Raise();
     }
 
     public void OnRemoveItem(SOEventArgs e)
@@ -30,7 +30,11 @@ public class InventoryMaster : MonoBehaviour
     public void OnItemUsed(SOEventArgs e)
     {
         var obj = (SOEventArgOne<Item>)e;
-
+        if(!obj.arg.CanUse())
+        {
+            inventory.Remove(obj.arg);
+            SOEventKeeper.Instance.GetEvent("onRemoveItem").Raise(new SOEventArgOne<Item>(obj.arg));
+        }
     }
 
     public void OnEquipItem(SOEventArgs e)

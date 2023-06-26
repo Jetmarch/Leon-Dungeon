@@ -52,6 +52,21 @@ public class InventoryUIMaster : MonoBehaviour
         OnInventoryClose();
     }
 
+    public void OnRemoveItem(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Item>)e;
+
+        var itemsWrapper = FindObjectsOfType<ItemUIWrapper>();
+        for(int i = 0; i < itemsWrapper.Length; i++)
+        {
+            if(itemsWrapper[i].GetItem() == obj.arg)
+            {
+                Destroy(itemsWrapper[i].gameObject);
+                return;
+            }
+        }
+    }
+
     private void FillInventory()
     {
         var listOfItems = inventoryMaster.GetAllItems();
