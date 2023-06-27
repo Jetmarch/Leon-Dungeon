@@ -15,6 +15,8 @@ public class BattleAnnounce : MonoBehaviour
     [SerializeField] private TextMeshProUGUI battleMessageText;
     [SerializeField] private MMF_Player battleMessageAnimation;
 
+    private bool isVictoryOrDefeatAnimationPlayedOnce;
+
     public void OnBattleStartAnimation()
     {
         // announceText.gameObject.SetActive(true);
@@ -28,14 +30,17 @@ public class BattleAnnounce : MonoBehaviour
         // announceText.gameObject.SetActive(false);
         // SOEventKeeper.Instance.GetEvent("onBattleStartAnimationEnd").Raise();
         DisableAnnounceTextAndRaiseEvent("onBattleStartAnimationEnd");
+        isVictoryOrDefeatAnimationPlayedOnce = false;
     }
 
     public void OnVictoryInBattle()
     {
+        if (isVictoryOrDefeatAnimationPlayedOnce) return;
         // announceText.gameObject.SetActive(true);
         // announceText.text = "VICTORY";
         // victoryAnimation?.PlayFeedbacks();
         EnableAnnounceTextWithTextAndPlayAnimation("VICTORY", victoryAnimation);
+        isVictoryOrDefeatAnimationPlayedOnce = true;
     }
 
     public void OnVictoryAnimationEnd()
@@ -47,10 +52,12 @@ public class BattleAnnounce : MonoBehaviour
 
     public void OnDefeatInBattle()
     {
+        if (isVictoryOrDefeatAnimationPlayedOnce) return;
         // announceText.gameObject.SetActive(true);
         // announceText.text = "DEFEAT";
         // victoryAnimation?.PlayFeedbacks();
         EnableAnnounceTextWithTextAndPlayAnimation("DEFEAT", defeatAnimation);
+        isVictoryOrDefeatAnimationPlayedOnce = true;
     }
 
     public void OnDefeatAnimationEnd()
