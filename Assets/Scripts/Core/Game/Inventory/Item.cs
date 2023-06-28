@@ -27,7 +27,7 @@ public class Item
         this.description = _item.description;
         this.type = _item.type;
         this.countOfMaxUse = _item.countOfMaxUse;
-        this.countOfCurrentUse = _item.countOfMaxUse;
+        this.countOfCurrentUse = 0;
         this.costInInitiativePercent = _item.costInInitiativePercent;
         this.useBehaviours = _item.useBehaviours;
         this.eqiupBehaviours = _item.eqiupBehaviours;

@@ -21,8 +21,24 @@ public class BattleEncounter : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onStartBattle").Raise(new SOEventArgOne<Battle>(new Battle(enemies, listOfItemsFromLoot)));
     }
 
-    private void Start() {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.gameObject.CompareTag("Player")) return;
+
+        Debug.Log("Trigger enter");
         StartBattle();
     }
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartBattle();
+        }
+    }
+
+    private void Start()
+    {
+       // StartBattle();
+    }
 }

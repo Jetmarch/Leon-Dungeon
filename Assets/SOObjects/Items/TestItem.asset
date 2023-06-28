@@ -20,7 +20,8 @@ MonoBehaviour:
     rusValue: 
     engValue: 
   type: 0
-  countOfMaxUse: 0
+  countOfMaxUse: 1
+  costInInitiativePercent: 0
   useBehaviours:
   - {fileID: 11400000, guid: a6a3bc70897df8e4490d9821f6aad71d, type: 2}
   eqiupBehaviours: []

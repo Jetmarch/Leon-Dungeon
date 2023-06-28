@@ -24,7 +24,9 @@ public class GameMaster : MonoBehaviour
 
     private void Start()
     {
-        SetPlayerObjectForAll();    
+        SetPlayerObjectForAll();
+
+        ChangeGameState(GameState.TRAVEL);
     }
 
     public void SetPlayerObjectForAll()
@@ -37,6 +39,11 @@ public class GameMaster : MonoBehaviour
     {
         ChangeGameState(GameState.BATTLE);
         battleMaster.OnStartBattle(e);
+    }
+
+    public void OnBattleEndAnimationEnd()
+    {
+        ChangeGameState(GameState.TRAVEL);
     }
 
     public void ChangeGameState(GameState state)

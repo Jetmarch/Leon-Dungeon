@@ -22,6 +22,9 @@ public class BattleAnnounce : MonoBehaviour
         // announceText.gameObject.SetActive(true);
         // announceText.text = "BATTLE!";
         // battleStartAnimation?.PlayFeedbacks();
+
+        battleStartAnimation.InitializationMode = MMFeedbacks.InitializationModes.Awake;
+
         EnableAnnounceTextWithTextAndPlayAnimation("BATTLE!", battleStartAnimation);
     }
 
@@ -39,6 +42,7 @@ public class BattleAnnounce : MonoBehaviour
         // announceText.gameObject.SetActive(true);
         // announceText.text = "VICTORY";
         // victoryAnimation?.PlayFeedbacks();
+        victoryAnimation.InitializationMode = MMFeedbacks.InitializationModes.Awake;
         EnableAnnounceTextWithTextAndPlayAnimation("VICTORY", victoryAnimation);
         isVictoryOrDefeatAnimationPlayedOnce = true;
     }
@@ -56,6 +60,7 @@ public class BattleAnnounce : MonoBehaviour
         // announceText.gameObject.SetActive(true);
         // announceText.text = "DEFEAT";
         // victoryAnimation?.PlayFeedbacks();
+        defeatAnimation.InitializationMode = MMFeedbacks.InitializationModes.Awake;
         EnableAnnounceTextWithTextAndPlayAnimation("DEFEAT", defeatAnimation);
         isVictoryOrDefeatAnimationPlayedOnce = true;
     }

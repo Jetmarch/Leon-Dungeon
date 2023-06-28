@@ -65,11 +65,13 @@ public class BattleMaster : MonoBehaviour
     public void OnBattleUIReady()
     {
         isBattleInProcess = true;
+        isWaitingActorTurn = false;
     }
 
     public void EndBattle()
     {
         isBattleInProcess = false;
+        isWaitingActorTurn = false;
     }
 
     void Update()

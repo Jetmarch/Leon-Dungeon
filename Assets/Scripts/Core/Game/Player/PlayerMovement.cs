@@ -118,7 +118,7 @@ public class PlayerMovement : MonoBehaviour
         iTween.MoveBy(this.gameObject, ht);
     }
 
-    public void OnTurned()
+    private void OnTurned()
     {
         _isTurning = false;
         var vec = transform.eulerAngles;
@@ -167,7 +167,7 @@ public class PlayerMovement : MonoBehaviour
         iTween.MoveBy(this.gameObject, ht);
     }
 
-    private void Turn(float angle)
+    public void Turn(float angle)
     {
 
         Vector3 rotationAmount = new Vector3(0, angle / 360, 0);

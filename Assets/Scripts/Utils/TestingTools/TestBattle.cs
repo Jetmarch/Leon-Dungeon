@@ -25,21 +25,6 @@ public class TestBattle : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            currentActorOnTurn.InitiativeReset();
-            SOEventKeeper.Instance.GetEvent("onActorTurnEnd").Raise(new SOEventArgOne<Actor>(currentActorOnTurn));
-        }
-
-        if(Input.GetKeyDown(KeyCode.W))
-        {
-            currentActorOnTurn.InitiativeReset();
-            SOEventKeeper.Instance.GetEvent("attackAnimationEnd").Raise();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Q))
-        {
-            battleEncounter.StartBattle();
-        }
+       
     }
 }
