@@ -10,6 +10,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
     [SerializeField] private Actor enemy;
     [SerializeField] private bool isTargetChoosingState;
+    [SerializeField] private Image borderSprite;
     [SerializeField] private Image enemySprite;
     [SerializeField] private GameObject targetMark;
 
@@ -21,6 +22,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     [SerializeField] private MMF_Player deathAnimation;
     [SerializeField] private MMF_Player targetShowAnimation;
     [SerializeField] private MMF_Player targetHideAnimation;
+    [SerializeField] private MMF_Player idleAnimation;
 
     [Header("Buffs")]
     [SerializeField] private GameObject buffList;
@@ -33,10 +35,14 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void Awake()
     {
-        enemySprite = GetComponent<Image>();
         isTargetChoosingState = false;
         targetMark.SetActive(false);
         GetComponent<Button>().onClick.AddListener(OnSpriteClicked);
+    }
+
+    private void Start()
+    {
+        idleAnimation?.PlayFeedbacks();
     }
 
     public void SetActor(Actor actor)
@@ -164,7 +170,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
         if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2.costInInitiativePercent)) return;
 
-        transform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
+        enemySprite.rectTransform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
     }
 
     public void OnEnemyHealthChanged(SOEventArgs e)
