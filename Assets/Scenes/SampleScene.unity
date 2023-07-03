@@ -1002,28 +1002,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventory:
   - name:
-      rusValue: "\u041B\u0435\u0447\u0435\u0431\u043D\u043E\u0435 \u0437\u0435\u043B\u044C\u0435"
-      engValue: Healing potion
-    icon: {fileID: 21300012, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
+      rusValue: "\u041C\u0430\u043B\u043E\u0435 \u0437\u0435\u043B\u044C\u0435 \u043B\u0435\u0447\u0435\u043D\u0438\u044F"
+      engValue: Small healing potion
+    icon: {fileID: -591947794, guid: 227042be85052d448af33b8291874e6e, type: 3}
     description:
       rusValue: 
       engValue: 
     type: 0
-    countOfMaxUse: 2
-    countOfCurrentUse: 0
-    costInInitiativePercent: 15
-    useBehaviours:
-    - {fileID: 11400000, guid: a6a3bc70897df8e4490d9821f6aad71d, type: 2}
-    eqiupBehaviours: []
-    attunementBehaviours: []
-  - name:
-      rusValue: "\u041B\u0435\u0447\u0435\u0431\u043D\u043E\u0435 \u0437\u0435\u043B\u044C\u0435"
-      engValue: Healing potion
-    icon: {fileID: 21300002, guid: 358b5d9f23bc9413e87c9948acc67ee1, type: 3}
-    description:
-      rusValue: 
-      engValue: 
-    type: 1
     countOfMaxUse: 2
     countOfCurrentUse: 0
     costInInitiativePercent: 15
