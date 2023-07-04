@@ -13,6 +13,7 @@ public class InputController : MonoBehaviour
     [SerializeField] private KeyCode menu;
     [SerializeField] private KeyCode openInventory;
     [SerializeField] private KeyCode openSkillList;
+    [SerializeField] private KeyCode escape;
     
     
     void Update()
@@ -60,6 +61,10 @@ public class InputController : MonoBehaviour
         {
             SOEventKeeper.Instance.GetEvent("onOpenSkillListKeyDown").Raise();
         }
+        if(Input.GetKeyDown(escape))
+        {
+            SOEventKeeper.Instance.GetEvent("onEscapeKeyDown").Raise();
+        }
     }
 
     private void ProcessKeyUp()
@@ -100,6 +105,10 @@ public class InputController : MonoBehaviour
         {
             SOEventKeeper.Instance.GetEvent("onOpenSkillListKeyUp").Raise();
         }
+        if (Input.GetKeyUp(escape))
+        {
+            SOEventKeeper.Instance.GetEvent("onEscapeKeyUp").Raise();
+        }
     }
 
     private void ProcessKey()
@@ -139,6 +148,10 @@ public class InputController : MonoBehaviour
         if(Input.GetKey(openSkillList))
         {
             SOEventKeeper.Instance.GetEvent("onOpenSkillListKey").Raise();
+        }
+        if (Input.GetKey(escape))
+        {
+            SOEventKeeper.Instance.GetEvent("onEscapeKey").Raise();
         }
     }
 }
