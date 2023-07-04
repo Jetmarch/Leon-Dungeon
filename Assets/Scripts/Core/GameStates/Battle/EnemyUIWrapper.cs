@@ -67,6 +67,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void PlayerAbandoneChoosedSkill()
     {
         isTargetChoosingState = false;
+        targetMark.SetActive(false);
     }
 
     public void OnItemChoose(SOEventArgs e)
@@ -80,6 +81,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     public void OnItemAbandone()
     {
         isTargetChoosingState = false;
+        targetMark.SetActive(false);
     }
 
     public void OnTargetShow(SOEventArgs e)

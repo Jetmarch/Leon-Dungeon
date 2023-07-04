@@ -89,4 +89,10 @@ public class SkillMaster : MonoBehaviour
     {
         choosedSkill = null;
     }
+
+    public void OnEscapeKeyDown()
+    {
+        choosedSkill = null;
+        SOEventKeeper.Instance.GetEvent("onPlayerAbandoneChoosedSkill").Raise();
+    }
 }

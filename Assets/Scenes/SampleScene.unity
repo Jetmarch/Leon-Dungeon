@@ -920,6 +920,7 @@ MonoBehaviour:
   menu: 27
   openInventory: 98
   openSkillList: 118
+  escape: 27
 --- !u!1 &141618973
 GameObject:
   m_ObjectHideFlags: 0
@@ -3023,6 +3024,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
           m_MethodName: onPlayerHasChoseSkill
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 0291e36968753a44c935ec38f5d949b4, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521780215}
+          m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
+          m_MethodName: OnEscapeKeyDown
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -6603,6 +6620,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
           m_MethodName: OnItemChoosed
           m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 0291e36968753a44c935ec38f5d949b4, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124019688}
+          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
+          m_MethodName: OnEscapeKeyDown
+          m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

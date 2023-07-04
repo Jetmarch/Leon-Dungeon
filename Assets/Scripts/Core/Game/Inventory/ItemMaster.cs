@@ -86,4 +86,10 @@ public class ItemMaster : MonoBehaviour
     {
         choosedItem = null;
     }
+
+    public void OnEscapeKeyDown()
+    {
+        choosedItem = null;
+        SOEventKeeper.Instance.GetEvent("onItemAbandone").Raise();
+    }
 }
