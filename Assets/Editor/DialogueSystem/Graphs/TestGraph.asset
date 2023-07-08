@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0202a3095b7477a4091d56344f0af6b3, type: 3}
+  m_Name: TestGraph
+  m_EditorClassIdentifier: 
+  <FileName>k__BackingField: Test
+  <Groups>k__BackingField: []
+  <Nodes>k__BackingField:
+  - <ID>k__BackingField: 6bf8cb1a-2184-44a1-8e22-5052d9835f4a
+    <Name>k__BackingField: 1
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 31dba264-5c11-4962-8174-c1e2e81c5a3e
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 293, y: 118}
+    <SoEvent>k__BackingField: {fileID: 0}
+    <EventArgs>k__BackingField: {fileID: 0}
+  - <ID>k__BackingField: 98a476f6-5827-43b0-84e1-c471a7362b68
+    <Name>k__BackingField: 3
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: New Choice
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 1196, y: 160}
+    <SoEvent>k__BackingField: {fileID: 0}
+    <EventArgs>k__BackingField: {fileID: 0}
+  - <ID>k__BackingField: 31dba264-5c11-4962-8174-c1e2e81c5a3e
+    <Name>k__BackingField: 2
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 98a476f6-5827-43b0-84e1-c471a7362b68
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 2
+    <Position>k__BackingField: {x: 624, y: 200}
+    <SoEvent>k__BackingField: {fileID: 0}
+    <EventArgs>k__BackingField: {fileID: 0}
+  <OldGroupNames>k__BackingField: []
+  <OldUngroupedNodeNames>k__BackingField:
+  - 1
+  - 3
+  - 2
+  <OldGroupedNodeNames>k__BackingField:
+    list: []
