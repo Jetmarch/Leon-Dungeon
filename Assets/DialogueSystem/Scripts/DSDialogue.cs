@@ -23,5 +23,18 @@ namespace DS
         {
             return dialogue;
         }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!other.gameObject.CompareTag("Player")) return;
+
+            Debug.Log("Trigger enter");
+            StartDialogue();
+        }
+
+        private void StartDialogue()
+        {
+            SOEventKeeper.Instance.GetEvent("onStartDialogue").Raise(new SOEventArgOne<DSDialogueSO>(dialogue));
+        }
     }
 }

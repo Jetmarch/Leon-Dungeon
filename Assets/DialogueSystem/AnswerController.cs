@@ -33,6 +33,6 @@ public class AnswerController : MonoBehaviour
 
     private void OnPlayerAnswer()
     {
-        onPlayerAnswer.Raise(new SOEventArgOne<DSDialogueSO>(nextDialogueNode));
+        SOEventKeeper.Instance.GetEvent("onPlayerAnswer").Raise(new SOEventArgOne<DSDialogueSO>(nextDialogueNode));
     }
 }

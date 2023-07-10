@@ -6,12 +6,10 @@ using UnityEngine;
 
 public class DialogueMaster : MonoBehaviour
 {
-
-    [SerializeField] private DSDialogueSO defaultDialogueStart;
-
     [SerializeField] private DSDialogueSO currentDialogue;
 
     [SerializeField] private GameObject dialogueScreen;
+    [SerializeField] private TextMeshProUGUI actorName;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
     [SerializeField] private GameObject answerParent;
@@ -21,16 +19,23 @@ public class DialogueMaster : MonoBehaviour
     {
         var obj = (SOEventArgOne<DSDialogueSO>)e;
         currentDialogue = obj.arg;
+
+        //TODO: Animation of showing dialogue screen here
+        dialogueScreen.SetActive(true);
+
         ShowCurrentDialogue();
     }
 
     public void OnNextDialogueNode()
     {
-        if (currentDialogue == null) return;
+        if (currentDialogue == null)
+        {
+            SOEventKeeper.Instance.GetEvent("onEndDialogue").Raise();
+            return;
+        }
 
         if (currentDialogue.DialogueType == DS.Enumerations.DSDialogueType.Event)
         {
-            Debug.Log("Event!");
             if (currentDialogue.EventArgs == null)
             {
                 currentDialogue.SoEvent.Raise();
@@ -59,6 +64,17 @@ public class DialogueMaster : MonoBehaviour
         ShowCurrentDialogue();
     }
 
+    public void OnEndDialogue()
+    {
+        //TODO: Animation here
+        dialogueScreen.SetActive(false);
+    }
+
+    public void OnSpaceKeyDown()
+    {
+        OnNextDialogueNode();
+    }
+
     private void ShowCurrentDialogue()
     {
         ClearChoices();
@@ -80,11 +96,13 @@ public class DialogueMaster : MonoBehaviour
 
     private void ShowSingleChoiceDialogue()
     {
+        actorName.text = currentDialogue.NodeActor.name.GetValue();
         dialogueText.text = currentDialogue.Text;
     }
 
     private void ShowMultipleChoiceDialogue()
     {
+        actorName.text = currentDialogue.NodeActor.name.GetValue();
         dialogueText.text = currentDialogue.Text;
         ShowChoices();
     }
@@ -104,20 +122,6 @@ public class DialogueMaster : MonoBehaviour
         foreach(Transform answer in answerParent.transform)
         {
             Destroy(answer.gameObject);
-        }
-    }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            OnNextDialogueNode();
-        }
-
-        if(Input.GetKeyDown(KeyCode.Escape))
-        {
-            currentDialogue = defaultDialogueStart;
-            ShowCurrentDialogue();
         }
     }
 }

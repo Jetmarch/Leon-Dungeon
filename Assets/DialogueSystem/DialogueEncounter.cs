@@ -4,16 +4,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/// <summary>
+/// DO NOT USE IT
+/// </summary>
 public class DialogueEncounter : MonoBehaviour
 {
     [SerializeField] private DSDialogueContainerSO dialogue;
-
-    [SerializeField] private List<string> groupNames;
-
-    [SerializeField] private List<string> startDialogueName;
-
-    private void Start()
-    {
-        
-    }
 }

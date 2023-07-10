@@ -28,17 +28,4 @@ public class BattleEncounter : MonoBehaviour
         Debug.Log("Trigger enter");
         StartBattle();
     }
-
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            StartBattle();
-        }
-    }
-
-    private void Start()
-    {
-       // StartBattle();
-    }
 }
