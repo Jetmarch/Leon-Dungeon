@@ -167,7 +167,8 @@ namespace DS.Utilities
                 DialogueType = node.DialogueType,
                 Position = node.GetPosition().position,
                 SoEvent = node.SoEvent,
-                EventArgs = node.EventArgs
+                EventArgs = node.EventArgs,
+                NodeActor = node.NodeActor
             };
 
             graphData.Nodes.Add(nodeData);
@@ -197,7 +198,8 @@ namespace DS.Utilities
                 node.DialogueType,
                 node.IsStartingNode(),
                 node.SoEvent,
-                node.EventArgs
+                node.EventArgs,
+                node.NodeActor
             );
 
             createdDialogues.Add(node.ID, dialogue);
@@ -331,6 +333,7 @@ namespace DS.Utilities
                 node.Text = nodeData.Text;
                 node.SoEvent = nodeData.SoEvent;
                 node.EventArgs = nodeData.EventArgs;
+                node.NodeActor = nodeData.NodeActor;
 
                 node.Draw();
 

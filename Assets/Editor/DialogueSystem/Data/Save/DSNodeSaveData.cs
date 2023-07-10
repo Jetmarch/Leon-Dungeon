@@ -19,6 +19,8 @@ namespace DS.Data.Save
 
         [field: SerializeField] public SOEvent SoEvent { get; set; }
 
+        [field: SerializeField] public SOActor NodeActor { get; set; }
+
         [field: SerializeField] public DSDialogEventArgSO EventArgs { get; set; }
     }
 }

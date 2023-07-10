@@ -16,7 +16,9 @@ namespace DS.ScriptableObjects
         [field: SerializeField] public SOEvent SoEvent { get; set; }
         [field: SerializeField] public DSDialogEventArgSO EventArgs { get; set; }
 
-        public void Initialize(string dialogueName, string text, List<DSDialogueChoiceData> choices, DSDialogueType dialogueType, bool isStartingDialogue, SOEvent soEvent, DSDialogEventArgSO eventArgs)
+        [field: SerializeField] public SOActor NodeActor { get; set; }
+
+        public void Initialize(string dialogueName, string text, List<DSDialogueChoiceData> choices, DSDialogueType dialogueType, bool isStartingDialogue, SOEvent soEvent, DSDialogEventArgSO eventArgs, SOActor nodeActor)
         {
             DialogueName = dialogueName;
             Text = text;
@@ -25,6 +27,7 @@ namespace DS.ScriptableObjects
             IsStartingDialogue = isStartingDialogue;
             SoEvent = soEvent;
             EventArgs = eventArgs;
+            NodeActor = nodeActor;
         }
     }
 }

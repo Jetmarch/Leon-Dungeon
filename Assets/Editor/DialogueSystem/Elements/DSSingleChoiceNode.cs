@@ -5,6 +5,7 @@ namespace DS.Elements
 {
     using Data.Save;
     using Enumerations;
+    using UnityEditor.UIElements;
     using UnityEngine.UIElements;
     using Utilities;
     using Windows;
@@ -28,6 +29,18 @@ namespace DS.Elements
         public override void Draw()
         {
             base.Draw();
+
+            ObjectField actor = new ObjectField("Actor");
+
+            actor.objectType = typeof(SOActor);
+
+            INotifyValueChangedExtensions.RegisterValueChangedCallback(actor, (e) => {
+                this.NodeActor = (SOActor)e.newValue;
+            });
+
+            actor.SetValueWithoutNotify(NodeActor);
+
+            extensionContainer.Add(actor);
 
             /* EXTENSION CONTAINER */
 

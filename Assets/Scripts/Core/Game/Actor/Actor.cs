@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Actor
 {
-    public LocaleString name;
+    public new LocaleString name;
     public Sprite sprite;
     public HealthStatus healthStatus;
     public ActorStats stats;

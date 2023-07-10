@@ -12,46 +12,52 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0202a3095b7477a4091d56344f0af6b3, type: 3}
   m_Name: TestGraph
   m_EditorClassIdentifier: 
-  <FileName>k__BackingField: Test
+  <FileName>k__BackingField: test
   <Groups>k__BackingField: []
   <Nodes>k__BackingField:
-  - <ID>k__BackingField: 6bf8cb1a-2184-44a1-8e22-5052d9835f4a
+  - <ID>k__BackingField: 39bc49b0-fb41-4e95-8853-056521a9833a
     <Name>k__BackingField: 1
     <Text>k__BackingField: Dialogue text.
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 31dba264-5c11-4962-8174-c1e2e81c5a3e
+      <NodeID>k__BackingField: c26a3187-54ae-4b07-96b3-b5c8c4c7955d
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 293, y: 118}
+    <Position>k__BackingField: {x: 82, y: 238}
     <SoEvent>k__BackingField: {fileID: 0}
+    <NodeActor>k__BackingField: {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c,
+      type: 2}
     <EventArgs>k__BackingField: {fileID: 0}
-  - <ID>k__BackingField: 98a476f6-5827-43b0-84e1-c471a7362b68
-    <Name>k__BackingField: 3
-    <Text>k__BackingField: Dialogue text.
-    <Choices>k__BackingField:
-    - <Text>k__BackingField: New Choice
-      <NodeID>k__BackingField: 
-    <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 1
-    <Position>k__BackingField: {x: 1196, y: 160}
-    <SoEvent>k__BackingField: {fileID: 0}
-    <EventArgs>k__BackingField: {fileID: 0}
-  - <ID>k__BackingField: 31dba264-5c11-4962-8174-c1e2e81c5a3e
+  - <ID>k__BackingField: c26a3187-54ae-4b07-96b3-b5c8c4c7955d
     <Name>k__BackingField: 2
     <Text>k__BackingField: Dialogue text.
     <Choices>k__BackingField:
-    - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 98a476f6-5827-43b0-84e1-c471a7362b68
+    - <Text>k__BackingField: New Choice
+      <NodeID>k__BackingField: 48445600-b6cc-4af9-8e5c-ba2eae53f7db
     <GroupID>k__BackingField: 
-    <DialogueType>k__BackingField: 2
-    <Position>k__BackingField: {x: 624, y: 200}
+    <DialogueType>k__BackingField: 1
+    <Position>k__BackingField: {x: 527, y: 280}
     <SoEvent>k__BackingField: {fileID: 0}
+    <NodeActor>k__BackingField: {fileID: 11400000, guid: 9a26a0c39e3356d4d8e51927063f4eb0,
+      type: 2}
+    <EventArgs>k__BackingField: {fileID: 0}
+  - <ID>k__BackingField: 48445600-b6cc-4af9-8e5c-ba2eae53f7db
+    <Name>k__BackingField: 3
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 0
+    <Position>k__BackingField: {x: 997, y: 384}
+    <SoEvent>k__BackingField: {fileID: 0}
+    <NodeActor>k__BackingField: {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c,
+      type: 2}
     <EventArgs>k__BackingField: {fileID: 0}
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - 1
-  - 3
   - 2
+  - 3
   <OldGroupedNodeNames>k__BackingField:
     list: []

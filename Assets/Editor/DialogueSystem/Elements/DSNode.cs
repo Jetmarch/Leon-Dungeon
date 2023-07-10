@@ -23,6 +23,7 @@ namespace DS.Elements
 
         public SOEvent SoEvent { get; set; }
 
+        public SOActor NodeActor { get; set; }
         public DSDialogEventArgSO EventArgs { get; set; }
 
         protected DSGraphView graphView;
