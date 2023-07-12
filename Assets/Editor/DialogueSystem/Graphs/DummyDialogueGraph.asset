@@ -36,7 +36,7 @@ MonoBehaviour:
       <NodeID>k__BackingField: c2ff9c61-7dd4-48f1-a143-58888969f478
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 574, y: 250}
+    <Position>k__BackingField: {x: 480, y: 268}
     <SoEvent>k__BackingField: {fileID: 0}
     <NodeActor>k__BackingField: {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c,
       type: 2}
@@ -46,18 +46,33 @@ MonoBehaviour:
     <Text>k__BackingField: Let's start a battle!
     <Choices>k__BackingField:
     - <Text>k__BackingField: Next Dialogue
-      <NodeID>k__BackingField: 
+      <NodeID>k__BackingField: 00ee9f06-d860-4413-af3e-0b009861ea5d
     <GroupID>k__BackingField: 
     <DialogueType>k__BackingField: 0
-    <Position>k__BackingField: {x: 984, y: 376}
+    <Position>k__BackingField: {x: 932, y: 320}
     <SoEvent>k__BackingField: {fileID: 0}
     <NodeActor>k__BackingField: {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c,
       type: 2}
     <EventArgs>k__BackingField: {fileID: 0}
+  - <ID>k__BackingField: 00ee9f06-d860-4413-af3e-0b009861ea5d
+    <Name>k__BackingField: 4
+    <Text>k__BackingField: Dialogue text.
+    <Choices>k__BackingField:
+    - <Text>k__BackingField: Next Dialogue
+      <NodeID>k__BackingField: 
+    <GroupID>k__BackingField: 
+    <DialogueType>k__BackingField: 3
+    <Position>k__BackingField: {x: 1362, y: 367}
+    <SoEvent>k__BackingField: {fileID: 11400000, guid: 14926f341dcda91418d55596e6c2a26c,
+      type: 2}
+    <NodeActor>k__BackingField: {fileID: 0}
+    <EventArgs>k__BackingField: {fileID: 11400000, guid: f9294df6b17bfd947af4ee31eaeb4380,
+      type: 2}
   <OldGroupNames>k__BackingField: []
   <OldUngroupedNodeNames>k__BackingField:
   - 1
   - 2
   - 3
+  - 4
   <OldGroupedNodeNames>k__BackingField:
     list: []

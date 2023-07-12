@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f262818b55b0f4418296bad0176bdab, type: 3}
-  m_Name: 3
+  m_Name: 4
   m_EditorClassIdentifier: 
-  <DialogueName>k__BackingField: 3
-  <Text>k__BackingField: Let's start a battle!
+  <DialogueName>k__BackingField: 4
+  <Text>k__BackingField: Dialogue text.
   <Choices>k__BackingField:
   - <Text>k__BackingField: Next Dialogue
-    <NextDialogue>k__BackingField: {fileID: 11400000, guid: 93feb87c42d3c784e8f0260338c6266b,
-      type: 2}
-  <DialogueType>k__BackingField: 0
+    <NextDialogue>k__BackingField: {fileID: 0}
+  <DialogueType>k__BackingField: 3
   <IsStartingDialogue>k__BackingField: 0
-  <SoEvent>k__BackingField: {fileID: 0}
-  <EventArgs>k__BackingField: {fileID: 0}
-  <NodeActor>k__BackingField: {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c,
+  <SoEvent>k__BackingField: {fileID: 11400000, guid: 14926f341dcda91418d55596e6c2a26c,
     type: 2}
+  <EventArgs>k__BackingField: {fileID: 11400000, guid: f9294df6b17bfd947af4ee31eaeb4380,
+    type: 2}
+  <NodeActor>k__BackingField: {fileID: 0}

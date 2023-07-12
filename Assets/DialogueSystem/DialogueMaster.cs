@@ -42,7 +42,8 @@ public class DialogueMaster : MonoBehaviour
             }
             else
             {
-                currentDialogue.SoEvent.Raise(new SOEventArgOne<DSDialogEventArgSO>(currentDialogue.EventArgs));
+                CheckTypeOfDialogueEventAndRaiseItWithGameArgs(currentDialogue.SoEvent, currentDialogue.EventArgs);
+                //currentDialogue.SoEvent.Raise(new SOEventArgOne<DSDialogEventArgSO>(currentDialogue.EventArgs));
             }
             currentDialogue = currentDialogue.Choices[0].NextDialogue;
         }
@@ -73,6 +74,23 @@ public class DialogueMaster : MonoBehaviour
     public void OnSpaceKeyDown()
     {
         OnNextDialogueNode();
+    }
+
+    public void OnStartBattle()
+    {
+        dialogueScreen.SetActive(false);
+    }
+    private void CheckTypeOfDialogueEventAndRaiseItWithGameArgs(SOEvent ev, DSDialogEventArgSO evArgs)
+    {
+        if(evArgs is StartBattleDialogueArgSO)
+        {
+            var startBattleArg = (StartBattleDialogueArgSO)evArgs;
+            ev.Raise(new SOEventArgOne<Battle>(new Battle(startBattleArg.enemies, startBattleArg.loot)));
+        }
+        else
+        {
+            ev.Raise(new SOEventArgOne<DSDialogEventArgSO>(evArgs));
+        }
     }
 
     private void ShowCurrentDialogue()

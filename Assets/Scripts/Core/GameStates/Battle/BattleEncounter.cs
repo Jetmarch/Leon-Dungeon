@@ -5,20 +5,10 @@ using UnityEngine;
 public class BattleEncounter : MonoBehaviour
 {
     [SerializeField] private List<SOActor> enemies;
-    [SerializeField] private List<Loot> items;
+    [SerializeField] private List<Loot> loot;
     public void StartBattle()
     {
-        var listOfItemsFromLoot = new List<Item>();
-        foreach(var loot in items)
-        {
-            var newItem = loot.GetItemWithChanceOfDrop();
-            if(newItem != null)
-            {
-                listOfItemsFromLoot.Add(newItem);
-            }
-        }
-
-        SOEventKeeper.Instance.GetEvent("onStartBattle").Raise(new SOEventArgOne<Battle>(new Battle(enemies, listOfItemsFromLoot)));
+        SOEventKeeper.Instance.GetEvent("onStartBattle").Raise(new SOEventArgOne<Battle>(new Battle(enemies, loot)));
     }
 
     private void OnTriggerEnter(Collider other)
