@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using MoreMountains.Feedbacks;
 
 public class DialogueMaster : MonoBehaviour
 {
@@ -15,14 +16,26 @@ public class DialogueMaster : MonoBehaviour
     [SerializeField] private GameObject answerParent;
     [SerializeField] private GameObject answerPrefab;
 
+    [SerializeField] private MMF_Player startDialogue;
+    [SerializeField] private MMF_Player endDialogue;
+
+    private void Awake()
+    {
+        startDialogue?.Initialization();
+    }
+
     public void OnStartDialogue(SOEventArgs e)
     {
         var obj = (SOEventArgOne<DSDialogueSO>)e;
         currentDialogue = obj.arg;
-
         //TODO: Animation of showing dialogue screen here
-        dialogueScreen.SetActive(true);
+        actorName.text = string.Empty;
+        dialogueText.text = string.Empty;
+        startDialogue?.PlayFeedbacks();
+    }
 
+    public void OnStartDialogueAnimationEnd()
+    {
         ShowCurrentDialogue();
     }
 
@@ -45,7 +58,16 @@ public class DialogueMaster : MonoBehaviour
                 CheckTypeOfDialogueEventAndRaiseItWithGameArgs(currentDialogue.SoEvent, currentDialogue.EventArgs);
                 //currentDialogue.SoEvent.Raise(new SOEventArgOne<DSDialogEventArgSO>(currentDialogue.EventArgs));
             }
-            currentDialogue = currentDialogue.Choices[0].NextDialogue;
+
+            if (currentDialogue.Choices[0].NextDialogue != null)
+            {
+                currentDialogue = currentDialogue.Choices[0].NextDialogue;
+            }
+            else
+            {
+                SOEventKeeper.Instance.GetEvent("onEndDialogue").Raise();
+                return;
+            }
         }
 
         ShowCurrentDialogue();
@@ -68,7 +90,13 @@ public class DialogueMaster : MonoBehaviour
     public void OnEndDialogue()
     {
         //TODO: Animation here
-        dialogueScreen.SetActive(false);
+        //dialogueScreen.SetActive(false);
+        endDialogue?.PlayFeedbacks();
+    }
+
+    public void OnEndDialogueAnimationEnd()
+    {
+
     }
 
     public void OnSpaceKeyDown()
