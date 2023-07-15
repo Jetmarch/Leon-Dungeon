@@ -1,18 +1,50 @@
+using MoreMountains.Feedbacks;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TravelMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject travelScreen;
+    [SerializeField] private MMF_Player travelScreenInAnimation;
+    [SerializeField] private MMF_Player travelScreenOutAnimation;
+
+    [SerializeField] private bool isScreenShowed = false;
+
+    public void ShowScreen()
     {
-        
+        if (!isScreenShowed)
+        {
+            ShowControlsAnimation();
+
+            isScreenShowed = true;
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void HideScreen(bool forced = false)
     {
-        
+        if (isScreenShowed)
+        {
+            HideControlsAnimation();
+
+            isScreenShowed = false;
+        }
+
+        if(forced)
+        {
+            isScreenShowed = false;
+            travelScreen.SetActive(false);
+            gameObject.SetActive(false);
+        }
+    }
+
+    public void HideControlsAnimation()
+    {
+        travelScreenOutAnimation?.PlayFeedbacks();
+    }
+
+    public void ShowControlsAnimation()
+    {
+        travelScreenInAnimation?.PlayFeedbacks();
     }
 }

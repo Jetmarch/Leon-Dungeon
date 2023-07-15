@@ -1,3 +1,4 @@
+using MoreMountains.Feedbacks;
 using MoreMountains.Tools;
 using System.Collections;
 using System.Collections.Generic;
@@ -10,6 +11,11 @@ public class PlayerInfo : MonoBehaviour
     //[SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject initiativeBar;
     [SerializeField] private MMProgressBar healthBarNew;
+
+    [Header("Animations")]
+    [SerializeField] private MMF_Player initiativeBarInAnimation;
+    [SerializeField] private MMF_Player initiativeBarOutAnimation;
+
 
     public void OnPlayerObjectSet(SOEventArgs e)
     {
@@ -41,5 +47,25 @@ public class PlayerInfo : MonoBehaviour
         if(obj.arg != player) return;
 
         initiativeBar.GetComponent<Slider>().value = player.Initiative;
+    }
+
+    public void OnStartBattle()
+    {
+        initiativeBarInAnimation?.PlayFeedbacks();
+    }
+
+    public void OnInitiativeBarInAnimationEnd()
+    {
+        Debug.Log("InitiativeBarInAnimationEnd!");
+    }
+
+    public void OnBattleEnd()
+    {
+        initiativeBarOutAnimation?.PlayFeedbacks();
+    }
+
+    public void OnInitiativeBarOutAnimationEnd()
+    {
+        Debug.Log("InitiativeBarOutAnimationEnd!");
     }
 }

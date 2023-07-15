@@ -49,25 +49,26 @@ public class GameMaster : MonoBehaviour
     public void ChangeGameState(GameState state)
     {
         currentGameState = state;
-        switch(currentGameState)
+        switch (currentGameState)
         {
             case GameState.PAUSE:
-            break;
+                break;
             case GameState.TRAVEL:
-            travelMaster.gameObject.SetActive(true);
-            battleMaster.gameObject.SetActive(false);
-            campMaster.gameObject.SetActive(false);
-            break;
+                travelMaster.gameObject.SetActive(true);
+                travelMaster.ShowScreen();
+                battleMaster.gameObject.SetActive(false);
+                campMaster.gameObject.SetActive(false);
+                break;
             case GameState.BATTLE:
-            travelMaster.gameObject.SetActive(false);
-            battleMaster.gameObject.SetActive(true);
-            campMaster.gameObject.SetActive(false);
-            break;
+                travelMaster.HideScreen(true);
+                battleMaster.gameObject.SetActive(true);
+                campMaster.gameObject.SetActive(false);
+                break;
             case GameState.CAMP:
-            travelMaster.gameObject.SetActive(false);
-            battleMaster.gameObject.SetActive(false);
-            campMaster.gameObject.SetActive(true);
-            break;
+                travelMaster.HideScreen(true);
+                battleMaster.gameObject.SetActive(false);
+                campMaster.gameObject.SetActive(true);
+                break;
         }
     }
 }

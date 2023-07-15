@@ -19,6 +19,8 @@ public class DialogueMaster : MonoBehaviour
     [SerializeField] private MMF_Player startDialogue;
     [SerializeField] private MMF_Player endDialogue;
 
+    [SerializeField] private bool isInDialogue;
+
     private void Awake()
     {
         startDialogue?.Initialization();
@@ -32,6 +34,8 @@ public class DialogueMaster : MonoBehaviour
         actorName.text = string.Empty;
         dialogueText.text = string.Empty;
         startDialogue?.PlayFeedbacks();
+
+        isInDialogue = true;
     }
 
     public void OnStartDialogueAnimationEnd()
@@ -41,6 +45,8 @@ public class DialogueMaster : MonoBehaviour
 
     public void OnNextDialogueNode()
     {
+        if (!isInDialogue) return;
+
         if (currentDialogue == null)
         {
             SOEventKeeper.Instance.GetEvent("onEndDialogue").Raise();
@@ -92,6 +98,8 @@ public class DialogueMaster : MonoBehaviour
         //TODO: Animation here
         //dialogueScreen.SetActive(false);
         endDialogue?.PlayFeedbacks();
+
+        isInDialogue = false;
     }
 
     public void OnEndDialogueAnimationEnd()
