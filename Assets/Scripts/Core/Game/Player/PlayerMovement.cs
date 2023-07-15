@@ -34,9 +34,12 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _isMoving = false;
     private bool _isTurning = false;
+    private bool isMovementBlocked = false;
 
     public void OnMoveForward()
     {
+        if (isMovementBlocked) return;
+
         if (!_isMoving && !_isTurning)
         {
             Move(transform.forward * stepSize);
@@ -45,6 +48,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMoveBackward()
     {
+        if (isMovementBlocked) return;
+
         if (!_isMoving && !_isTurning)
         {
             Move(-transform.forward * stepSize);
@@ -53,6 +58,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMoveRight()
     {
+        if (isMovementBlocked) return;
+
         if (!_isTurning)
         {
             Turn(90f);
@@ -61,10 +68,22 @@ public class PlayerMovement : MonoBehaviour
 
     public void OnMoveLeft()
     {
+        if (isMovementBlocked) return;
+
         if (!_isTurning)
         {
             Turn(-90f);
         }
+    }
+
+    public void BlockMove()
+    {
+        isMovementBlocked = true;
+    }
+
+    public void UnblockMove()
+    {
+        isMovementBlocked = false;
     }
 
     private bool KeyDown(KeyCode key)
