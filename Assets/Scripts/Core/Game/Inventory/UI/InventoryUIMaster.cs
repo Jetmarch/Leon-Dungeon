@@ -16,10 +16,10 @@ public class InventoryUIMaster : MonoBehaviour
 
     private void Awake()
     {
-        closeInventoryButton.onClick.AddListener(OnInventoryClose);
+        closeInventoryButton.onClick.AddListener(OnCloseInventory);
     }
 
-    public void OnInventoryOpen()
+    public void OnOpenInventory()
     {    
         if (isInventoryOpen == true) return;
         isInventoryOpen = true;
@@ -39,7 +39,7 @@ public class InventoryUIMaster : MonoBehaviour
         FillInventory();
     }
 
-    public void OnInventoryClose()
+    public void OnCloseInventory()
     {
         CleanInventory();
 
@@ -49,7 +49,7 @@ public class InventoryUIMaster : MonoBehaviour
 
     public void OnItemChoose()
     {
-        OnInventoryClose();
+        OnCloseInventory();
     }
 
     public void OnRemoveItem(SOEventArgs e)
@@ -64,6 +64,18 @@ public class InventoryUIMaster : MonoBehaviour
                 Destroy(itemsWrapper[i].gameObject);
                 return;
             }
+        }
+    }
+
+    public void OnInventoryToggle()
+    {
+        if(isInventoryOpen)
+        {
+            OnCloseInventory();
+        }
+        else
+        {
+            OnOpenInventory();
         }
     }
 

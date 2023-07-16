@@ -20,6 +20,8 @@ public class ItemMaster : MonoBehaviour
 
         if (choosedItem.type != ItemType.UsableOnSelf) return;
 
+
+        //TODO: Пересмотреть подход к использованию предмета. Проверки инициативы должны осуществляться на стороне BattleMaster
         if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
         {
             SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("������������ ����������!"));

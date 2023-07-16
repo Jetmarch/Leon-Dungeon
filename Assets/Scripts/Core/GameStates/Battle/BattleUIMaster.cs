@@ -219,6 +219,6 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onInventoryBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("onInventoryOpen").Raise();
+        SOEventKeeper.Instance.GetEvent("onOpenInventory").Raise();
     }
 }
