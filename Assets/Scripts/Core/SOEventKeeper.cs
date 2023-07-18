@@ -11,11 +11,14 @@ public class SOEventKeeper : MonoBehaviour
     [SerializeField] private List<SOEventWithKeyForUI> eventList;
     private Dictionary<string, SOEvent> eventDictionary;
 
+    private Queue<SOEvent> eventQueue;
+
     private void Awake() {
         Instance = this;
 
         GetAndLoadAllSOEvents();
         eventDictionary = new Dictionary<string, SOEvent>();
+        eventQueue = new Queue<SOEvent>();
 
         foreach(var e in eventList)
         {
@@ -33,6 +36,21 @@ public class SOEventKeeper : MonoBehaviour
         return null;
     }
 
+    /// <summary>
+    /// Adds an event without argument to the event queue
+    /// </summary>
+    /// <param name="key">Name of event with prefix "on". Example - "onStartBattle"</param>
+    public void AddEventToQueue(string key)
+    {
+        SOEvent newEventInQueue = GetEvent(key);
+        if(newEventInQueue != null)
+        {
+            eventQueue.Enqueue(newEventInQueue);
+        }
+
+        Debug.LogWarning($"Event with key {key} was not added in queue");
+    }
+
     private void GetAndLoadAllSOEvents()
     {
         Debug.Log("=============");
@@ -47,6 +65,29 @@ public class SOEventKeeper : MonoBehaviour
             Debug.Log($"{path} : File name {obj.name}");
         }
         Debug.Log("=============");
+    }
+
+    private void Update()
+    {
+        ProcessEventQueue();
+    }
+
+    private void ProcessEventQueue()
+    {
+        if (eventQueue.Count > 0)
+        {
+            foreach (var ev in eventQueue)
+            {
+                ev.Raise();
+            }
+
+            CleanEventQueue();
+        }
+    }
+
+    private void CleanEventQueue()
+    {
+        eventQueue.Clear();
     }
 }
 
