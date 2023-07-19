@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dece15cd8ab5ff48bdbcd226851b969, type: 3}
+  m_Name: Junk
+  m_EditorClassIdentifier: 
+  name:
+    rusValue: "\u041C\u0443\u0441\u043E\u0440"
+    engValue: Junk
+  icon: {fileID: 21300000, guid: dd25796a1371bac498c2f7b83d1f4bef, type: 3}
+  description:
+    rusValue: "\u041F\u0440\u043E\u0441\u0442\u043E \u043A\u0443\u0441\u043E\u043A
+      \u043C\u0443\u0441\u043E\u0440\u0430"
+    engValue: Just a piece of junk
+  type: 0
+  countOfMaxUse: 0
+  costInInitiativePercent: 0
+  useBehaviours: []
+  eqiupBehaviours: []
