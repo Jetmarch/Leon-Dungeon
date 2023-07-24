@@ -6,7 +6,7 @@ using UnityEngine;
 [Serializable]
 public class Actor
 {
-    public new LocaleString name;
+    public LocaleString name;
     public Sprite sprite;
     public HealthStatus healthStatus;
     public ActorStats stats;
@@ -38,7 +38,7 @@ public class Actor
 
     public void InitiativeStep(float timeDelta)
     {
-        float initiativeInSec = (stats.speed + (stats.agility / 10f)) * timeDelta;
+        float initiativeInSec = (stats.Speed + (stats.Agility / 10f)) * timeDelta;
         Initiative = Mathf.Clamp(initiativeInSec + Initiative, 0f, 1f);
 
         SOEventKeeper.Instance.GetEvent("onInitiativeChanged").Raise(new SOEventArgOne<Actor>(this));

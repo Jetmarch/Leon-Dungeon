@@ -13,7 +13,7 @@ public class HealthStatus
     public HealthStatus(Actor owner)
     {
         this.owner = owner;
-        maxHealth = owner.stats.strength * 10;
+        maxHealth = owner.stats.Strength * 10;
         currentHealth = maxHealth;
     }
 

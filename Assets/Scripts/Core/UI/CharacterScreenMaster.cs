@@ -20,7 +20,12 @@ public class CharacterScreenMaster : MonoBehaviour
     [Header("Character stats")]
     [SerializeField] private TextMeshProUGUI strengthValue;
     [SerializeField] private TextMeshProUGUI agilityValue;
+    [SerializeField] private TextMeshProUGUI speedValue;
+    [SerializeField] private TextMeshProUGUI sturdinessValue;
+    [SerializeField] private TextMeshProUGUI mindValue;
     [SerializeField] private TextMeshProUGUI intelligenceValue;
+    [SerializeField] private TextMeshProUGUI perceptionValue;
+    [SerializeField] private TextMeshProUGUI luckValue;
 
     [Header("Equipped items")]
     [SerializeField] private GameObject[] items;
@@ -51,9 +56,14 @@ public class CharacterScreenMaster : MonoBehaviour
         //TODO: animations
         openCharacterScreen?.PlayFeedbacks();
 
-        strengthValue.text = player.stats.strength.ToString();
-        agilityValue.text = player.stats.agility.ToString();
-        intelligenceValue.text = player.stats.intelligence.ToString();
+        strengthValue.text = player.stats.Strength.ToString();
+        agilityValue.text = player.stats.Agility.ToString();
+        speedValue.text = player.stats.Speed.ToString();
+        sturdinessValue.text = player.stats.Sturdiness.ToString();
+        mindValue.text = player.stats.Mind.ToString();
+        intelligenceValue.text = player.stats.Intelligence.ToString();
+        perceptionValue.text = player.stats.Perception.ToString();
+        luckValue.text = player.stats.Luck.ToString();
 
         isCharacterScreenOpened = true;
     }

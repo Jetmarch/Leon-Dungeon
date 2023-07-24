@@ -10,7 +10,7 @@ public class DamageSkillEffect : SkillEffect
     public override void Affect(Actor target, Actor user)
     {
         var effect = new Effect();
-        float damage = -(user.stats.strength * Random.Range(amountMin, amountMax));
+        float damage = -(user.stats.Strength * Random.Range(amountMin, amountMax));
         effect.SetDamage(damage);
 
         
