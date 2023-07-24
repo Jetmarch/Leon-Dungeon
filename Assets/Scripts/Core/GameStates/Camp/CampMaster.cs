@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class CampMaster : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public void OnEnterCamp()
     {
-        
+        ////SOEventKeeper.Instance.AddEventToQueue("onEnterCamp");
+        SOEventKeeper.Instance.GetEvent("onStartAnimationCamp").Raise();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void OnExitCamp()
     {
-        
+        SOEventKeeper.Instance.GetEvent("onEndAnimationCamp").Raise();
     }
 }

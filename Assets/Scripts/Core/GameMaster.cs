@@ -26,6 +26,7 @@ public class GameMaster : MonoBehaviour
     {
         SetPlayerObjectForAll();
 
+        //TODO: Load state from save file
         ChangeGameState(GameState.TRAVEL);
     }
 
@@ -46,6 +47,16 @@ public class GameMaster : MonoBehaviour
         ChangeGameState(GameState.TRAVEL);
     }
 
+    public void OnStartCamp()
+    {
+        ChangeGameState(GameState.CAMP);
+    }
+
+    public void OnEndCamp()
+    {
+        ChangeGameState(GameState.TRAVEL);
+    }
+
     public void ChangeGameState(GameState state)
     {
         currentGameState = state;
@@ -57,17 +68,17 @@ public class GameMaster : MonoBehaviour
                 travelMaster.gameObject.SetActive(true);
                 travelMaster.ShowScreen();
                 battleMaster.gameObject.SetActive(false);
-                campMaster.gameObject.SetActive(false);
+                campMaster.OnExitCamp();
                 break;
             case GameState.BATTLE:
                 travelMaster.HideScreen(true);
                 battleMaster.gameObject.SetActive(true);
-                campMaster.gameObject.SetActive(false);
+                campMaster.OnExitCamp();
                 break;
             case GameState.CAMP:
                 travelMaster.HideScreen(true);
                 battleMaster.gameObject.SetActive(false);
-                campMaster.gameObject.SetActive(true);
+                campMaster.OnEnterCamp();
                 break;
         }
     }

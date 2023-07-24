@@ -11,7 +11,7 @@ public class SOEventKeeper : MonoBehaviour
     [SerializeField] private List<SOEventWithKeyForUI> eventList;
     private Dictionary<string, SOEvent> eventDictionary;
 
-    private Queue<SOEvent> eventQueue;
+    [SerializeField] private Queue<SOEvent> eventQueue;
 
     private void Awake() {
         Instance = this;
@@ -46,6 +46,7 @@ public class SOEventKeeper : MonoBehaviour
         if(newEventInQueue != null)
         {
             eventQueue.Enqueue(newEventInQueue);
+            return;
         }
 
         Debug.LogWarning($"Event with key {key} was not added in queue");
@@ -76,9 +77,9 @@ public class SOEventKeeper : MonoBehaviour
     {
         if (eventQueue.Count > 0)
         {
-            foreach (var ev in eventQueue)
+            for(int i = 0; i < eventQueue.Count; i++)
             {
-                ev.Raise();
+                eventQueue.Dequeue().Raise();
             }
 
             CleanEventQueue();

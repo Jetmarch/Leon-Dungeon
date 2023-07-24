@@ -23,7 +23,7 @@ public class TravelMaster : MonoBehaviour
     {
         inventoryBtn.onClick.AddListener(ToggleInventory);
         characterBtn.onClick.AddListener(OpenCharacterScreen);
-
+        campBtn.onClick.AddListener(StartCamp);
     }
 
     public void ShowScreen()
@@ -105,5 +105,11 @@ public class TravelMaster : MonoBehaviour
     private void OpenCharacterScreen()
     {
         SOEventKeeper.Instance.GetEvent("onOpenCharacterScreen").Raise();
+    }
+
+    private void StartCamp()
+    {
+        SOEventKeeper.Instance.AddEventToQueue("onStartCamp");
+        DisableInteractionWithControls();
     }
 }
