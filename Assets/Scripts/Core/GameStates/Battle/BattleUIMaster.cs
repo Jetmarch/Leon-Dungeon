@@ -166,6 +166,8 @@ public class BattleUIMaster : MonoBehaviour
         {
             baseDefendBtn.GetComponent<Button>().interactable = true;
         }
+
+        SOEventKeeper.Instance.GetEvent("onActorTurnAnimationEnd").Raise(new SOEventArgOne<Actor>(player));
     }
 
     //Just for testing. Delete it later

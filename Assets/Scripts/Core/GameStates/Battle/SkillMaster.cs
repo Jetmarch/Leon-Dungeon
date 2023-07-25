@@ -82,6 +82,9 @@ public class SkillMaster : MonoBehaviour
         obj.arg1.GetActor().ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
 
         Debug.Log($"Enemy use skill {obj.arg2.name.GetValue()} on {player.name.GetValue()}");
+
+        SOEventKeeper.Instance.GetEvent("onEnemyUseSkillAnimation").Raise(obj);
+
         obj.arg2.Use(player, obj.arg1.GetActor());
     }
 

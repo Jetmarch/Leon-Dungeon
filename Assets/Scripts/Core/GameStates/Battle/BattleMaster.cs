@@ -116,8 +116,6 @@ public class BattleMaster : MonoBehaviour
     {
         var obj = (SOEventArgOne<Actor>)e;
         obj.arg.UpdateBuffs();
-
-        SOEventKeeper.Instance.GetEvent("onActorBuffsUpdated").Raise(new SOEventArgOne<Actor>(obj.arg));
     }
 
     public void OnActorTurnEnd(SOEventArgs e)

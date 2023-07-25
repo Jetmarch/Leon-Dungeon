@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7621271998390415474}
   - component: {fileID: 7814257739910157285}
   - component: {fileID: 3040723019138530386}
+  - component: {fileID: 8246970577043521098}
   m_Layer: 5
   m_Name: BuffItemPrefab
   m_TagString: Untagged
@@ -97,3 +98,82 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &8246970577043521098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6323781746786424338}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcab26c2e583e814c904a10be0d69af5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  icon: {fileID: 7814257739910157285}
+  buff:
+    name:
+      rusValue: 
+      engValue: 
+    description:
+      rusValue: 
+      engValue: 
+    maxDurationInTurns: 0
+    currentDurationLeft: 0
+    type: 0
+    icon: {fileID: 0}
+    buffEffect: {fileID: 0}
+    owner:
+      name:
+        rusValue: 
+        engValue: 
+      sprite: {fileID: 0}
+      healthStatus:
+        maxHealth: 0
+        currentHealth: 0
+      stats:
+        strength: 0
+        agility: 0
+        speed: 0
+        sturdiness: 0
+        mind: 0
+        intelligence: 0
+        perception: 0
+        luck: 0
+      brain: {fileID: 0}
+      Initiative: 0
+      baseAttack:
+        name:
+          rusValue: 
+          engValue: 
+        description:
+          rusValue: 
+          engValue: 
+        icon: {fileID: 0}
+        type: 0
+        costInInitiativePercent: 0
+        effects: []
+      baseDefend:
+        name:
+          rusValue: 
+          engValue: 
+        description:
+          rusValue: 
+          engValue: 
+        icon: {fileID: 0}
+        type: 0
+        costInInitiativePercent: 0
+        effects: []
+      basePassTurn:
+        name:
+          rusValue: 
+          engValue: 
+        description:
+          rusValue: 
+          engValue: 
+        icon: {fileID: 0}
+        type: 0
+        costInInitiativePercent: 0
+        effects: []
+      additionalSkills: []
+      buffs: []

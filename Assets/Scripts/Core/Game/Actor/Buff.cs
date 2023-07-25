@@ -29,22 +29,19 @@ public class Buff
 
     public void StartAffect(Actor target)
     {
-        //Если уже есть такой бафф, то не накладываем повторно
-        if(target.HasBuff(this)) return;
-
-        Debug.Log($"Buff {name.GetValue()} start affecting {target.name.GetValue()}");
         currentDurationLeft = maxDurationInTurns;
         buffEffect.StartAffect(target, owner);
+        SOEventKeeper.Instance.GetEvent("onBuffStartAffect").Raise(new SOEventArgTwo<Actor, Buff>(target, this));
     }
 
     public void UpdateAffect(Actor target)
     {
-        Debug.Log($"Buff {name.GetValue()} CurrentDurationLeft {currentDurationLeft}");
         currentDurationLeft--;
 
-        Debug.Log($"Buff {name.GetValue()} continue affecting {target.name.GetValue()}");
         buffEffect.UpdateAffect(target, owner);
-        if(currentDurationLeft <= 0)
+        SOEventKeeper.Instance.GetEvent("onBuffUpdateAffect").Raise(new SOEventArgTwo<Actor, Buff>(target, this));
+
+        if (currentDurationLeft <= 0)
         {
             EndAffect(target);
             return;
@@ -53,8 +50,8 @@ public class Buff
 
     public void EndAffect(Actor target)
     {
-        Debug.Log($"Buff {name.GetValue()} end affecting {target.name.GetValue()}");
         buffEffect.EndAffect(target, owner);
         target.buffs.Remove(this);
+        SOEventKeeper.Instance.GetEvent("onBuffEndAffect").Raise(new SOEventArgTwo<Actor, Buff>(target, this));
     }
 }

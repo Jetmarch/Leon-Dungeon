@@ -90,8 +90,11 @@ public class Actor
 
         foreach(var buff in effect.GetBuffs())
         {
-            buffs.Add(buff);
-            buff.StartAffect(this);
+            if (!HasBuff(buff))
+            {
+                buffs.Add(buff);
+                buff.StartAffect(this);
+            }
         }
     }
 
@@ -114,5 +117,7 @@ public class Actor
         {
             buffs[i].UpdateAffect(this);
         }
+
+        SOEventKeeper.Instance.GetEvent("onActorBuffsUpdated").Raise(new SOEventArgOne<Actor>(this));
     }
 }

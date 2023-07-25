@@ -11,6 +11,8 @@ public class PlayerInfo : MonoBehaviour
     //[SerializeField] private GameObject healthBar;
     [SerializeField] private GameObject initiativeBar;
     [SerializeField] private MMProgressBar healthBarNew;
+    [SerializeField] private GameObject buffListParent;
+    [SerializeField] private GameObject buffItemPrefab;
 
     [Header("Animations")]
     [SerializeField] private MMF_Player initiativeBarInAnimation;
@@ -67,5 +69,47 @@ public class PlayerInfo : MonoBehaviour
     public void OnInitiativeBarOutAnimationEnd()
     {
         Debug.Log("InitiativeBarOutAnimationEnd!");
+    }
+
+    public void OnBuffStartAffect(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<Actor, Buff>)e;
+        
+        if (obj.arg1 != player) return;
+
+        UpdateBuffList();
+    }
+
+    public void OnBuffUpdateAffect(SOEventArgs e)
+    {
+
+    }
+
+    public void OnBuffEndAffect(SOEventArgs e)
+    {
+        UpdateBuffList();
+    }
+
+    private void UpdateBuffList()
+    {
+        ClearBuffList();
+        FillBuffList();
+    }
+
+    private void FillBuffList()
+    {
+        foreach (var buff in player.buffs)
+        {
+            GameObject newBuff = Instantiate(buffItemPrefab, buffListParent.transform);
+            newBuff.GetComponent<BuffItemUI>().SetBuff(buff);
+        }
+    }
+
+    private void ClearBuffList()
+    {
+        foreach(Transform obj in buffListParent.transform)
+        {
+            Destroy(obj.gameObject);
+        }
     }
 }

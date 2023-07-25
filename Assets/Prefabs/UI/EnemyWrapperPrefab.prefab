@@ -518,8 +518,12 @@ MonoBehaviour:
     stats:
       strength: 0
       agility: 0
-      intelligence: 0
       speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -715,22 +719,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - _event: {fileID: 11400000, guid: 8d2c8f7168c855547b20c6e0beb45afd, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 551780126994787071}
-          m_TargetAssemblyTypeName: EnemyUIWrapper, Assembly-CSharp
-          m_MethodName: OnEnemyUseSkill
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - _event: {fileID: 11400000, guid: fb48154139669034a9217a1a107d232b, type: 2}
     response:
       m_PersistentCalls:
@@ -787,6 +775,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: EnemyUIWrapper, Assembly-CSharp
           m_MethodName: OnItemAbandone
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: fdf437c796c17fc46a880fe15bbbf30d, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 551780126994787071}
+          m_TargetAssemblyTypeName: EnemyUIWrapper, Assembly-CSharp
+          m_MethodName: OnEnemyUseSkillAnimation
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine

@@ -3456,6 +3456,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -3502,6 +3511,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -8028,6 +8046,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -8673,6 +8700,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -9484,6 +9520,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -12832,6 +12877,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -16741,6 +16795,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -18029,6 +18092,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -18790,6 +18862,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -21401,6 +21482,69 @@ RectTransform:
   m_AnchoredPosition: {x: 461.22, y: 503.4301}
   m_SizeDelta: {x: 62.638, y: 45.6665}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1477682481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1477682482}
+  - component: {fileID: 1477682483}
+  m_Layer: 5
+  m_Name: BuffList
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1477682482
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477682481}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1752673704}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0.00046968, y: -429.39847}
+  m_SizeDelta: {x: 351.8, y: 30}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1477682483
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1477682481}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_Spacing: 5
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
 --- !u!1 &1479161897
 GameObject:
   m_ObjectHideFlags: 0
@@ -21833,6 +21977,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -23720,6 +23873,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -25312,7 +25474,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1752673704
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25328,6 +25490,7 @@ RectTransform:
   - {fileID: 1579569514}
   - {fileID: 1351199349}
   - {fileID: 612108467}
+  - {fileID: 1477682482}
   m_Father: {fileID: 668413740}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25441,6 +25604,54 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - _event: {fileID: 11400000, guid: cbe69a7eee7c3994cb4051469269c3ba, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1752673706}
+          m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
+          m_MethodName: OnBuffStartAffect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: fdaa2f4b6a68ffb4dbab5113c408aee8, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1752673706}
+          m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
+          m_MethodName: OnBuffUpdateAffect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 91b2b8e56beb8e04ea23f770f2196f87, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1752673706}
+          m_TargetAssemblyTypeName: PlayerInfo, Assembly-CSharp
+          m_MethodName: OnBuffEndAffect
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &1752673706
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25461,6 +25672,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -25500,6 +25720,9 @@ MonoBehaviour:
     buffs: []
   initiativeBar: {fileID: 1351199348}
   healthBarNew: {fileID: 1579569516}
+  buffListParent: {fileID: 1477682481}
+  buffItemPrefab: {fileID: 6323781746786424338, guid: 9cc166d79f45286418441e07f2a9b6a3,
+    type: 3}
   initiativeBarInAnimation: {fileID: 36644479}
   initiativeBarOutAnimation: {fileID: 835827041}
 --- !u!1 &1765471906
@@ -29215,6 +29438,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -29263,6 +29495,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -29717,6 +29958,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -31433,6 +31683,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:
@@ -31972,7 +32231,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: -0.000091552734, y: 0}
   m_SizeDelta: {x: 0.00012207, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -32251,6 +32510,15 @@ MonoBehaviour:
     healthStatus:
       maxHealth: 0
       currentHealth: 0
+    stats:
+      strength: 0
+      agility: 0
+      speed: 0
+      sturdiness: 0
+      mind: 0
+      intelligence: 0
+      perception: 0
+      luck: 0
     brain: {fileID: 0}
     Initiative: 0
     baseAttack:

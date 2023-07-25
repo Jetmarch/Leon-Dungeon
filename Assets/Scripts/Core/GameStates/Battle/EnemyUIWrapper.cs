@@ -163,17 +163,26 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         }
     }
 
-    public void OnEnemyUseSkill(SOEventArgs e)
+    public void OnEnemyUseSkillAnimation(SOEventArgs e)
     {
         var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
 
         if (obj.arg1 != this) return;
-        if (obj.arg1.GetActor().healthStatus.IsDead() || !obj.arg1.GetActor().healthStatus.CanTakeActions()) return;
-
-        if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2.costInInitiativePercent)) return;
 
         enemySprite.rectTransform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
     }
+
+    //public void OnEnemyUseSkill(SOEventArgs e)
+    //{
+    //    var obj = (SOEventArgTwo<EnemyUIWrapper, Skill>)e;
+
+    //    if (obj.arg1 != this) return;
+    //    if (obj.arg1.GetActor().healthStatus.IsDead() || !obj.arg1.GetActor().healthStatus.CanTakeActions()) return;
+
+    //    if (!obj.arg1.GetActor().HasEnoughInitiative(obj.arg2.costInInitiativePercent)) return;
+
+    //    enemySprite.rectTransform.DOPunchPosition(Vector3.down * attackPower, attackAnimationDurationInSec, attackVibrato, attackEllactisity).OnComplete(EnemyUseSkillEnd);
+    //}
 
     public void OnEnemyHealthChanged(SOEventArgs e)
     {

@@ -19,8 +19,12 @@ MonoBehaviour:
   stats:
     strength: 2
     agility: 1
-    intelligence: 1
     speed: 1
+    sturdiness: 0
+    mind: 0
+    intelligence: 1
+    perception: 0
+    luck: 0
   brain: {fileID: 11400000, guid: 23390f508ef422a44bb794adffcd2b04, type: 2}
   baseAttack:
     name:
@@ -31,9 +35,9 @@ MonoBehaviour:
       engValue: 
     icon: {fileID: 0}
     type: 0
-    costInInitiativePercent: 30
+    costInInitiativePercent: 70.1
     effects:
-    - {fileID: 11400000, guid: e0bed77815b2dd74ba2ec647c157fc7d, type: 2}
+    - {fileID: 11400000, guid: 954e91c6248ff8343aa288acf079bac6, type: 2}
   baseDefend:
     name:
       rusValue: 
