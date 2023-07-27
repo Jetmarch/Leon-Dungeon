@@ -629,7 +629,7 @@ MonoBehaviour:
         RelativePosition: 1
         DeterminePositionsOnPlay: 0
         InitialPosition: {x: 0, y: 0, z: 0}
-        DestinationPosition: {x: 0, y: 250, z: 0}
+        DestinationPosition: {x: 0, y: 185, z: 0}
         InitialPositionTransform: {fileID: 0}
         DestinationPositionTransform: {fileID: 0}
         AnimatePositionCurveX:
@@ -3453,9 +3453,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -3508,9 +3505,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -8043,9 +8037,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -8697,9 +8688,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -9517,9 +9505,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -12369,8 +12354,8 @@ MonoBehaviour:
         AllowAdditivePlays: 0
         RelativePosition: 1
         DeterminePositionsOnPlay: 0
-        InitialPosition: {x: 0, y: 0, z: 0}
-        DestinationPosition: {x: 0, y: -250, z: 0}
+        InitialPosition: {x: 0, y: 185, z: 0}
+        DestinationPosition: {x: 0, y: 0, z: 0}
         InitialPositionTransform: {fileID: 0}
         DestinationPositionTransform: {fileID: 0}
         AnimatePositionCurveX:
@@ -12874,9 +12859,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -16792,9 +16774,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -18089,9 +18068,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -18859,9 +18835,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -21974,9 +21947,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -23870,9 +23840,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -25669,9 +25636,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -29435,9 +29399,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -29492,9 +29453,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -29955,9 +29913,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -31680,9 +31635,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0
@@ -32507,9 +32459,6 @@ MonoBehaviour:
       rusValue: 
       engValue: 
     sprite: {fileID: 0}
-    healthStatus:
-      maxHealth: 0
-      currentHealth: 0
     stats:
       strength: 0
       agility: 0

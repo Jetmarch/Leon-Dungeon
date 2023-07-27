@@ -21,6 +21,7 @@ public class BattleMaster : MonoBehaviour
     {
         var eventArg = (SOEventArgOne<Battle>)e;
         this.currentBattle = eventArg.arg;
+        player.InitiativeReset();
 
         //Оповещаем UI и только после начинаем считать инициативу
         SOEventKeeper.Instance.GetEvent("onBattleUIInit").Raise(e);

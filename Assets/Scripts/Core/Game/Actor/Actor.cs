@@ -47,6 +47,8 @@ public class Actor
     public void InitiativeReset()
     {
         Initiative = 0;
+
+        SOEventKeeper.Instance.GetEvent("onInitiativeChanged").Raise(new SOEventArgOne<Actor>(this));
     }
 
     public void ChangeInitiative(float amount)
