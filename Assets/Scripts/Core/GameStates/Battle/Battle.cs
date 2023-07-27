@@ -21,7 +21,7 @@ public class Battle
         this.loot = _loot;
     }
 
-    public Battle(List<SOActor> soEnemies, List<Loot> _loot)
+    public Battle(List<SOActor> soEnemies, List<Loot> _loot, bool useLootFromTheEnemies)
     {
         foreach(var item in _loot)
         {
@@ -35,6 +35,21 @@ public class Battle
         foreach (var enemy in soEnemies)
         {
             enemies.Add(new Actor(enemy));
+        }
+
+        if (useLootFromTheEnemies)
+        {
+            foreach (var enemy in enemies)
+            {
+                foreach (var item in enemy.loot)
+                {
+                    Item newItem = item.GetItemWithChanceOfDrop();
+                    if (newItem != null)
+                    {
+                        loot.Add(newItem);
+                    }
+                }
+            }
         }
     }
 }

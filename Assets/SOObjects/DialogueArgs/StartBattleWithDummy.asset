@@ -17,3 +17,4 @@ MonoBehaviour:
   loot:
   - chanceOfDrop: 100
     item: {fileID: 11400000, guid: 2df78f3160c1abe4ea32850a1e2ecbeb, type: 2}
+  useLootFromTheEnemies: 1

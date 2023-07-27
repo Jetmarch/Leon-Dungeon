@@ -61,3 +61,6 @@ MonoBehaviour:
     costInInitiativePercent: 0
     effects: []
   additionalSkills: []
+  loot:
+  - chanceOfDrop: 100
+    item: {fileID: 11400000, guid: 0408d60103806e14999231361595c44b, type: 2}

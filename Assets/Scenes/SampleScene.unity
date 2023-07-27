@@ -3499,6 +3499,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   battleEncounter: {fileID: 0}
   currentActorOnTurn:
     name:
@@ -3551,6 +3552,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!4 &286190978
 Transform:
   m_ObjectHideFlags: 0
@@ -8083,6 +8085,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!1 &524672810
 GameObject:
   m_ObjectHideFlags: 0
@@ -8734,6 +8737,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   currentBattle:
     enemies: []
     loot: []
@@ -9551,6 +9555,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   currentEnemyUIWrapper: {fileID: 0}
   currentActorSkillSet: []
 --- !u!1 &668413736
@@ -12905,6 +12910,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   characterScreen: {fileID: 1292809859}
   isCharacterScreenOpened: 0
   characterImage: {fileID: 524672812}
@@ -13052,6 +13058,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemies:
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
+  useLootFromTheEnemies: 0
   loot:
   - chanceOfDrop: 100
     item: {fileID: 11400000, guid: 0408d60103806e14999231361595c44b, type: 2}
@@ -16820,6 +16827,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!1 &1129134798
 GameObject:
   m_ObjectHideFlags: 0
@@ -18114,6 +18122,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!114 &1162497877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18132,6 +18141,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
   - {fileID: 11400000, guid: 611e811afb555d6499602f1382dd961c, type: 2}
+  useLootFromTheEnemies: 1
   loot: []
 --- !u!65 &1162497878
 BoxCollider:
@@ -18881,6 +18891,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   skillListParent: {fileID: 882669521}
   skillList: {fileID: 675251131}
   skillListItemPrefab: {fileID: 8481252168534605229, guid: 0f57d2fbfe744d142afdd47415eada74,
@@ -21993,6 +22004,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!65 &1525427107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -23886,6 +23898,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   currentBattle:
     enemies: []
     loot: []
@@ -25682,6 +25695,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   initiativeBar: {fileID: 1351199348}
   healthBarNew: {fileID: 1579569516}
   buffListParent: {fileID: 1477682481}
@@ -29445,6 +29459,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   currentBattle:
     enemies: []
     loot: []
@@ -29499,6 +29514,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
   isWaitingActorTurn: 0
   isBattleInProcess: 0
 --- !u!114 &1974420825
@@ -29959,6 +29975,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!65 &2016664298
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -31681,6 +31698,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!1 &2090246329
 GameObject:
   m_ObjectHideFlags: 0
@@ -32505,6 +32523,7 @@ MonoBehaviour:
       effects: []
     additionalSkills: []
     buffs: []
+    loot: []
 --- !u!54 &2110336048
 Rigidbody:
   m_ObjectHideFlags: 0

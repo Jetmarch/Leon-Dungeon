@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu( fileName ="StartBattleDialogueArgSO", menuName = "DialogueArgs/StartBattleDialogueArg")]
 public class StartBattleDialogueArgSO : DSDialogEventArgSO
 {
-    [SerializeField] public List<SOActor> enemies;
-    [SerializeField] public List<Loot> loot;
+    public List<SOActor> enemies;
+    public List<Loot> loot;
+    public bool useLootFromTheEnemies = true;
 }

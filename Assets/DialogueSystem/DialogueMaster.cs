@@ -121,7 +121,7 @@ public class DialogueMaster : MonoBehaviour
         if(evArgs is StartBattleDialogueArgSO)
         {
             var startBattleArg = (StartBattleDialogueArgSO)evArgs;
-            ev.Raise(new SOEventArgOne<Battle>(new Battle(startBattleArg.enemies, startBattleArg.loot)));
+            ev.Raise(new SOEventArgOne<Battle>(new Battle(startBattleArg.enemies, startBattleArg.loot, startBattleArg.useLootFromTheEnemies)));
         }
         else
         {

@@ -6,18 +6,23 @@ using UnityEngine;
 [Serializable]
 public class Actor
 {
+    [Header("Main info")]
     public LocaleString name;
     public Sprite sprite;
     public HealthStatus healthStatus;
     public ActorStats stats;
     public AIBrain brain;
 
+    [Header("Battle, skills, buffs")]
     public float Initiative;
     public Skill baseAttack;
     public Skill baseDefend;
     public Skill basePassTurn;
     public List<Skill> additionalSkills;
     public List<Buff> buffs;
+
+    [Header("Loot")]
+    public List<Loot> loot;
 
     public Actor(SOActor _actor)
     {
@@ -34,6 +39,7 @@ public class Actor
 
         this.healthStatus = new HealthStatus(this);
         this.buffs = new List<Buff>();
+        this.loot = _actor.loot;
     }
 
     public void InitiativeStep(float timeDelta)
