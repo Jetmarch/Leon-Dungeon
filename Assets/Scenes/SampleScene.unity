@@ -1858,6 +1858,21 @@ MonoBehaviour:
     - {fileID: 11400000, guid: a6a3bc70897df8e4490d9821f6aad71d, type: 2}
     eqiupBehaviours: []
     attunementBehaviours: []
+  - name:
+      rusValue: "\u041C\u0430\u043B\u043E\u0435 \u0437\u0435\u043B\u044C\u0435 \u043B\u0435\u0447\u0435\u043D\u0438\u044F"
+      engValue: Small healing potion
+    icon: {fileID: -591947794, guid: 227042be85052d448af33b8291874e6e, type: 3}
+    description:
+      rusValue: 
+      engValue: 
+    type: 1
+    countOfMaxUse: 2
+    countOfCurrentUse: 0
+    costInInitiativePercent: 15
+    useBehaviours:
+    - {fileID: 11400000, guid: a6a3bc70897df8e4490d9821f6aad71d, type: 2}
+    eqiupBehaviours: []
+    attunementBehaviours: []
 --- !u!114 &146110078
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7958,22 +7973,6 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-  - _event: {fileID: 11400000, guid: b2d78939d8ed7b445b65abd59c1d2459, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 521780215}
-          m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
-          m_MethodName: OnItemChoosed
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
   - _event: {fileID: 11400000, guid: d98d470c9f52b0849a8a3f18d1a3f9a5, type: 2}
     response:
       m_PersistentCalls:
@@ -8014,6 +8013,22 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
           m_MethodName: OnEscapeKeyDown
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 53530ab6d42c3f747b6258520e9ffd5d, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521780215}
+          m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
+          m_MethodName: OnPlayerReadyUseItemInBattle
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -29633,6 +29648,54 @@ MonoBehaviour:
         - m_Target: {fileID: 1974420824}
           m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
           m_MethodName: OnActorTurnAnimationEnd
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: b2d78939d8ed7b445b65abd59c1d2459, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: OnItemChoosed
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 3cf870697626d3f4e81784aac88a27fd, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: OnPlayerUsedItemOnSelf
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: f66e936ec3e572541a66a4c2d815df93, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: OnPlayerUsedItemOnEnemy
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}

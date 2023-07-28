@@ -13,30 +13,13 @@ public class ItemMaster : MonoBehaviour
         player = arg.arg;
     }
 
-    public void OnItemChoosed(SOEventArgs e)
+    public void OnPlayerReadyUseItemInBattle(SOEventArgs e)
     {
-        var obj = (SOEventArgOne<ItemUIWrapper>)e;
-        choosedItem = obj.arg.GetItem();
+        var obj = (SOEventArgOne<Item>)e;
+        choosedItem = obj.arg;
 
         if (choosedItem.type != ItemType.UsableOnSelf) return;
 
-
-        //TODO: Пересмотреть подход к использованию предмета. Проверки инициативы должны осуществляться на стороне BattleMaster
-        if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("������������ ����������!"));
-            Debug.Log("Not enough initiative!");
-            return;
-        }
-
-        if (!choosedItem.CanUse())
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("���� ������� ������ ������ ������������"));
-            Debug.Log("Cannot use this item anymore");
-            return;
-        }
-
-        Debug.Log($"Player use item {choosedItem.name.GetValue()} on self");
         player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
         choosedItem.Use(player, player);
         SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnSelf").Raise(new SOEventArgOne<Item>(choosedItem));
@@ -50,22 +33,6 @@ public class ItemMaster : MonoBehaviour
         if (choosedItem == null) return;
 
         var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
-
-        if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("������������ ����������!"));
-            Debug.Log("Not enough initiative!");
-            return;
-        }
-
-        if (!choosedItem.CanUse())
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("���� ������� ������ ������ ������������"));
-            Debug.Log("Cannot use this item anymore");
-            return;
-        }
-
-        player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
 
         foreach (var enemy in obj.arg)
         {

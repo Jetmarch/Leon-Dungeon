@@ -128,4 +128,40 @@ public class BattleMaster : MonoBehaviour
 
         isWaitingActorTurn = false;
     }
+
+    public void OnItemChoosed(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<ItemUIWrapper>)e;
+        Item choosedItem = obj.arg.GetItem();
+
+
+        if (!player.HasEnoughInitiative(choosedItem.costInInitiativePercent))
+        {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Not enought initiative!"));
+            Debug.Log("Not enough initiative!");
+            return;
+        }
+
+        if (!choosedItem.CanUse())
+        {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Cannot use this item anymore"));
+            Debug.Log("Cannot use this item anymore");
+            return;
+        }
+
+        Debug.Log($"Player use item {choosedItem.name.GetValue()} on self");
+        SOEventKeeper.Instance.GetEvent("onPlayerReadyUseItemInBattle").Raise(new SOEventArgOne<Item>(choosedItem));
+    }
+
+    public void OnPlayerUsedItemOnSelf(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Item>)e;
+        player.ReduceInitiativeOnCost(obj.arg.costInInitiativePercent);
+    }
+
+    public void OnPlayerUsedItemOnEnemy(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo <List<EnemyUIWrapper>, Item>)e;
+        player.ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
+    }
 }
