@@ -129,7 +129,7 @@ public class BattleMaster : MonoBehaviour
         isWaitingActorTurn = false;
     }
 
-    public void OnItemChoosed(SOEventArgs e)
+    public void OnItemChoosedBattle(SOEventArgs e)
     {
         var obj = (SOEventArgOne<ItemUIWrapper>)e;
         Item choosedItem = obj.arg.GetItem();

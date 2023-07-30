@@ -5,14 +5,14 @@ using UnityEngine.UI;
 
 public class InventoryUIMaster : MonoBehaviour
 {
-    [SerializeField] private InventoryMaster inventoryMaster;
-    [SerializeField] private GameObject inventoryScreen;
-    [SerializeField] private GameObject itemList;
+    [SerializeField] protected InventoryMaster inventoryMaster;
+    [SerializeField] protected GameObject inventoryScreen;
+    [SerializeField] protected GameObject itemList;
 
-    [SerializeField] private GameObject itemUIWrapperPrefab;
-    [SerializeField] private Button closeInventoryButton;
+    [SerializeField] protected GameObject itemUIWrapperPrefab;
+    [SerializeField] protected Button closeInventoryButton;
 
-    [SerializeField] private bool isInventoryOpen;
+    [SerializeField] protected bool isInventoryOpen;
 
     private void Awake()
     {

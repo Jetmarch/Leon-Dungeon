@@ -89,12 +89,12 @@ public class TravelMaster : MonoBehaviour
 
     private void ToggleInventory()
     {
-        SOEventKeeper.Instance.GetEvent("onInventoryToggle").Raise();
+        SOEventKeeper.Instance.GetEvent("onInventoryToggleTravel").Raise();
     }
 
     private void OpenInventory()
     {
-        SOEventKeeper.Instance.GetEvent("onOpenInventory").Raise();
+        SOEventKeeper.Instance.GetEvent("onOpenInventoryTravel").Raise();
     }
 
     private void CloseInventory()

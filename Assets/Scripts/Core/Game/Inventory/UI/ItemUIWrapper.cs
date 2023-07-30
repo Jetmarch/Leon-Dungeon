@@ -11,6 +11,10 @@ public class ItemUIWrapper : MonoBehaviour
     [SerializeField] private TextMeshProUGUI itemName;
     [SerializeField] private TextMeshProUGUI useCounter;
 
+    [SerializeField] private string useItemEventName;
+    [SerializeField] private string equipItemEventName;
+    [SerializeField] private string unequipItemEventName;
+
     private void Awake()
     {
         GetComponent<Button>().onClick.AddListener(OnUseItem);
@@ -19,21 +23,21 @@ public class ItemUIWrapper : MonoBehaviour
     public void OnUseItem()
     {
         Debug.Log($"Item {item.name.GetValue()} was choosed");
-        SOEventKeeper.Instance.GetEvent("onItemChoose").Raise(new SOEventArgOne<ItemUIWrapper>(this));
+        SOEventKeeper.Instance.GetEvent(useItemEventName).Raise(new SOEventArgOne<ItemUIWrapper>(this));
         UpdateItemView();
     }
 
     public void OnEquipItem()
     {
         Debug.Log($"Item {item.name.GetValue()} was equiped");
-        SOEventKeeper.Instance.GetEvent("onItemEquip").Raise(new SOEventArgOne<Item>(item));
+        SOEventKeeper.Instance.GetEvent(equipItemEventName).Raise(new SOEventArgOne<Item>(item));
         UpdateItemView();
     }
 
     public void OnUnequipItem()
     {
         Debug.Log($"Item {item.name.GetValue()} was unequiped");
-        SOEventKeeper.Instance.GetEvent("onItemUnequip").Raise(new SOEventArgOne<Item>(item));
+        SOEventKeeper.Instance.GetEvent(unequipItemEventName).Raise(new SOEventArgOne<Item>(item));
         UpdateItemView();
     }
     

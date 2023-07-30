@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4725697386331360032}
   - component: {fileID: 1080004911099046369}
   m_Layer: 5
-  m_Name: ItemUIWrapperPrefab
+  m_Name: ItemTravelUIWrapperPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -322,6 +322,9 @@ MonoBehaviour:
   itemIcon: {fileID: 1863312962730741606}
   itemName: {fileID: 5271649037405240772}
   useCounter: {fileID: 1702409202844596135}
+  useItemEventName: onItemChooseTravel
+  equipItemEventName: onEquipItemTravel
+  unequipItemEventName: onUnequipItemTravel
 --- !u!114 &1080004911099046369
 MonoBehaviour:
   m_ObjectHideFlags: 0
