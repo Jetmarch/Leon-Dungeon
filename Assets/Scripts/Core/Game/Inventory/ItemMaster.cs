@@ -20,7 +20,6 @@ public class ItemMaster : MonoBehaviour
 
         if (choosedItem.type != ItemType.UsableOnSelf) return;
 
-        player.ReduceInitiativeOnCost(choosedItem.costInInitiativePercent);
         choosedItem.Use(player, player);
         SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnSelf").Raise(new SOEventArgOne<Item>(choosedItem));
         SOEventKeeper.Instance.GetEvent("onItemUsed").Raise(new SOEventArgOne<Item>(choosedItem));
@@ -44,6 +43,18 @@ public class ItemMaster : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onItemUsed").Raise(new SOEventArgOne<Item>(choosedItem));
 
         choosedItem = null;
+    }
+
+    public void OnItemChooseTravel(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<ItemUIWrapper>)e;
+        Item item = obj.arg.GetItem();
+
+        if (item.type != ItemType.UsableOnSelf) return;
+
+        item.Use(player, player);
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedItemOnSelf").Raise(new SOEventArgOne<Item>(item));
+        SOEventKeeper.Instance.GetEvent("onItemUsed").Raise(new SOEventArgOne<Item>(item));
     }
 
     public void OnAttunementToAnItem(SOEventArgs e)

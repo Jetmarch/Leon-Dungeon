@@ -8255,6 +8255,22 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+  - _event: {fileID: 11400000, guid: 02eaa642ee5b8804aa8f1894b9f2898c, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 521780215}
+          m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
+          m_MethodName: OnItemChooseTravel
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!114 &521780215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23454,7 +23470,7 @@ MonoBehaviour:
   inventoryMaster: {fileID: 146110077}
   inventoryScreen: {fileID: 490580162}
   itemList: {fileID: 1354540257}
-  itemUIWrapperPrefab: {fileID: 4725697386331360036, guid: 9ff029be1dc37bb4cb9878c31c70dbeb,
+  itemUIWrapperPrefab: {fileID: 4725697386331360036, guid: 939f740835a89e549951e2199dbeeaa1,
     type: 3}
   closeInventoryButton: {fileID: 590569793}
   isInventoryOpen: 0
