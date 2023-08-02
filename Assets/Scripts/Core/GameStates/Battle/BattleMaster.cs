@@ -12,6 +12,9 @@ public class BattleMaster : MonoBehaviour
     [SerializeField] private bool isWaitingActorTurn;
     [SerializeField] private bool isBattleInProcess;
 
+    //For checking initiative after choosing target
+    private Skill choosedSkill;
+
     public void OnPlayerObjectSet(SOEventArgs e)
     {
         var eventArg = (SOEventArgOne<Actor>)e;
@@ -162,6 +165,52 @@ public class BattleMaster : MonoBehaviour
     public void OnPlayerUsedItemOnEnemy(SOEventArgs e)
     {
         var obj = (SOEventArgTwo <List<EnemyUIWrapper>, Item>)e;
+        player.ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
+    }
+
+    public void PlayerHasChoseSkillBattle(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Skill>)e;
+        choosedSkill = obj.arg;
+
+        if(choosedSkill == null)
+        {
+            Debug.LogError("BattleMaster choosedSkill is null!");
+        }
+
+        if (!player.HasEnoughInitiative(obj.arg.costInInitiativePercent))
+        {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
+            Debug.Log("Not enough initiative!");
+            return;
+        }
+        
+        SOEventKeeper.Instance.GetEvent("onSkillUseOnSelfInBattle").Raise(new SOEventArgOne<Skill>(obj.arg));
+    }
+
+    public void PlayerHasChoseTarget(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
+
+        if (!player.HasEnoughInitiative(choosedSkill.costInInitiativePercent))
+        {
+            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
+            Debug.Log("Not enough initiative!");
+            return;
+        }
+
+        SOEventKeeper.Instance.GetEvent("onSkillUseOnEnemyInBattle").Raise(new SOEventArgOne<List<EnemyUIWrapper>>(obj.arg));
+    }
+
+    public void PlayerUsedSkillOnSelfBattle(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Skill>)e;
+        player.ReduceInitiativeOnCost(obj.arg.costInInitiativePercent);
+    }
+
+    public void PlayerUsedSkillOnEnemy(SOEventArgs e)
+    {
+        var obj = (SOEventArgTwo<List<EnemyUIWrapper>, Skill>)e;
         player.ReduceInitiativeOnCost(obj.arg2.costInInitiativePercent);
     }
 }

@@ -29,7 +29,7 @@ public class SkillListItemUIWrapper : MonoBehaviour
 
     public void PlayerChoseSkill()
     {
-        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(skill));
+        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkillBattle").Raise(new SOEventArgOne<Skill>(skill));
         Debug.Log($"Player has choose skill {skill.name.GetValue()}");
     }
 }

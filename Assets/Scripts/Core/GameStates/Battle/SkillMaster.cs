@@ -12,7 +12,7 @@ public class SkillMaster : MonoBehaviour
         player = eventArg.arg;
     }
 
-    public void PlayerHasChoseSkill(SOEventArgs e)
+    public void SkillUseOnSelfInBattle(SOEventArgs e)
     {
         var obj = (SOEventArgOne<Skill>)e;
 
@@ -22,34 +22,18 @@ public class SkillMaster : MonoBehaviour
             return;
         }
 
-        if(!player.HasEnoughInitiative(obj.arg.costInInitiativePercent))
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
-            Debug.Log("Not enough initiative!");
-            return;
-        }
-
         Debug.Log($"Player use skill {obj.arg.name.GetValue()} on self");
-        player.ReduceInitiativeOnCost(obj.arg.costInInitiativePercent);
         obj.arg.Use(player, player);
         //TODO: Raise event onPlayerUsedSkillOnSelf
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnSelfBattle").Raise(new SOEventArgOne<Skill>(obj.arg));
     }
 
-    public void PlayerHasChoseTarget(SOEventArgs e)
+    public void SkillUseOnEnemyInBattle(SOEventArgs e)
     {
         if (choosedSkill == null) return;
 
         var obj = (SOEventArgOne<List<EnemyUIWrapper>>)e;
         
-        if(!player.HasEnoughInitiative(choosedSkill.costInInitiativePercent))
-        {
-            SOEventKeeper.Instance.GetEvent("onBattleMessage").Raise(new SOEventArgOne<string>("Недостаточно инициативы!"));
-            Debug.Log("Not enough initiative!");
-            return;
-        }
-
-        player.ReduceInitiativeOnCost(choosedSkill.costInInitiativePercent);
-
         foreach(var enemy in obj.arg)
         {
             Debug.Log($"Player use skill {choosedSkill.name.GetValue()} on {enemy.GetActor().name.GetValue()}");

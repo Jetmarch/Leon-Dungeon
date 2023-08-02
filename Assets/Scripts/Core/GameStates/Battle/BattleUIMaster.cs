@@ -201,12 +201,12 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onBaseAttackBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(player.baseAttack));
+        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkillBattle").Raise(new SOEventArgOne<Skill>(player.baseAttack));
     }
 
     private void onBaseDefendBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(player.baseDefend));
+        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkillBattle").Raise(new SOEventArgOne<Skill>(player.baseDefend));
     }
 
     private void onSkillListBtnClick()
@@ -216,7 +216,7 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onRetreatBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkill").Raise(new SOEventArgOne<Skill>(player.basePassTurn));
+        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkillBattle").Raise(new SOEventArgOne<Skill>(player.basePassTurn));
     }
 
     private void onInventoryBtnClick()

@@ -62,7 +62,7 @@ public class ItemMaster : MonoBehaviour
 
     }
 
-    public void onPlayerHasChoseSkill(SOEventArgs e)
+    public void onPlayerHasChoseSkillBattle(SOEventArgs e)
     {
         choosedItem = null;
     }

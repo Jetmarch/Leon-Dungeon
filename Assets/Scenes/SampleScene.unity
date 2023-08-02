@@ -1677,7 +1677,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 534936406}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &97340706
 MonoBehaviour:
@@ -2007,7 +2007,7 @@ Transform:
   - {fileID: 115653190}
   - {fileID: 1575436580}
   m_Father: {fileID: 534936406}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &146110077
 MonoBehaviour:
@@ -3838,7 +3838,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974420823}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &303928679
 MonoBehaviour:
@@ -8213,7 +8213,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 521780215}
           m_TargetAssemblyTypeName: ItemMaster, Assembly-CSharp
-          m_MethodName: onPlayerHasChoseSkill
+          m_MethodName: onPlayerHasChoseSkillBattle
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -8724,6 +8724,7 @@ Transform:
   m_Children:
   - {fileID: 1865205025}
   - {fileID: 347796383}
+  - {fileID: 1124019686}
   - {fileID: 1322851862}
   - {fileID: 647953337}
   - {fileID: 2082868638}
@@ -9816,7 +9817,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 534936406}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &647953338
 MonoBehaviour:
@@ -13352,7 +13353,7 @@ Transform:
   m_Children:
   - {fileID: 546994943}
   m_Father: {fileID: 534936406}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &852234583
 MonoBehaviour:
@@ -17154,13 +17155,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1124019685}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1974420823}
-  m_RootOrder: 3
+  m_Father: {fileID: 534936406}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1124019687
 MonoBehaviour:
@@ -17182,38 +17183,6 @@ MonoBehaviour:
         - m_Target: {fileID: 1124019688}
           m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
           m_MethodName: OnPlayerObjectSet
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - _event: {fileID: 11400000, guid: c4edc8b8b37d32a4da9a771eb55d0ee7, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1124019688}
-          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
-          m_MethodName: PlayerHasChoseSkill
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - _event: {fileID: 11400000, guid: d98d470c9f52b0849a8a3f18d1a3f9a5, type: 2}
-    response:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 1124019688}
-          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
-          m_MethodName: PlayerHasChoseTarget
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -17263,6 +17232,38 @@ MonoBehaviour:
           m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
           m_MethodName: OnEscapeKeyDown
           m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 662df06a40fc76e4e986bc744144311e, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124019688}
+          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
+          m_MethodName: SkillUseOnSelfInBattle
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: b7e8c9a960856b84da21bff3540f2caf, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1124019688}
+          m_TargetAssemblyTypeName: SkillMaster, Assembly-CSharp
+          m_MethodName: SkillUseOnEnemyInBattle
+          m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -19825,7 +19826,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 534936406}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1322851863
 MonoBehaviour:
@@ -23196,7 +23197,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 534936406}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1572410811
 MonoBehaviour:
@@ -24517,7 +24518,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974420823}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1675135222
 MonoBehaviour:
@@ -30210,7 +30211,6 @@ Transform:
   - {fileID: 596320375}
   - {fileID: 1241365145}
   - {fileID: 870295288}
-  - {fileID: 1124019686}
   - {fileID: 1675135221}
   - {fileID: 303928678}
   - {fileID: 2050215821}
@@ -30502,6 +30502,70 @@ MonoBehaviour:
         - m_Target: {fileID: 1974420824}
           m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
           m_MethodName: OnPlayerUsedItemOnEnemy
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: c4edc8b8b37d32a4da9a771eb55d0ee7, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: PlayerHasChoseSkillBattle
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: d98d470c9f52b0849a8a3f18d1a3f9a5, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: PlayerHasChoseTarget
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: 46f5c97bc4249f34fb3d764531d3c85e, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: PlayerUsedSkillOnSelfBattle
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - _event: {fileID: 11400000, guid: b8d02de4546be6342933460fa2cf218e, type: 2}
+    response:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1974420824}
+          m_TargetAssemblyTypeName: BattleMaster, Assembly-CSharp
+          m_MethodName: PlayerUsedSkillOnEnemy
           m_Mode: 0
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -32147,7 +32211,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1974420823}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2050215822
 MonoBehaviour:
@@ -32425,7 +32489,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 534936406}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2082868639
 MonoBehaviour:
