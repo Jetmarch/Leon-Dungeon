@@ -225,7 +225,7 @@ GameObject:
   - component: {fileID: 4389825989389833736}
   - component: {fileID: 626996066427265709}
   m_Layer: 5
-  m_Name: SkillListItem
+  m_Name: SkillListItemBattle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -316,6 +316,7 @@ MonoBehaviour:
     effects: []
   skillIcon: {fileID: 8481252167687993283}
   skillName: {fileID: 8481252167369414284}
+  playerHasChoseSkillEventName: onPlayerHasChoseSkillBattle
 --- !u!114 &626996066427265709
 MonoBehaviour:
   m_ObjectHideFlags: 0

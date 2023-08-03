@@ -6,6 +6,7 @@ using UnityEngine;
 public class Effect
 {
     private float damage;
+    private float heal;
     private List<Buff> buffs;
 
     public Effect()
@@ -21,6 +22,16 @@ public class Effect
     public float GetDamage()
     {
         return damage;
+    }
+
+    public void SetHeal(float amount)
+    {
+        heal = amount;
+    }
+
+    public float GetHeal()
+    {
+        return heal;
     }
 
     public void AddBuff(Buff buff)

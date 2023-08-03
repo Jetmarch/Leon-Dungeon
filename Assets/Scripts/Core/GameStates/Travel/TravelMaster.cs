@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class TravelMaster : MonoBehaviour
 {
+    [SerializeField] private Actor player;
     [SerializeField] private GameObject travelScreen;
     [SerializeField] private MMF_Player travelScreenInAnimation;
     [SerializeField] private MMF_Player travelScreenOutAnimation;
@@ -24,6 +25,13 @@ public class TravelMaster : MonoBehaviour
         inventoryBtn.onClick.AddListener(ToggleInventory);
         characterBtn.onClick.AddListener(OpenCharacterScreen);
         campBtn.onClick.AddListener(StartCamp);
+        skillListBtn.onClick.AddListener(ToggleSkillList);
+    }
+
+    public void OnPlayerObjectSet(SOEventArgs e)
+    {
+        var eventArg = (SOEventArgOne<Actor>)e;
+        player = eventArg.arg;
     }
 
     public void ShowScreen()
@@ -69,6 +77,15 @@ public class TravelMaster : MonoBehaviour
         travelScreenInAnimation?.PlayFeedbacks();
     }
 
+    public void PlayerHasChoseSkillTravel(SOEventArgs e)
+    {
+        var obj = (SOEventArgOne<Skill>)e;
+
+        if (obj.arg.type != SkillType.SelfTarget) return;
+
+        SOEventKeeper.Instance.GetEvent("onSkillUseOnSelfInTravel").Raise(new SOEventArgOne<Skill>(obj.arg));
+    }
+
     private void DisableInteractionWithControls()
     {
         inventoryBtn.interactable = false;
@@ -105,6 +122,16 @@ public class TravelMaster : MonoBehaviour
     private void OpenCharacterScreen()
     {
         SOEventKeeper.Instance.GetEvent("onOpenCharacterScreen").Raise();
+    }
+
+    private void OpenSkillList()
+    {
+        SOEventKeeper.Instance.GetEvent("onSkillListOpenTravel").Raise();
+    }
+
+    private void ToggleSkillList()
+    {
+        SOEventKeeper.Instance.GetEvent("onSkillListToggleTravel").Raise();
     }
 
     private void StartCamp()

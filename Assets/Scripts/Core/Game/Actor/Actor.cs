@@ -94,9 +94,11 @@ public class Actor
 
     public void Affect(Effect effect)
     {
+        //TODO: ѕродумать разделение лечени€ и урона
         healthStatus.ChangeHealth(effect.GetDamage());
+        healthStatus.ChangeHealth(effect.GetHeal());
 
-        foreach(var buff in effect.GetBuffs())
+        foreach (var buff in effect.GetBuffs())
         {
             if (!HasBuff(buff))
             {

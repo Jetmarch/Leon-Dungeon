@@ -28,6 +28,23 @@ public class SkillMaster : MonoBehaviour
         SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnSelfBattle").Raise(new SOEventArgOne<Skill>(obj.arg));
     }
 
+    public void SkillUseOnSelfInTravel(SOEventArgs e)
+    {
+        //TODO: Решить проблему с дубликацией кода
+        var obj = (SOEventArgOne<Skill>)e;
+
+        if (obj.arg.type != SkillType.SelfTarget)
+        {
+            choosedSkill = obj.arg;
+            return;
+        }
+
+        Debug.Log($"Player use skill {obj.arg.name.GetValue()} on self");
+        obj.arg.Use(player, player);
+        //TODO: Raise event onPlayerUsedSkillOnSelf
+        SOEventKeeper.Instance.GetEvent("onPlayerUsedSkillOnSelfTravel").Raise(new SOEventArgOne<Skill>(obj.arg));
+    }
+
     public void SkillUseOnEnemyInBattle(SOEventArgs e)
     {
         if (choosedSkill == null) return;

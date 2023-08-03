@@ -11,6 +11,11 @@ public class SkillListUIMaster : MonoBehaviour
     [SerializeField] private GameObject skillListItemPrefab;
     [SerializeField] private Button closeListBtn;
 
+    [Header("Check conditions")]
+    [SerializeField] private bool checkInitiative;
+    [SerializeField] private List<SkillType> searchForSkillTypes;
+
+
     private void Awake()
     {
         closeListBtn.onClick.AddListener(OnSkillListClose);
@@ -20,6 +25,18 @@ public class SkillListUIMaster : MonoBehaviour
     {
         var eventArg = (SOEventArgOne<Actor>)e;
         player = eventArg.arg;
+    }
+
+    public void OnSkillListToggle()
+    {
+        if(!skillListParent.activeSelf)
+        {
+            OnSkillListOpen();
+        }
+        else
+        {
+            OnSkillListClose();
+        }
     }
 
     public void OnSkillListOpen()
@@ -43,13 +60,18 @@ public class SkillListUIMaster : MonoBehaviour
     {
         foreach(var skill in player.additionalSkills) 
         {
+            if (!searchForSkillTypes.Contains(skill.type)) continue;
+
             var obj = Instantiate(skillListItemPrefab, skillList.transform);
             var wrapper = obj.GetComponent<SkillListItemUIWrapper>();
             wrapper.SetSkill(skill);
 
-            if(!player.HasEnoughInitiative(wrapper.GetSkill().costInInitiativePercent))
+            if (checkInitiative)
             {
-                wrapper.GetComponent<Button>().interactable = false;
+                if (!player.HasEnoughInitiative(wrapper.GetSkill().costInInitiativePercent))
+                {
+                    wrapper.GetComponent<Button>().interactable = false;
+                }
             }
         }
     }

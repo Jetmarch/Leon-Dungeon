@@ -211,7 +211,7 @@ public class BattleUIMaster : MonoBehaviour
 
     private void onSkillListBtnClick()
     {
-        SOEventKeeper.Instance.GetEvent("onSkillListOpen").Raise();
+        SOEventKeeper.Instance.GetEvent("onSkillListOpenBattle").Raise();
     }
 
     private void onRetreatBtnClick()

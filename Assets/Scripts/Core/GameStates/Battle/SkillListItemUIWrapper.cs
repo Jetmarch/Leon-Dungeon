@@ -8,7 +8,8 @@ public class SkillListItemUIWrapper : MonoBehaviour
 {
     [SerializeField] private Skill skill;
     [SerializeField] private Image skillIcon;
-    [SerializeField] private TextMeshProUGUI skillName; 
+    [SerializeField] private TextMeshProUGUI skillName;
+    [SerializeField] private string playerHasChoseSkillEventName;
 
     private void Awake()
     {
@@ -29,7 +30,7 @@ public class SkillListItemUIWrapper : MonoBehaviour
 
     public void PlayerChoseSkill()
     {
-        SOEventKeeper.Instance.GetEvent("onPlayerHasChoseSkillBattle").Raise(new SOEventArgOne<Skill>(skill));
+        SOEventKeeper.Instance.GetEvent(playerHasChoseSkillEventName).Raise(new SOEventArgOne<Skill>(skill));
         Debug.Log($"Player has choose skill {skill.name.GetValue()}");
     }
 }
