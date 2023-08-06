@@ -42,7 +42,7 @@ public class EnemyUIWrapper : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     private void Start()
     {
-        idleAnimation?.PlayFeedbacks();
+        arriveAnimation?.PlayFeedbacks();
     }
 
     public void SetActor(Actor actor)
