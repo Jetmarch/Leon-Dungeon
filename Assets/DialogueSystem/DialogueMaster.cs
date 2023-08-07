@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using MoreMountains.Feedbacks;
+using UnityEngine.UI;
 
 public class DialogueMaster : MonoBehaviour
 {
     [SerializeField] private DSDialogueSO currentDialogue;
 
     [SerializeField] private GameObject dialogueScreen;
+    [SerializeField] private Image actorSprite;
     [SerializeField] private TextMeshProUGUI actorName;
     [SerializeField] private TextMeshProUGUI dialogueText;
 
@@ -31,6 +33,7 @@ public class DialogueMaster : MonoBehaviour
         var obj = (SOEventArgOne<DSDialogueSO>)e;
         currentDialogue = obj.arg;
         //TODO: Animation of showing dialogue screen here
+        
         actorName.text = string.Empty;
         dialogueText.text = string.Empty;
         startDialogue?.PlayFeedbacks();
@@ -41,6 +44,9 @@ public class DialogueMaster : MonoBehaviour
     public void OnStartDialogueAnimationEnd()
     {
         ShowCurrentDialogue();
+
+        actorSprite.gameObject.SetActive(true);
+        actorSprite.preserveAspect = true;
     }
 
     public void OnNextDialogueNode()
@@ -98,7 +104,7 @@ public class DialogueMaster : MonoBehaviour
         //TODO: Animation here
         //dialogueScreen.SetActive(false);
         endDialogue?.PlayFeedbacks();
-
+        actorSprite.gameObject.SetActive(false);
         isInDialogue = false;
     }
 
@@ -150,15 +156,20 @@ public class DialogueMaster : MonoBehaviour
 
     private void ShowSingleChoiceDialogue()
     {
-        actorName.text = currentDialogue.NodeActor.name.GetValue();
-        dialogueText.text = currentDialogue.Text;
+        UpdateDialogueTextAndSprite();
     }
 
     private void ShowMultipleChoiceDialogue()
     {
+        UpdateDialogueTextAndSprite();
+        ShowChoices();
+    }
+
+    private void UpdateDialogueTextAndSprite()
+    {
+        actorSprite.sprite = currentDialogue.NodeActor.sprite;
         actorName.text = currentDialogue.NodeActor.name.GetValue();
         dialogueText.text = currentDialogue.Text;
-        ShowChoices();
     }
 
     private void ShowChoices()
