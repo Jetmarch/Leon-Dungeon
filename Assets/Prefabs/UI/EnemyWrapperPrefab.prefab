@@ -2392,7 +2392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Feedbacks: []
-  InitializationMode: 2
+  InitializationMode: 1
   SafeMode: 3
   Direction: 0
   AutoChangeDirectionOnEnd: 0
@@ -2467,19 +2467,19 @@ MonoBehaviour:
         m_Calls: []
   DebugActive: 0
   FeedbacksList:
-  - rid: 6925607293568417792
   - rid: 5612687576917868550
+  - rid: 6925607293568417792
   KeepPlayModeChanges: 0
   PerformanceMode: 0
   ForceStopFeedbacksOnDisable: 1
-  PlayCount: 63
+  PlayCount: 66
   references:
     version: 2
     RefIds:
     - rid: 5612687576917868550
       type: {class: MMF_Pause, ns: MoreMountains.Feedbacks, asm: MoreMountains.Feedbacks}
       data:
-        Active: 0
+        Active: 1
         UniqueID: -541502402
         Label: Pause
         ChannelMode: 0
@@ -2544,7 +2544,7 @@ MonoBehaviour:
         RemapRangeFalloff: {x: 0, y: 1}
         Owner: {fileID: 8938060000720295646}
         DebugActive: 0
-        PauseDuration: 0.2
+        PauseDuration: 0.4
         RandomizePauseDuration: 0
         MinPauseDuration: 1
         MaxPauseDuration: 3
